@@ -4,8 +4,8 @@ import Infobox from '../components/Infobox.js';
 
 export default class PlaceInfobox extends Component {
   async componentDidMount() {
-    const  {entityType, entityID} = this.props;
-    const entity = await GIGServer.getEntity(entityType, entityID);
+    const  {entityID} = this.props;
+    const entity = await GIGServer.getEntity(entityID);
     this.setState({
         entity,
     })

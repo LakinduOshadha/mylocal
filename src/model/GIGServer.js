@@ -2,11 +2,11 @@ import Server from '../model/Server.js';
 
 export default class GIGServer extends Server {
 
-  static async getEntity(entityName, entityID) {
+  static async getEntity(entityID) {
     return await Server.run(
       'gig',
       'entity',
-      [entityName, entityID],
+      [entityID],
     );
   }
 

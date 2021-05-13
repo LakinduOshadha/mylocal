@@ -13,7 +13,9 @@ export default class WWW {
     return asyncCacheGet(
       urlRelative,
       async function () {
-        return await d3.json(WWW.getURLAbsolute(urlRelative));
+        const urlAbsolute = WWW.getURLAbsolute(urlRelative);
+        console.debug(urlAbsolute);
+        return await d3.json(urlAbsolute);
       }
     )
 
