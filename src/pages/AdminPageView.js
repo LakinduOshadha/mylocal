@@ -2,6 +2,7 @@ import {DEFAULT_REGION_ID} from '../model/RegionConstants.js';
 import {getRegionType} from '../model/Region.js';
 import {getRegionBBox} from '../model/RegionGeo.js';
 import {getLatLngSpans, getZoom} from '../model/OSM.js';
+import {redirectToDefault} from '../model/Browser';
 
 import RegionMapDataView from '../components/RegionMapDataView.js';
 import RegionInfobox from '../components/RegionInfobox.js';
@@ -16,10 +17,13 @@ export default class AdminPageView extends PageView {
 
   async getLatLngAndZoom() {
     const regionID = this.getRegionID()
-    const regionType = getRegionType(regionID);
 
-    const [[minLat, minLng], [maxLat, maxLng]] =
-      await getRegionBBox(regionType, regionID);
+    let minLat, minLng, maxLat, maxLng;
+    try {
+      [[minLat, minLng], [maxLat, maxLng]] = await getRegionBBox(regionID);
+    } catch {
+      redirectToDefault();
+    }
 
     const latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
     const latSpan = maxLat - minLat;

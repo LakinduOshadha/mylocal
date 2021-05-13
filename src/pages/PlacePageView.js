@@ -6,9 +6,9 @@ import PlaceInfobox from '../components/PlaceInfobox.js';
 export default class PlacePageView extends PageView {
 
   async getLatLngAndZoom() {
-    const {entityType, entityID} = this.props.match.params;
+    const {entityID} = this.props.match.params;
     const zoom = DEFAULT_ZOOM + 1;
-    const entity = await GIGServer.getEntity(entityType, entityID);
+    const entity = await GIGServer.getEntity(entityID);
     const latLng = [parseFloat(entity.lat), parseFloat(entity.lng)];
 
     return {

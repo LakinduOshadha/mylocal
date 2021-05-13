@@ -1,5 +1,5 @@
 # Build react
-npm run build
+# npm run build
 
 # Copy apache confs
 cp scripts/local_apache/apache.conf /usr/local/etc/httpd/httpd.conf
@@ -16,4 +16,6 @@ cp -r  $DIR_REACT_APP/build/* mylocal/
 # Restart apache and tail logs
 httpd -k restart
 ps -ef | grep httpd
+
+open http://0.0.0.0:8080/mylocal/admin/LK-1127015
 tail -f /usr/local/var/log/httpd/error_log

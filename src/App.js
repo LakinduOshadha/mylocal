@@ -18,7 +18,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router basename="/mylocal/">
+        <Router basename="/mylocal">
           <Switch>
 
             <Route path="/admin/:regionID" component={AdminPageView}/>

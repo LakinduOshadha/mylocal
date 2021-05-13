@@ -1,6 +1,5 @@
 import {Component} from 'react';
 
-import {REGION} from '../model/RegionConstants.js';
 import GeoServer from '../model/GeoServer.js';
 import GIGServer from '../model/GIGServer.js';
 

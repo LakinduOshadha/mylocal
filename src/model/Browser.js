@@ -8,3 +8,7 @@ export function getBrowserLatLng(callback) {
     }
   )
 }
+
+export function redirectToDefault() {
+  window.location.href = "/mylocal";
+}
