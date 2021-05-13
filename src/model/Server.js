@@ -1,6 +1,6 @@
 import WWW from '../model/WWW.js';
 
-const SERVER_MODE =  'local-apache';
+const SERVER_MODE =  'aws-apache';
 const SERVER_CONFIG = {
   'local-apache': {
     HOST:  '0.0.0.0',
