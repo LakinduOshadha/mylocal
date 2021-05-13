@@ -2,7 +2,9 @@ const {Builder, By, until} = require('selenium-webdriver');
 const sleep = require('sleep');
 
 // const BASE_URL = 'http://localhost:3000';
-const BASE_URL = 'http://0.0.0.0:8080';
+// const BASE_URL = 'http://0.0.0.0:8080';
+
+const BASE_URL = 'http://18.209.43.63';
 const TIMEOUT_S = 2;
 
 async function testDifferentURLs() {
@@ -11,17 +13,17 @@ async function testDifferentURLs() {
   const URLS = [
     '/mylocal',
     '/mylocal/admin/LK-1127015',
-    // '/mylocal/admin/LK-1127',
-    // '/mylocal/admin/LK-11',
-    // '/mylocal/admin/LK-1',
-    // '/mylocal/admin/LK-15',
-    // '/mylocal/adman/LA',
-    //
+    '/mylocal/admin/LK-1127',
+    '/mylocal/admin/LK-11',
+    '/mylocal/admin/LK-1',
+    '/mylocal/admin/LK-15',
+    '/mylocal/adman/LA',
+
     '/mylocal/location/6.91N,79.86E,16z',
-    // '/mylocal/location/6.9N,79.9E,16z',
-    // '/mylocal/location/6.8N,79.9E,11z',
-    // '/mylocal/location/7N,80E,11z',
-    //
+    '/mylocal/location/6.9N,79.9E,16z',
+    '/mylocal/location/6.8N,79.9E,11z',
+    '/mylocal/location/7N,80E,11z',
+
     '/mylocal/place/ps/PS-110323',
   ];
 
