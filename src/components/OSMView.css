@@ -1,0 +1,14 @@
+.div-osmview {
+  position: absolute;
+  z-index: 0;
+}
+
+.div-osmview-row {
+  margin-bottom: -6px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+img {
+  border: 0.1px solid white;
+}

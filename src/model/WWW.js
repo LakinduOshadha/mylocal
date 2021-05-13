@@ -1,0 +1,21 @@
+import * as d3 from 'd3';
+import {asyncCacheGet} from '../model/Cache.js';
+
+export default class WWW {
+  static getURLAbsolute(urlRelative) {
+    if (urlRelative.includes('http')) {
+      return urlRelative;
+    }
+    return `${process.env.PUBLIC_URL}/mylocal/${urlRelative}`;
+  }
+
+  static async getJSON(urlRelative) {
+    return asyncCacheGet(
+      urlRelative,
+      async function () {
+        return await d3.json(WWW.getURLAbsolute(urlRelative));
+      }
+    )
+
+  }
+}

@@ -1,0 +1,36 @@
+.div-title {
+  font-size: large;
+}
+
+.div-sub-title {
+  font-size: small;
+  color: gray;
+}
+
+.div-infobox {
+  background: rgba(255, 224, 224, 0.8);
+  border-radius: 16px;
+  left: 16px;
+  margin: 16px;
+  padding: 16px;
+  position: absolute;
+  top: 16px;
+  z-index: 2000;
+}
+
+tr, th, td {
+  font-size: small;
+  margin: 0;
+  padding: 0;
+  padding-right: 16px;
+  text-align: left;
+  vertical-align: top;
+}
+
+table {
+  margin-top: 16px;
+}
+
+h2 {
+  color: gray;
+}

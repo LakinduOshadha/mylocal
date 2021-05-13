@@ -1,0 +1,9 @@
+.div-region-map-data-view {
+  position: absolute;
+  z-index: 500;
+}
+
+.path-region {
+  fill: hsla(0, 100%, 50%, 0.2);
+  stroke: none;
+}

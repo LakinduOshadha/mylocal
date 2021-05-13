@@ -1,0 +1,13 @@
+body {
+  font-family: 'Futura';
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: darkblue;
+}
+
+a:hover {
+  color: lightblue;
+}
