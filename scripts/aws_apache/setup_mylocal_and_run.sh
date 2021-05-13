@@ -5,8 +5,8 @@ echo "AWS_EC2_USER=$AWS_EC2_USER"
 echo "AWS_EC2_PEM_FILE=$AWS_EC2_PEM_FILE"
 
 # Shortcuts to run various remote operations
-export EC2="ssh -i $AWS_EC2_PEM_FILE $AWS_EC2_USER@$AWS_EC2_IP_ADDRESS "
-export EC2_SU="$EC2 sudo "
+EC2="ssh -i $AWS_EC2_PEM_FILE $AWS_EC2_USER@$AWS_EC2_IP_ADDRESS "
+EC2_SU="$EC2 sudo "
 
 # ----------------------------------------------------------------
 
@@ -22,7 +22,7 @@ $EC2_SU "mv $AWS_HOME/apache.conf /etc/apache2/sites-enabled/000-default.conf"
 $EC2 "rm -rf $AWS_HOME/mylocal"
 scp -i $AWS_EC2_PEM_FILE -r build $AWS_EC2_USER@$AWS_EC2_IP_ADDRESS:$AWS_HOME/mylocal
 
-export AWS_EC2_DIR_WWW=/var/www
+AWS_EC2_DIR_WWW=/var/www
 $EC2_SU "rm -rf $AWS_EC2_DIR_WWW/html/mylocal"
 $EC2_SU "ln -s $AWS_HOME/mylocal $AWS_EC2_DIR_WWW/html/mylocal"
 $EC2 "ls -la $AWS_EC2_DIR_WWW/html"

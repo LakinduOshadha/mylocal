@@ -1,5 +1,3 @@
-# Setup geo server on local apache.
-
 DIR_APACHE_WWW=/usr/local/var/www
 cd $DIR_APACHE_WWW
 
