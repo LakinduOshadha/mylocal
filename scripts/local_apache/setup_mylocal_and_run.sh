@@ -1,5 +1,5 @@
 # Build react
-# npm run build
+npm run build
 
 # Copy apache confs
 cp scripts/local_apache/apache.conf /usr/local/etc/httpd/httpd.conf
