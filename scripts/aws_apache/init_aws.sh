@@ -16,6 +16,7 @@ $EC2_SU "apt-get install apache2"
 $EC2_SU "apt-get install libapache2-mod-wsgi-py3"
 $EC2_SU "a2enmod wsgi"
 $EC2_SU "a2enmod headers"
+$EC2_SU "a2enmod rewrite"
 
 $EC2_SU "apt-get install python3-pip"
 $EC2_SU "pip3 install pyproj==2.2"

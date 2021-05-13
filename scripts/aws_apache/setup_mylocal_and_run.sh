@@ -11,7 +11,7 @@ EC2_SU="$EC2 sudo "
 # ----------------------------------------------------------------
 
 # build react
-npm run build
+# npm run build
 
 # Copy apache conf
 AWS_HOME=/home/$AWS_EC2_USER
@@ -19,13 +19,13 @@ scp -i $AWS_EC2_PEM_FILE -r scripts/aws_apache/apache.conf $AWS_EC2_USER@$AWS_EC
 $EC2_SU "mv $AWS_HOME/apache.conf /etc/apache2/sites-enabled/000-default.conf"
 
 # Copy build
-$EC2 "rm -rf $AWS_HOME/mylocal"
-scp -i $AWS_EC2_PEM_FILE -r build $AWS_EC2_USER@$AWS_EC2_IP_ADDRESS:$AWS_HOME/mylocal
-
-AWS_EC2_DIR_WWW=/var/www
-$EC2_SU "rm -rf $AWS_EC2_DIR_WWW/html/mylocal"
-$EC2_SU "ln -s $AWS_HOME/mylocal $AWS_EC2_DIR_WWW/html/mylocal"
-$EC2 "ls -la $AWS_EC2_DIR_WWW/html"
+# $EC2 "rm -rf $AWS_HOME/mylocal"
+# scp -i $AWS_EC2_PEM_FILE -r build $AWS_EC2_USER@$AWS_EC2_IP_ADDRESS:$AWS_HOME/mylocal
+#
+# AWS_EC2_DIR_WWW=/var/www
+# $EC2_SU "rm -rf $AWS_EC2_DIR_WWW/html/mylocal"
+# $EC2_SU "ln -s $AWS_HOME/mylocal $AWS_EC2_DIR_WWW/html/mylocal"
+# $EC2 "ls -la $AWS_EC2_DIR_WWW/html"
 
 # Restart apache and tail logs
 
