@@ -1,9 +1,10 @@
 import * as d3 from 'd3';
 
-import GIGServer from '../model/GIGServer.js';
-import Entity, {ENTITY} from '../model/Entity.js';
+import GIGServer from '../../model/GIGServer.js';
+import Entity, {ENTITY} from '../../model/Entity.js';
 
-import AbstractInfoTable from '../components/AbstractInfoTable.js';
+import AbstractInfoTable
+  from '../../components/infotables/AbstractInfoTable.js';
 
 
 
@@ -36,7 +37,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
     switch(entityType) {
       case ENTITY.PROVINCE:
         tableEntityData = {
-          Name: entityData.name,
+          Name: entityData.name + ' Province',
           Capital: entityData.capital,
           Area: formatArea(entityData.area),
           'ISO 3166 code': entityID,
@@ -45,7 +46,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
         break;
       case ENTITY.DISTRICT:
         tableEntityData = {
-          Name: entityData.name,
+          Name: entityData.name + ' District',
           Population: formatPopulation(entityData.population),
           Area: formatArea(entityData.area),
           'ISO 3166 code': entityID,
@@ -55,7 +56,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
         break;
       case ENTITY.DSD:
         tableEntityData = {
-          Name: entityData.name,
+          Name: entityData.name + ' DSD',
           Population: formatPopulation(entityData.population),
           Area: formatArea(entityData.area),
           'ISO 3166 code': entityID,
@@ -64,7 +65,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
         break;
       case ENTITY.GND:
         tableEntityData = {
-          Name: entityData.name,
+          Name: entityData.name + ' GND',
           'GND Num': entityData.gnd_num,
           'ISO 3166 code': entityID,
         }
@@ -72,8 +73,8 @@ export default class EntityInfoTable extends AbstractInfoTable {
 
       case ENTITY.PS:
         tableEntityData = {
-          Name: entityData.name,
-          Division: entityData.division,
+          Name: entityData.name + ' Police Station',
+          Division: entityData.division + ' Division',
           Office: formatPhone(entityData.phone_office),
           Mobile: formatPhone(entityData.fax),
           Fax: formatPhone(entityData.phone_mobile),

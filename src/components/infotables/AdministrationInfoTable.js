@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom";
 
-import GeoServer from '../model/GeoServer.js';
-import GIGServer from '../model/GIGServer.js';
-import AbstractInfoTable from '../components/AbstractInfoTable.js';
+import GeoServer from '../../model/GeoServer.js';
+import GIGServer from '../../model/GIGServer.js';
+import AbstractInfoTable
+  from '../../components/infotables/AbstractInfoTable.js';
 
 import './AbstractInfoTable.css';
 
