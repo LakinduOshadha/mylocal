@@ -30,7 +30,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
         + ' ' + phoneNumberClean.substring(6, 10)
       return (
         <a href={`tel:${phoneNumberClean}`} className="monospace">
-          {phoneNumberStr}
+          {'☎ ' + phoneNumberStr}
         </a>
       );
     }
