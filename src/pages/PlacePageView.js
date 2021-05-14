@@ -1,8 +1,9 @@
 import GIGServer from '../model/GIGServer.js';
+import Entity, {ENTITY_LABEL_MAP} from '../model/Entity.js';
 
 import PageView, {DEFAULT_ZOOM} from '../pages/PageView.js';
 import Infobox from '../components/Infobox.js';
-import EntityInfoTable from '../components/EntityInfoTable.js';
+import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 
 export default class PlacePageView extends PageView {
 
@@ -20,8 +21,13 @@ export default class PlacePageView extends PageView {
 
   renderInner() {
     const {entityID} = this.props.match.params;
+    const entityType = Entity.getEntityType(entityID);
+    const entityLabel = ENTITY_LABEL_MAP[entityType];
     return (
-      <Infobox>
+      <Infobox
+        subTitle={entityLabel}
+        title={entityID}
+      >
         <EntityInfoTable entityID={entityID} />
       </Infobox>
     );

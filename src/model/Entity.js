@@ -23,6 +23,7 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.GND]: 'Grama Niladari Division',
   [ENTITY.PD]: 'Polling Division',
   [ENTITY.ED]: 'Electoral District',
+  [ENTITY.PS]: 'Police Station',
 }
 
 export const ISO_ENTITY_TO_ID_LENGTH = {

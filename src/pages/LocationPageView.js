@@ -1,9 +1,10 @@
 import {parseLatLngAndZoom, roundLatLng} from '../model/LatLng.js';
 
 import Infobox from '../components/Infobox.js';
-import AdministrationInfoTable from '../components/AdministrationInfoTable.js';
-import ElectionInfoTable from '../components/ElectionInfoTable.js';
-import PoliceInfoTable from '../components/PoliceInfoTable.js';
+import AdministrationInfoTable
+  from '../components/infotables/AdministrationInfoTable.js';
+import ElectionInfoTable from '../components/infotables/ElectionInfoTable.js';
+import PoliceInfoTable from '../components/infotables/PoliceInfoTable.js';
 
 import PageView from '../pages/PageView.js';
 
