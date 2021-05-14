@@ -6,6 +6,7 @@ import Entity, {ENTITY} from '../../model/Entity.js';
 import AbstractInfoTable
   from '../../components/infotables/AbstractInfoTable.js';
 
+import EntityLink from '../../components/EntityLink.js';
 
 
 export default class EntityInfoTable extends AbstractInfoTable {
@@ -52,6 +53,7 @@ export default class EntityInfoTable extends AbstractInfoTable {
           'ISO 3166 code': entityID,
           'FIPS code': entityData.fips,
           'HASC code': entityData.hasc,
+          Province: <EntityLink entityID={entityData.province_id} />,
         }
         break;
       case ENTITY.DSD:
