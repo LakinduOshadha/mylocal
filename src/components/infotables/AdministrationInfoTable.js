@@ -5,6 +5,9 @@ import GIGServer from '../../model/GIGServer.js';
 import AbstractInfoTable
   from '../../components/infotables/AbstractInfoTable.js';
 
+import EntityLink
+  from '../../components/EntityLink.js';
+
 import './AbstractInfoTable.css';
 
 export default class AdministrationInfoTable extends AbstractInfoTable {
@@ -21,13 +24,6 @@ export default class AdministrationInfoTable extends AbstractInfoTable {
       gnd: gndID,
     } = await GeoServer.getRegionInfo(latLng);
 
-    const entityMap = await GIGServer.multigetEntities([
-      provinceID,
-      districtID,
-      dsdID,
-      gndID,
-    ]);
-
     return [
       ['Province', provinceID],
       ['District', districtID],
@@ -37,11 +33,7 @@ export default class AdministrationInfoTable extends AbstractInfoTable {
       function([entityLabel, entityID]) {
         return {
           label: entityLabel,
-          content: (
-            <Link to={`/admin/${entityID}`}>
-              {entityMap[entityID].name}
-            </Link>
-          ),
+          content: <EntityLink entityID={entityID} />,
         };
       },
     )

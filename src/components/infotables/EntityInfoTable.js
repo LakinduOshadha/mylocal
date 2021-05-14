@@ -63,6 +63,8 @@ export default class EntityInfoTable extends AbstractInfoTable {
           Area: formatArea(entityData.area),
           'ISO 3166 code': entityID,
           'HASC code': entityData.hasc,
+          District: <EntityLink entityID={entityData.district_id} />,
+          Province: <EntityLink entityID={entityData.province_id} />,
         }
         break;
       case ENTITY.GND:
@@ -70,6 +72,9 @@ export default class EntityInfoTable extends AbstractInfoTable {
           Name: entityData.name + ' GND',
           'GND Num': entityData.gnd_num,
           'ISO 3166 code': entityID,
+          DSD: <EntityLink entityID={entityData.dsd_id} />,
+          District: <EntityLink entityID={entityData.district_id} />,
+          Province: <EntityLink entityID={entityData.province_id} />,
         }
         break;
 
