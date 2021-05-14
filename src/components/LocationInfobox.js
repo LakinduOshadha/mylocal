@@ -20,16 +20,23 @@ export default class LocationInfobox extends Component {
       gnd: gndID,
     } = await GeoServer.getRegionInfo(latLng);
 
-    const provinceData = await GIGServer.getEntity(provinceID);
-    const districtData = await GIGServer.getEntity(districtID);
-    const dsdData = await GIGServer.getEntity(dsdID);
     const gndData = await GIGServer.getEntity(gndID);
-
     const pdID = gndData['pd_id'];
     const edID = pdID.substring(0, 5);
 
-    const pdData = await GIGServer.getEntity(pdID);
-    const edData = await GIGServer.getEntity(edID);
+    const {
+        [provinceID]: provinceData,
+        [districtID]: districtData,
+        [dsdID]: dsdData,
+        [edID]: edData,
+        [pdID]: pdData,
+    } = await GIGServer.multigetEntities([
+      provinceID,
+      districtID,
+      dsdID,
+      edID,
+      pdID,
+    ])
 
     this.setState({
       provinceID,

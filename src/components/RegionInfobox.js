@@ -15,7 +15,7 @@ export default class RegionInfobox extends Component {
     const {regionID} = this.props;
     const regionType = getRegionType(regionID);
 
-    const regionData = await GIGServer.getEntity(regionID);
+    const regionData = await GIGServer.multigetEntities([regionID]);
 
     const parentRegionIDs = getParentRegionTypes(regionType).map(
       parentRegionType => convertRegionID(regionID, parentRegionType)
@@ -23,9 +23,7 @@ export default class RegionInfobox extends Component {
     const parentRegionInfo = await Promise.all(
       parentRegionIDs.map(
         async function(parentRegionID) {
-          const parentRegionData = await GIGServer.getEntity(
-            parentRegionID,
-          );
+          const parentRegionData = await GIGServer.getEntity(parentRegionID);
           return {
             parentRegionID,
             parentRegionData,

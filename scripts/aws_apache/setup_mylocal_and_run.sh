@@ -30,5 +30,5 @@ $EC2 "ls -la $AWS_EC2_DIR_WWW/html"
 # Restart apache and tail logs
 $EC2_SU "service apache2 restart"
 
-open http://$AWS_EC2_IP_ADDRESS/mylocal/admin/LK-1127015
+open -a firefox http://$AWS_EC2_IP_ADDRESS/mylocal/admin/LK-1127015
 $EC2 "tail -f /var/log/apache2/error.log"

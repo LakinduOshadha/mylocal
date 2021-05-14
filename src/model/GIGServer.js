@@ -2,12 +2,16 @@ import Server from '../model/Server.js';
 
 export default class GIGServer extends Server {
 
-  static async getEntity(entityID) {
+  static async multigetEntities(entityIDs) {
     return await Server.run(
       'gig',
-      'entity',
-      [entityID],
+      'entities',
+      [entityIDs.join(';')],
     );
+  }
+
+  static async getEntity(entityID) {
+    return (await GIGServer.multigetEntities([entityID]))[entityID];
   }
 
   static async getEntityIDs(entityName) {

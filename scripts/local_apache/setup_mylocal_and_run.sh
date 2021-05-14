@@ -17,5 +17,5 @@ cp -r  $DIR_REACT_APP/build/* mylocal/
 httpd -k restart
 ps -ef | grep httpd
 
-open http://0.0.0.0:8080/mylocal/admin/LK-1127015
+open -a firefox  http://0.0.0.0:8080/mylocal/admin/LK-1127015
 tail -f /usr/local/var/log/httpd/error_log
