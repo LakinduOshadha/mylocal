@@ -3,9 +3,12 @@ import {getRegionType} from '../model/Region.js';
 import {getRegionBBox} from '../model/RegionGeo.js';
 import {getLatLngSpans, getZoom} from '../model/OSM.js';
 import {redirectToDefault} from '../model/Browser';
+import GIGServer from '../model/GIGServer.js';
+import Entity, {ENTITY_LABEL_MAP} from '../model/Entity.js';
 
 import RegionMapDataView from '../components/RegionMapDataView.js';
-import RegionInfobox from '../components/RegionInfobox.js';
+import Infobox from '../components/Infobox.js';
+import EntityInfoTable from '../components/EntityInfoTable.js';
 
 import PageView from '../pages/PageView.js';
 
@@ -28,6 +31,7 @@ export default class AdminPageView extends PageView {
     const latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
     const latSpan = maxLat - minLat;
     const zoom = getZoom(latSpan);
+    const entity = await GIGServer.getEntity(regionID);
 
     return {
       latLng,
@@ -37,9 +41,9 @@ export default class AdminPageView extends PageView {
 
   renderInner() {
     const regionID = this.getRegionID()
-    const regionType = getRegionType(regionID);
+    const regionType = Entity.getEntityType(regionID);
 
-    const {zoom, latLng} = this.state;
+    const {zoom, latLng, entity} = this.state;
     const [width, height] = [window.innerWidth, window.innerHeight];
     const [latSpan, lngSpan] = getLatLngSpans([width, height], zoom);
     const [lat, lng] = latLng;
@@ -57,10 +61,14 @@ export default class AdminPageView extends PageView {
           latLng={this.state.latLng}
           onClick={this.onClick.bind(this)}
         />
-        <RegionInfobox
-          key={`RegionInfobox-${regionID}`}
-          regionID={regionID}
-        />
+        <Infobox
+          subTitle={ENTITY_LABEL_MAP[regionType]}
+          title={regionID}
+        >
+          <EntityInfoTable
+            entityID={regionID}
+          />
+        </Infobox>
       </div>
     );
   }

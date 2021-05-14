@@ -3,9 +3,13 @@ body {
   overflow: hidden;
 }
 
+.monospace {
+  font-family: monospace;
+}
+
 a {
-  text-decoration: none;
   color: darkblue;
+  text-decoration: none;
 }
 
 a:hover {

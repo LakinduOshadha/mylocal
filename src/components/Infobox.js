@@ -72,7 +72,7 @@ export function renderHeader(headerText) {
   return <tr><th><h3 className="th-header">{headerText}</h3></th></tr>
 }
 
-export default class Infobox extends Component {
+export class Infobox_DEPRECATED extends Component {
   render() {
     const {info, title, subTitle, style} = this.props;
 
@@ -85,6 +85,20 @@ export default class Infobox extends Component {
             {info.map(renderInfoItem)}
           </tbody>
         </table>
+      </div>
+    )
+  }
+}
+
+export default class Infobox extends Component {
+  render() {
+    const {title, subTitle} = this.props;
+
+    return (
+      <div className="div-infobox">
+        <div className="div-sub-title">{subTitle}</div>
+        <div className="div-title">{title}</div>
+        {this.props.children}
       </div>
     )
   }

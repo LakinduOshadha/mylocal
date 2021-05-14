@@ -24,7 +24,7 @@ export default class App extends Component {
             <Route path="/admin/:regionID" component={AdminPageView}/>
             <Route path="/location/:latLngStr" component={LocationPageView}/>
             <Route
-              path="/place/:entityType/:entityID"
+              path="/place/:entityID"
               component={PlacePageView}
             />
             <Route>

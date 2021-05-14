@@ -1,5 +1,10 @@
-import {parseLatLngAndZoom} from '../model/LatLng.js';
-import LocationInfobox from '../components/LocationInfobox.js';
+import {parseLatLngAndZoom, roundLatLng} from '../model/LatLng.js';
+
+import Infobox from '../components/Infobox.js';
+import AdministrationInfoTable from '../components/AdministrationInfoTable.js';
+import ElectionInfoTable from '../components/ElectionInfoTable.js';
+import PoliceInfoTable from '../components/PoliceInfoTable.js';
+
 import PageView from '../pages/PageView.js';
 
 export default class LocationPageView extends PageView {
@@ -8,14 +13,28 @@ export default class LocationPageView extends PageView {
   }
 
   renderInner() {
-    const [lat, lng] = this.state.latLng;
+    const [lat, lng] = roundLatLng(this.state.latLng);
+
+    const title = (
+      <a href={`geo:${lat},${lng}`}>
+        {`${lat}N, ${lng}E`}
+      </a>
+    )
 
     return (
       <div>
-        <LocationInfobox
-          key={`LocationInfobox-${lat}-${lng}`}
-          latLng={this.state.latLng}
-        />
+        <Infobox subTitle="Location" title={title}>
+          <AdministrationInfoTable
+            latLng={this.state.latLng}
+          />
+          <ElectionInfoTable
+            latLng={this.state.latLng}
+          />
+          <PoliceInfoTable
+            latLng={this.state.latLng}
+          />
+        </Infobox>
+
       </div>
     )
   }
