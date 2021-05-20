@@ -8,9 +8,9 @@ import RegionMap from '../components/RegionMap.js';
 import Infobox from '../components/Infobox.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 
-import PageView from '../pages/PageView.js';
+import Page from '../pages/Page.js';
 
-export default class AdminPageView extends PageView {
+export default class AdminPage extends Page {
 
   getRegionID() {
     return this.props.match.params.regionID || DEFAULT_ENTITY_ID;

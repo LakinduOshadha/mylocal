@@ -7,9 +7,9 @@ import AdministrationInfoTable
 import ElectionInfoTable from '../components/infotables/ElectionInfoTable.js';
 import PoliceInfoTable from '../components/infotables/PoliceInfoTable.js';
 
-import PageView from '../pages/PageView.js';
+import Page from '../pages/Page.js';
 
-export default class LocationPageView extends PageView {
+export default class LocationPage extends Page {
   async getLatLngAndZoom() {
     return parseLatLngAndZoom(this.props.match.params.latLngStr);
   }

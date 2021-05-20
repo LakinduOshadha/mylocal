@@ -1,10 +1,10 @@
-import {ENTITY} from '../model/Entity.js';
+import {ENTITY} from 'model/Entity.js';
 import {
   formatArea,
   formatPhone,
   formatPopulation,
-} from '../view/FormatUtils.js';
-import EntityLink from '../components/EntityLink.js';
+} from 'view/FormatUtils.js';
+import EntityLink from 'view/components/EntityLink.js';
 
 
 function getProvinceInfo(entityData) {

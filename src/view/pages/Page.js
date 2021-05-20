@@ -6,11 +6,11 @@ import {MapContainer, TileLayer} from 'react-leaflet';
 import {LAT_LNG} from 'model/LatLngConstants.js';
 import MapLocationMarker from '../components/MapLocationMarker.js';
 
-import './PageView.css';
+import './Page.css';
 
 export const DEFAULT_ZOOM = 16;
 
-export default class PageView extends Component {
+export default class Page extends Component {
   async getLatLngAndZoom() {
     return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
   }
@@ -48,4 +48,4 @@ export default class PageView extends Component {
   }
 }
 
-withRouter(PageView);
+withRouter(Page);

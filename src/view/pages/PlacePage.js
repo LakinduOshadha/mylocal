@@ -2,11 +2,11 @@ import React from 'react';
 import GIGServer from 'model/GIGServer.js';
 import Entity, {ENTITY_LABEL_MAP} from 'model/Entity.js';
 
-import PageView, {DEFAULT_ZOOM} from '../pages/PageView.js';
+import Page, {DEFAULT_ZOOM} from '../pages/Page.js';
 import Infobox from '../components/Infobox.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 
-export default class PlacePageView extends PageView {
+export default class PlacePage extends Page {
 
   async getLatLngAndZoom() {
     const {entityID} = this.props.match.params;
