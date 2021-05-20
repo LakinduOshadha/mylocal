@@ -1,19 +1,24 @@
 import React from 'react';
-import * as d3 from 'd3';
 
 import GIGServer from '../../model/GIGServer.js';
 import Entity, {ENTITY} from '../../model/Entity.js';
 
+import {
+  formatArea,
+  formatPhone,
+  formatPopulation,
+} from '../../view/FormatUtils.js'
 import AbstractInfoTable
   from '../../components/infotables/AbstractInfoTable.js';
-
 import EntityLink from '../../components/EntityLink.js';
 
 
 export default class EntityInfoTable extends AbstractInfoTable {
+
   getTitle() {
     return 'Basic Info';
   }
+
   async getDataList() {
     const {entityID} = this.props;
 
@@ -21,20 +26,6 @@ export default class EntityInfoTable extends AbstractInfoTable {
     const entityType = Entity.getEntityType(entityID);
 
     let tableEntityData = undefined;
-    const formatNumWithComma = d3.format(",")
-    const formatArea = area => formatNumWithComma(area) + ' km²';
-    const formatPopulation = formatNumWithComma;
-    const formatPhone = function(phoneNumber) {
-      const phoneNumberClean = phoneNumber.replaceAll('-', '')
-      const phoneNumberStr = phoneNumberClean.substring(0, 3)
-        + ' ' + phoneNumberClean.substring(3, 6)
-        + ' ' + phoneNumberClean.substring(6, 10)
-      return (
-        <a href={`tel:${phoneNumberClean}`} className="monospace">
-          {'☎ ' + phoneNumberStr}
-        </a>
-      );
-    }
 
     switch(entityType) {
       case ENTITY.PROVINCE:
