@@ -71,15 +71,16 @@ export default class PageView extends Component {
     const key = `page-${lat}-${lng}-${zoom}`;
     return (
       <div key={key}>
-        <MapContainer center={[lat, lng]} zoom={zoom} scrollWheelZoom={false}>
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <SVGOverlay bounds={bounds}>
-            {this.renderInnerSVG()}
-          </SVGOverlay>
-        </MapContainer>
-        {this.renderInner()}
+      <MapContainer center={[lat, lng]} zoom={zoom} scrollWheelZoom={false}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      </MapContainer>
+      {this.renderInner()}
       </div>
     )
   }
 }
 withRouter(PageView);
+
+// <SVGOverlay bounds={bounds}>
+//   {this.renderInnerSVG()}
+// </SVGOverlay>
