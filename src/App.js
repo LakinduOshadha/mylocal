@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import {DEFAULT_REGION_ID} from './model/RegionConstants.js';
+import {DEFAULT_ENTITY_ID} from './model/Entity.js';
 
 import LocationPageView from './pages/LocationPageView.js';
 import AdminPageView from './pages/AdminPageView.js';
@@ -28,7 +28,7 @@ export default class App extends Component {
               component={PlacePageView}
             />
             <Route>
-               <Redirect to={`/admin/${DEFAULT_REGION_ID}`} />
+               <Redirect to={`/admin/${DEFAULT_ENTITY_ID}`} />
             </Route>
 
           </Switch>

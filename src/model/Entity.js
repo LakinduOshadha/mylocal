@@ -11,6 +11,8 @@ export const ENTITY = {
   PS: 'ps',
 }
 
+export const DEFAULT_ENTITY_ID = 'LK-1127';
+
 export const ENTITIES = Object.values(ENTITY);
 
 export const ENTITY_LABEL_MAP = {

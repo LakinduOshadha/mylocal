@@ -1,9 +1,8 @@
 import React from 'react';
-import {DEFAULT_REGION_ID} from '../model/RegionConstants.js';
 import {getRegionBBox} from '../model/RegionGeo.js';
-import {getLatLngSpans, getZoom} from '../model/OSM.js';
+import {getZoom} from '../model/OSM.js';
 import {redirectToDefault} from '../model/Browser';
-import Entity, {ENTITY_LABEL_MAP} from '../model/Entity.js';
+import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from '../model/Entity.js';
 
 import RegionMapDataView from '../components/RegionMapDataView.js';
 import Infobox from '../components/Infobox.js';
@@ -14,7 +13,7 @@ import PageView from '../pages/PageView.js';
 export default class AdminPageView extends PageView {
 
   getRegionID() {
-    return this.props.match.params.regionID || DEFAULT_REGION_ID;
+    return this.props.match.params.regionID || DEFAULT_ENTITY_ID;
   }
 
   async getLatLngAndZoom() {
