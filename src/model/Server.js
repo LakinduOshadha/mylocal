@@ -1,4 +1,4 @@
-import WWW from '../model/WWW.js';
+import WWW from './WWW.js';
 
 const HOST = process.env.REACT_APP_SERVER_HOST;
 const PORT = parseInt(process.env.REACT_APP_SERVER_PORT);

@@ -1,4 +1,4 @@
-import {invertDict} from '../model/DataStructures.js';
+import {invertDict} from './DataStructures.js';
 
 export const ENTITY = {
   COUNTRY: 'country',

@@ -1,8 +1,8 @@
 import React from 'react';
-import {getRegionBBox} from '../model/RegionGeo.js';
-import {getZoom} from '../model/OSM.js';
-import {redirectToDefault} from '../model/Browser';
-import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from '../model/Entity.js';
+import {getRegionBBox} from 'model/RegionGeo.js';
+import {getZoom} from 'model/OSM.js';
+import {redirectToDefault} from 'model/Browser';
+import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/Entity.js';
 
 import RegionMapDataView from '../components/RegionMapDataView.js';
 import Infobox from '../components/Infobox.js';

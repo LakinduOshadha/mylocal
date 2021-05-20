@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
-import GIGServer from '../model/GIGServer.js';
+import GIGServer from 'model/GIGServer.js';
 
 export default class EntityLink extends Component {
   constructor(props) {

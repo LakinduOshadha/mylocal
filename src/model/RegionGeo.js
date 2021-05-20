@@ -1,5 +1,5 @@
-import GeoServer from '../model/GeoServer.js';
-import {getBoundsForGeoData} from '../model/LatLng.js';
+import GeoServer from './GeoServer.js';
+import {getBoundsForGeoData} from './LatLng.js';
 
 export async function getRegionBBox(regionID) {
   const geo = await GeoServer.getGeo(regionID);

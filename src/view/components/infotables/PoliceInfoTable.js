@@ -2,9 +2,9 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import * as d3 from 'd3';
 
-import GIGServer from '../../model/GIGServer.js';
+import GIGServer from 'model/GIGServer.js';
 import AbstractInfoTable
-  from '../../components/infotables/AbstractInfoTable.js';
+  from './AbstractInfoTable.js';
 
 import './AbstractInfoTable.css';
 

@@ -1,7 +1,6 @@
-import GeoServer from '../../model/GeoServer.js';
-import GIGServer from '../../model/GIGServer.js';
-import AbstractInfoTable
-  from '../../components/infotables/AbstractInfoTable.js';
+import GeoServer from 'model/GeoServer.js';
+import GIGServer from 'model/GIGServer.js';
+import AbstractInfoTable from './AbstractInfoTable.js';
 
 export default class ElectionInfoTable extends AbstractInfoTable {
   getTitle() {

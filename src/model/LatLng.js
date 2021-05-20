@@ -1,4 +1,4 @@
-import {arrayFlatten} from '../model/DataStructures.js';
+import {arrayFlatten} from './DataStructures.js';
 
 export function roundLatLng([lat, lng]) {
   const Q = 10 ** 6;

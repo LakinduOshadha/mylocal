@@ -3,7 +3,7 @@ import {withRouter} from "react-router-dom";
 
 import {MapContainer, TileLayer} from 'react-leaflet';
 
-import {LAT_LNG} from '../model/LatLngConstants.js';
+import {LAT_LNG} from 'model/LatLngConstants.js';
 import MapLocationMarker from '../components/MapLocationMarker.js';
 
 import './PageView.css';

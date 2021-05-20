@@ -1,10 +1,9 @@
-import GIGServer from '../../model/GIGServer.js';
-import Entity from '../../model/Entity.js';
+import GIGServer from 'model/GIGServer.js';
+import Entity from 'model/Entity.js';
 
-import getEntityInfo from '../../view/EntityInfo.js';
+import getEntityInfo from 'view/EntityInfo.js';
 
-import AbstractInfoTable
-  from '../../components/infotables/AbstractInfoTable.js';
+import AbstractInfoTable from './AbstractInfoTable.js';
 
 export default class EntityInfoTable extends AbstractInfoTable {
 
