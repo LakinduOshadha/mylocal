@@ -1,18 +1,11 @@
 import WWW from '../model/WWW.js';
 
-const SERVER_MODE =  'local';
-const SERVER_CONFIG = {
-  'local': {
-    HOST:  '0.0.0.0',
-    PORT:  8080,
-  },
-  'aws': {
-    HOST:  '18.209.43.63',
-    PORT:  80,
-  },
-}
-const {HOST, PORT} = SERVER_CONFIG[SERVER_MODE];
+
+const HOST = process.env.REACT_APP_SERVER_HOST;
+const PORT = parseInt(process.env.REACT_APP_SERVER_PORT);
+
 const URL_BASE = `http://${HOST}:${PORT}`
+console.debug(process.env);
 
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
