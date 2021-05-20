@@ -4,7 +4,7 @@ import {getZoom} from 'model/OSM.js';
 import {redirectToDefault} from 'model/Browser';
 import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/Entity.js';
 
-import RegionMapDataView from '../components/RegionMapDataView.js';
+import RegionMap from '../components/RegionMap.js';
 import Infobox from '../components/Infobox.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 
@@ -52,8 +52,8 @@ export default class AdminPageView extends PageView {
   renderInnerMapLayer() {
     const regionID = this.getRegionID()
     return (
-      <RegionMapDataView
-        key={`RegionMapDataView-${regionID}`}
+      <RegionMap
+        key={`RegionMap-${regionID}`}
         regionID={regionID}
       />
     );

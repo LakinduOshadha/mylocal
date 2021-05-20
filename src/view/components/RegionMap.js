@@ -4,9 +4,9 @@ import {getTranform} from 'model/LatLng.js';
 import GeoServer from 'model/GeoServer.js';
 import {Polyline} from 'react-leaflet';
 
-import './RegionMapDataView.css';
+import './RegionMap.css';
 
-export default class RegionMapDataView extends Component {
+export default class RegionMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
