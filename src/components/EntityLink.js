@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 
 import GIGServer from '../model/GIGServer.js';
-import Entity, {ENTITY_LABEL_MAP} from '../model/Entity.js';
 
 export default class EntityLink extends Component {
   constructor(props) {

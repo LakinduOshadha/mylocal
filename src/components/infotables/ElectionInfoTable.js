@@ -1,4 +1,3 @@
-import React from 'react';
 import GeoServer from '../../model/GeoServer.js';
 import GIGServer from '../../model/GIGServer.js';
 import AbstractInfoTable
