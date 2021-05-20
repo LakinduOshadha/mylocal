@@ -1,3 +1,4 @@
+import React from 'react';
 import {DEFAULT_REGION_ID} from '../model/RegionConstants.js';
 import {getRegionBBox} from '../model/RegionGeo.js';
 import {getLatLngSpans, getZoom} from '../model/OSM.js';

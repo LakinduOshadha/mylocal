@@ -1,3 +1,4 @@
+import React from 'react';
 import {parseLatLngAndZoom, roundLatLng} from '../model/LatLng.js';
 
 import Infobox from '../components/Infobox.js';

@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import React, {Component} from 'react';
 import './AbstractInfoTable.css';
 
 export default class AbstractInfoTable extends Component {

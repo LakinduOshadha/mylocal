@@ -1,3 +1,4 @@
+import React from 'react';
 import GIGServer from '../model/GIGServer.js';
 import Entity, {ENTITY_LABEL_MAP} from '../model/Entity.js';
 
