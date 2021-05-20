@@ -5,81 +5,18 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import {getTranform} from '../model/LatLng.js';
 import {latLngToXY, xyToLatLng, getMapURL} from '../model/OSM.js';
 import './OSMView.css';
+// import 'leaflet/dist/leaflet.css';
 
 export default class OSMView extends Component {
   render() {
-    const {zoom, bbox, width, height} = this.props;
+    const {zoom, bbox} = this.props;
     const [[minLat, minLng], [latSpan, lngSpan]] = bbox;
 
-    const [[minX, minY], [maxX, maxY]] = [
-      latLngToXY([minLat + latSpan, minLng], zoom),
-      latLngToXY([minLat, minLng + lngSpan], zoom),
-    ]
-
-    const [minXTrunc, minYTrunc, maxXTrunc, maxYTrunc] =
-      [minX, minY, maxX + 1, maxY + 1].map(x => Math.trunc(x))
-    const [xSpan, ySpan] = [maxX - minX, maxY - minY];
-
-
-    const styleImage = {
-      width: width / xSpan,
-      height: height / ySpan,
-    }
-
-    const transform = getTranform(
-      [width, height],
-      [minLat, minLng],
-      [latSpan, lngSpan],
-    )
-    const [left, top] = transform(xyToLatLng([minXTrunc, minYTrunc], zoom));
-    const styleMap = {
-      top,
-      left,
-    }
-
-
-    const position = [51.505, -0.09];
-
+    const position = [minLat + latSpan / 2, minLng + lngSpan  / 2];
     return (
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+      <MapContainer center={position} zoom={zoom} scrollWheelZoom={false}>
+        <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
       </MapContainer>
     );
-
-    // return (
-    //   <div className="div-osmview" style={styleMap}>
-    //     {d3.range(minYTrunc, maxYTrunc).map(
-    //       function(y) {
-    //         return (
-    //           <div key={`osm-row-${y}`} className="div-osmview-row">
-    //             {d3.range(minXTrunc, maxXTrunc).map(
-    //               function(x) {
-    //
-    //                 return (
-    //                   <img
-    //                     key={`osm-${x}-${y}`}
-    //                     className="img-osm"
-    //                     style={styleImage}
-    //                     src={getMapURL([x, y], zoom)}
-    //                     alt={''}
-    //                     onClick={this.props.onClick}
-    //                   />
-    //                 )
-    //               }.bind(this)
-    //             )}
-    //           </div>
-    //         )
-    //       }.bind(this)
-    //     )}
-    //   </div>
-    // )
   }
 }

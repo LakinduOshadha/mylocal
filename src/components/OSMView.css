@@ -1,4 +1,4 @@
-.div-osmview {
+/* .div-osmview {
   position: absolute;
   z-index: 0;
 }
@@ -11,4 +11,9 @@
 
 img {
   border: 0.1px solid white;
+} */
+
+.leaflet-container {
+  width: 100%;
+  height: 100vh;
 }

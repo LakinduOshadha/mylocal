@@ -4,7 +4,8 @@ import {getTranform} from '../model/LatLng.js';
 import GeoServer from '../model/GeoServer.js';
 import './RegionMapDataView.css';
 
-const [LAT_CORRECTION, LNG_CORRECTION] = [0.0004, 0.0021];
+// const [LAT_CORRECTION, LNG_CORRECTION] = [0.0004, 0.0021];
+const [LAT_CORRECTION, LNG_CORRECTION] = [0, 0];
 
 export default class RegionMapDataView extends Component {
   constructor(props) {
@@ -51,11 +52,7 @@ export default class RegionMapDataView extends Component {
     ).join(' ');
 
     return (
-      <div className="div-region-map-data-view">
-        <svg width={width} height={height} onClick={this.props.onClick}>
-          <path className="path-region" d={d} />
-        </svg>
-      </div>
+      <path className="path-region" d={d} />
     )
   }
 }
