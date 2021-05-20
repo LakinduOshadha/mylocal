@@ -34,13 +34,11 @@ export default class RegionMapDataView extends Component {
       multiPolygon = arrayFlatten(geo.coordinates);
     }
 
-
     multiPolygon = multiPolygon.map(
       (polygon) => polygon.map(
         ([lng, lat]) => [lat, lng],
       )
     );
-    console.debug(multiPolygon[0][0]);
 
     return (
       <Polyline

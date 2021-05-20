@@ -43,13 +43,8 @@ export default class AdminPageView extends PageView {
 
     return (
       <div>
-        <Infobox
-          subTitle={ENTITY_LABEL_MAP[regionType]}
-          title={regionID}
-        >
-          <EntityInfoTable
-            entityID={regionID}
-          />
+        <Infobox subTitle={ENTITY_LABEL_MAP[regionType]} title={regionID}>
+          <EntityInfoTable entityID={regionID}/>
         </Infobox>
       </div>
     );
@@ -57,23 +52,10 @@ export default class AdminPageView extends PageView {
 
   renderInnerMapLayer() {
     const regionID = this.getRegionID()
-    const regionType = Entity.getEntityType(regionID);
-
-    const {zoom, latLng} = this.state;
-    const [width, height] = [window.innerWidth, window.innerHeight];
-    const [latSpan, lngSpan] = getLatLngSpans([width, height], zoom);
-    const [lat, lng] = latLng;
-    const [minLat, minLng] = [lat - latSpan / 2, lng - lngSpan / 2];
-
     return (
       <RegionMapDataView
         key={`RegionMapDataView-${regionID}`}
         regionID={regionID}
-        regionType={regionType}
-        width={width}
-        height={height}
-        bbox={[[minLat, minLng], [latSpan, lngSpan]]}
-        latLng={this.state.latLng}
       />
     );
   }
