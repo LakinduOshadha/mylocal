@@ -6,10 +6,8 @@ export const ENTITY = {
   DISTRICT: 'district',
   DSD: 'dsd',
   GND: 'gnd',
-
   ED: 'ed',
   PD: 'pd',
-
   PS: 'ps',
 }
 
