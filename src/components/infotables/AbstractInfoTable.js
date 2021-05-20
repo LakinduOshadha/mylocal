@@ -22,9 +22,10 @@ export default class AbstractInfoTable extends Component {
     return null;
   }
 
-  renderRow(data) {
+  renderRow(data, iRow) {
+    const key = `row-${iRow}-${data.label}`;
     return (
-      <tr>
+      <tr key={key}>
         <th>{data.label}</th>
         <td>{data.content}</td>
       </tr>
