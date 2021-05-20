@@ -1,7 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {withRouter} from "react-router-dom";
 
-import { MapContainer, TileLayer, SVGOverlay } from 'react-leaflet';
+import {
+  MapContainer,
+  TileLayer,
+  SVGOverlay,
+  Marker,
+  ZoomControl,
+  useMapEvents,
+} from 'react-leaflet';
 
 import {roundLatLng, latLngAndZoomToString} from '../model/LatLng.js';
 import {LAT_LNG} from '../model/LatLngConstants.js';
@@ -48,7 +55,7 @@ export default class PageView extends Component {
     return null;
   }
 
-  renderInnerSVG() {
+  renderInnerMapLayer() {
     return null;
   }
 
@@ -58,28 +65,42 @@ export default class PageView extends Component {
     }
     const {zoom, latLng} = this.state;
 
-    const [width, height] = [window.innerWidth, window.innerHeight];
-    const [latSpan, lngSpan] = getLatLngSpans([width, height], zoom);
     const [lat, lng] = latLng;
-    const [minLat, minLng] = [lat - latSpan / 2, lng - lngSpan / 2];
-
-    const bounds = [
-        [minLat, minLng],
-        [minLat + latSpan, minLng + lngSpan],
-    ];
 
     const key = `page-${lat}-${lng}-${zoom}`;
     return (
       <div key={key}>
-      <MapContainer center={[lat, lng]} zoom={zoom} scrollWheelZoom={false}>
+      <MapContainer
+        center={[lat, lng]}
+        zoom={zoom}
+      >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <SVGOverlay bounds={bounds}>
-          {this.renderInnerSVG()}
-        </SVGOverlay>
+        {this.renderInnerMapLayer()}
+        <LocationMarker />
+        <ZoomControl position="topright" />
       </MapContainer>
       {this.renderInner()}
       </div>
     )
   }
 }
+
+function LocationMarker(defaultPosition) {
+  const map = useMapEvents({
+    click(e) {
+      const {lat, lng} = e.latlng;
+      const zoom = map.getZoom();
+      map.flyTo({lat, lng}, map.getZoom())
+      setPosition({lat, lng})
+      window.history.pushState('', '', `/location/${lat}N,${lng}E,${zoom}z`);
+    },
+  })
+  console.debug(map.getBounds());
+  const [position, setPosition] = useState(map.getCenter());
+
+  return position === null ? null : (
+    <Marker position={position} />
+  );
+}
+
 withRouter(PageView);

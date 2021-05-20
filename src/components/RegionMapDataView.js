@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import {arrayFlatten} from '../model/DataStructures.js';
 import {getTranform} from '../model/LatLng.js';
 import GeoServer from '../model/GeoServer.js';
-import './RegionMapDataView.css';
+import {Polyline} from 'react-leaflet';
 
-// const [LAT_CORRECTION, LNG_CORRECTION] = [0.0004, 0.0021];
-const [LAT_CORRECTION, LNG_CORRECTION] = [0, 0];
+import './RegionMapDataView.css';
 
 export default class RegionMapDataView extends Component {
   constructor(props) {
@@ -27,32 +26,32 @@ export default class RegionMapDataView extends Component {
     if (!geo) {
       return null;
     }
-    const {width, height, bbox} = this.props;
-    const [[minLat, minLng], [latSpan, lngSpan]] = bbox;
-    const transform = getTranform(
-      [width, height],
-      [minLat, minLng],
-      [latSpan, lngSpan],
-    )
 
-    let latLngList;
+    let multiPolygon;
     if (geo.type === 'Polygon') {
-      latLngList = arrayFlatten(geo.coordinates);
+      multiPolygon = geo.coordinates;
     } else {
-      latLngList = arrayFlatten(arrayFlatten(
-        geo.coordinates
-      ));
+      multiPolygon = arrayFlatten(geo.coordinates);
     }
 
-    const d = latLngList.map(
-      function([lng, lat], i) {
-        const [x, y] = transform([lat + LAT_CORRECTION, lng + LNG_CORRECTION])
-        return `${(i === 0 ? 'M' : 'L')}${x},${y}`;
-      },
-    ).join(' ');
+
+    multiPolygon = multiPolygon.map(
+      (polygon) => polygon.map(
+        ([lng, lat]) => [lat, lng],
+      )
+    );
+    console.debug(multiPolygon[0][0]);
 
     return (
-      <path className="path-region" d={d} />
+      <Polyline
+        positions={multiPolygon}
+        pathOptions={{
+          color: 'red',
+          weight: 2,
+          fill: 'red',
+          fillOpacity: 0.1,
+        }}
+      />
     )
   }
 }

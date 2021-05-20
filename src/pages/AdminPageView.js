@@ -55,7 +55,7 @@ export default class AdminPageView extends PageView {
     );
   }
 
-  renderInnerSVG() {
+  renderInnerMapLayer() {
     const regionID = this.getRegionID()
     const regionType = Entity.getEntityType(regionID);
 
