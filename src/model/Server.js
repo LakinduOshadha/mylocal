@@ -1,11 +1,9 @@
 import WWW from '../model/WWW.js';
 
-
 const HOST = process.env.REACT_APP_SERVER_HOST;
 const PORT = parseInt(process.env.REACT_APP_SERVER_PORT);
 
 const URL_BASE = `http://${HOST}:${PORT}`
-console.debug(process.env);
 
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
