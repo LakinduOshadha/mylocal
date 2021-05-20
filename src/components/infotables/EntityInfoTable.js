@@ -1,17 +1,10 @@
-import React from 'react';
-
 import GIGServer from '../../model/GIGServer.js';
-import Entity, {ENTITY} from '../../model/Entity.js';
+import Entity from '../../model/Entity.js';
 
-import {
-  formatArea,
-  formatPhone,
-  formatPopulation,
-} from '../../view/FormatUtils.js'
+import getEntityInfo from '../../view/EntityInfo.js';
+
 import AbstractInfoTable
   from '../../components/infotables/AbstractInfoTable.js';
-import EntityLink from '../../components/EntityLink.js';
-
 
 export default class EntityInfoTable extends AbstractInfoTable {
 
@@ -21,69 +14,10 @@ export default class EntityInfoTable extends AbstractInfoTable {
 
   async getDataList() {
     const {entityID} = this.props;
-
     const entityData = await GIGServer.getEntity(entityID);
     const entityType = Entity.getEntityType(entityID);
 
-    let tableEntityData = undefined;
-
-    switch(entityType) {
-      case ENTITY.PROVINCE:
-        tableEntityData = {
-          Name: entityData.name + ' Province',
-          Capital: entityData.capital,
-          Area: formatArea(entityData.area),
-          'ISO 3166 code': entityID,
-          'FIPS code': entityData.fips,
-        }
-        break;
-      case ENTITY.DISTRICT:
-        tableEntityData = {
-          Name: entityData.name + ' District',
-          Population: formatPopulation(entityData.population),
-          Area: formatArea(entityData.area),
-          'ISO 3166 code': entityID,
-          'FIPS code': entityData.fips,
-          'HASC code': entityData.hasc,
-          Province: <EntityLink entityID={entityData.province_id} />,
-        }
-        break;
-      case ENTITY.DSD:
-        tableEntityData = {
-          Name: entityData.name + ' DSD',
-          Population: formatPopulation(entityData.population),
-          Area: formatArea(entityData.area),
-          'ISO 3166 code': entityID,
-          'HASC code': entityData.hasc,
-          District: <EntityLink entityID={entityData.district_id} />,
-          Province: <EntityLink entityID={entityData.province_id} />,
-        }
-        break;
-      case ENTITY.GND:
-        tableEntityData = {
-          Name: entityData.name + ' GND',
-          'GND Num': entityData.gnd_num,
-          'ISO 3166 code': entityID,
-          DSD: <EntityLink entityID={entityData.dsd_id} />,
-          District: <EntityLink entityID={entityData.district_id} />,
-          Province: <EntityLink entityID={entityData.province_id} />,
-        }
-        break;
-
-      case ENTITY.PS:
-        tableEntityData = {
-          Name: entityData.name + ' Police Station',
-          Division: entityData.division + ' Division',
-          Office: formatPhone(entityData.phone_office),
-          Mobile: formatPhone(entityData.fax),
-          Fax: formatPhone(entityData.phone_mobile),
-        }
-        break;
-      default:
-        tableEntityData = entityData;
-    }
-
-    return Object.entries(tableEntityData).map(
+    return Object.entries(getEntityInfo(entityType, entityData)).map(
       function([k, v]) {
         return {
           label: k,
