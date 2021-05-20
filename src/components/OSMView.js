@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import * as d3 from 'd3';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import {getTranform} from '../model/LatLng.js';
 import {latLngToXY, xyToLatLng, getMapURL} from '../model/OSM.js';
@@ -36,32 +37,49 @@ export default class OSMView extends Component {
       left,
     }
 
-    return (
-      <div className="div-osmview" style={styleMap}>
-        {d3.range(minYTrunc, maxYTrunc).map(
-          function(y) {
-            return (
-              <div key={`osm-row-${y}`} className="div-osmview-row">
-                {d3.range(minXTrunc, maxXTrunc).map(
-                  function(x) {
 
-                    return (
-                      <img
-                        key={`osm-${x}-${y}`}
-                        className="img-osm"
-                        style={styleImage}
-                        src={getMapURL([x, y], zoom)}
-                        alt={''}
-                        onClick={this.props.onClick}
-                      />
-                    )
-                  }.bind(this)
-                )}
-              </div>
-            )
-          }.bind(this)
-        )}
-      </div>
-    )
+    const position = [51.505, -0.09];
+
+    return (
+      <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
+    );
+
+    // return (
+    //   <div className="div-osmview" style={styleMap}>
+    //     {d3.range(minYTrunc, maxYTrunc).map(
+    //       function(y) {
+    //         return (
+    //           <div key={`osm-row-${y}`} className="div-osmview-row">
+    //             {d3.range(minXTrunc, maxXTrunc).map(
+    //               function(x) {
+    //
+    //                 return (
+    //                   <img
+    //                     key={`osm-${x}-${y}`}
+    //                     className="img-osm"
+    //                     style={styleImage}
+    //                     src={getMapURL([x, y], zoom)}
+    //                     alt={''}
+    //                     onClick={this.props.onClick}
+    //                   />
+    //                 )
+    //               }.bind(this)
+    //             )}
+    //           </div>
+    //         )
+    //       }.bind(this)
+    //     )}
+    //   </div>
+    // )
   }
 }
