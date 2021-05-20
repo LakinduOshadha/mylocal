@@ -74,7 +74,6 @@ export default class AdminPageView extends PageView {
         height={height}
         bbox={[[minLat, minLng], [latSpan, lngSpan]]}
         latLng={this.state.latLng}
-        onClick={this.onClick.bind(this)}
       />
     );
   }
