@@ -38,6 +38,7 @@ function getDSDInfo(entityData) {
     'HASC code': entityData.hasc,
     District: <EntityLink entityID={entityData.district_id} />,
     Province: <EntityLink entityID={entityData.province_id} />,
+    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
   };
 }
 
@@ -51,6 +52,8 @@ function getGNDInfo(entityData) {
     DSD: <EntityLink entityID={entityData.dsd_id} />,
     District: <EntityLink entityID={entityData.district_id} />,
     Province: <EntityLink entityID={entityData.province_id} />,
+    ['Polling Division']: <EntityLink entityID={entityData.pd_id} />,
+    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
   };
 }
 
@@ -64,6 +67,26 @@ function getPSInfo(entityData) {
   }
 }
 
+function getEDInfo(entityData) {
+  return {
+    Name: entityData.name + ' Electoral District',
+    Population: formatPopulation(entityData.population),
+    Area: formatArea(entityData.area),
+    Province: <EntityLink entityID={entityData.province_id} />,
+  }
+}
+
+function getPDInfo(entityData) {
+  return {
+    Name: entityData.name + ' Polling Division',
+    Population: formatPopulation(entityData.population),
+    Area: formatArea(entityData.area),
+    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
+    District: <EntityLink entityID={entityData.district_id} />,
+    Province: <EntityLink entityID={entityData.province_id} />,
+  }
+}
+
 export default function getEntityInfo(entityType, entityData) {
   const entityTypeToInfoGetter = {
     [ENTITY.PROVINCE]: getProvinceInfo,
@@ -71,6 +94,9 @@ export default function getEntityInfo(entityType, entityData) {
     [ENTITY.DSD]: getDSDInfo,
     [ENTITY.GND]: getGNDInfo,
     [ENTITY.PS]: getPSInfo,
+
+    [ENTITY.ED]: getEDInfo,
+    [ENTITY.PD]: getPDInfo,
   };
   return entityTypeToInfoGetter[entityType](entityData);
 }

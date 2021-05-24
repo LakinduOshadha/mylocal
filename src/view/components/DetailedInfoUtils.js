@@ -81,6 +81,21 @@ function getRegionSummaryFirstLine(entity) {
               Divisions in Sri Lanka.
           </p>
         </>);
+
+      case ENTITY.ED:
+        return (<>
+          <p>
+            The <strong>{entity.name}</strong> Electoral District is one of 22
+            Electoral Districts in Sri Lanka.
+          </p>
+        </>);
+      case ENTITY.PD:
+        return (<>
+          <p>
+            The <strong>{entity.name}</strong> Polling Division is one of 160
+            Polling Divisions in Sri Lanka.
+          </p>
+        </>);
     default:
       return null;
   }
@@ -134,6 +149,8 @@ export async function getSummary(entityID) {
     case ENTITY.DISTRICT:
     case ENTITY.DSD:
     case ENTITY.GND:
+    case ENTITY.PD:
+    case ENTITY.ED:
       return getRegionSummary(entity)
     default:
       return null;

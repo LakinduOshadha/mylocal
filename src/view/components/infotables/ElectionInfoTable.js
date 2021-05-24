@@ -1,6 +1,7 @@
 import GeoServer from 'model/GeoServer.js';
 import GIGServer from 'model/GIGServer.js';
 import AbstractInfoTable from './AbstractInfoTable.js';
+import EntityLink from 'view/components/EntityLink.js';
 
 export default class ElectionInfoTable extends AbstractInfoTable {
   getTitle() {
@@ -26,8 +27,14 @@ export default class ElectionInfoTable extends AbstractInfoTable {
     ]);
 
     return [
-      {label: 'Electoral District', content: edData.name},
-      {label: 'Polling Division', content:  pdData.name},
+      {
+        label: 'Electoral District',
+        content: <EntityLink entityID={edID} />,
+      },
+      {
+        label: 'Polling Division',
+        content: <EntityLink entityID={pdID} />,
+    },
     ];
   }
 }
