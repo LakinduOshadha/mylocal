@@ -9,6 +9,20 @@
   right: 16px;
   top: 16px;
   z-index: 2000;
+
+}
+
+.show {
+  overflow: scroll;
+  height: 100%;
+}
+
+.hide {
+
+}
+
+.div-summary-outer {
+  border-radius: 12px;
 }
 
 .a-show-details {

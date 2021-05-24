@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export const formatNumWithComma = d3.format(",")
+export const formatPercent = d3.format(".0%")
 export const formatArea = (area) => formatNumWithComma(area) + ' km²';
 
 export const formatPopulation = formatNumWithComma;
@@ -22,4 +23,21 @@ export function titleCase(s) {
   return s.split(' ').map(
       (word) => word.charAt(0).toUpperCase() + word.slice(1),
   ).join(' ');
+}
+
+
+export function formatPercentAndTotal(value, total) {
+  if (total === 0) {
+    return '-';
+  }
+  return (
+    <span>
+      <div className="div-percent">
+        {formatPercent(value / total)}
+      </div>
+      <div className="div-total">
+        {formatNumWithComma(value)}
+      </div>
+    </span>
+  )
 }

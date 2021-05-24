@@ -44,17 +44,19 @@ export default class DetailedInfo extends Component {
       )
     }
 
+    const className = showDetails ? 'show' : 'hide';
+
     return (
-      <div className="div-detailed-info">
-        <div className="div-summary-outer">
-          {summary}
-        </div>
+      <div className={`div-detailed-info ${className}`}>
         <a
           className="a-show-details"
           onClick={this.onClickHideDetails.bind(this)}
         >
           Hide
         </a>
+        <div className="div-summary-outer">
+          {summary}
+        </div>
       </div>
     )
   }

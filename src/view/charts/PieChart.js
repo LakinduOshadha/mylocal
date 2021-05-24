@@ -1,6 +1,18 @@
 import {Component} from 'react';
 import MathX from 'model/MathX.js';
+import {
+  formatPercentAndTotal,
+  titleCase,
+} from 'view/FormatUtils.js';
+
 import './PieChart.css';
+
+const OTHERS_LIMIT = 0.02;
+
+function getRandomColor() {
+  const l = parseInt(Math.random() * 100);
+  return `hsl(210,100%,${l}%)`;
+}
 
 let FIELD_NAME_TO_COLOR = {
   'bharatha': 'hsl(21, 100%, 80%)',
@@ -21,6 +33,11 @@ let FIELD_NAME_TO_COLOR = {
 
   'roman_catholic': 'ghostwhite',
   'other_christian': 'ghostwhite',
+
+  'others': 'gray',
+
+  'female': 'pink',
+  'male': 'cyan',
 };
 
 FIELD_NAME_TO_COLOR['islam'] = FIELD_NAME_TO_COLOR['moor'];
@@ -34,8 +51,8 @@ function getFieldNameColor(fieldName) {
   if (color) {
     return color;
   }
-  console.debug(`'${fieldName}': 'ghostwhite',`);
-  return 'ghostwhite';
+  FIELD_NAME_TO_COLOR[fieldName] = getRandomColor();
+  return FIELD_NAME_TO_COLOR[fieldName];
 }
 
 export default class PieChart extends Component {
@@ -45,7 +62,7 @@ export default class PieChart extends Component {
     const [cx, cy] = [width / 2, height / 2];
     const r = Math.min(cx, cy);
 
-    const styleDiv = {width, height}
+    const styleDiv = {width: width * 2, height}
 
     const extendedData = Object.entries(Object.values(dataMap)[0]).map(
         function ([fieldName, value]) {
@@ -63,8 +80,23 @@ export default class PieChart extends Component {
     );
     const total = MathX.sum(extendedData.map(([fieldName, value]) => value));
 
+    const extendedDataSig = extendedData.filter(
+      function ([_, value]) {
+        return value > total * OTHERS_LIMIT;
+      }
+    )
+
+    const totalSig = MathX.sum(extendedDataSig.map(
+        ([fieldName, value]) => value),
+    );
+    const others = total - totalSig;
+
+    const extendedDataWithOthers = [].concat(extendedDataSig, [
+        ['others', others],
+    ])
+
     let runningTotal = 0;
-    const renderedArcs = extendedData.map(
+    const renderedArcs = extendedDataWithOthers.map(
       function([fieldName, value]) {
         const p1 = runningTotal / total;
         runningTotal += value;
@@ -97,12 +129,45 @@ export default class PieChart extends Component {
       }
     )
 
+    const renderedTable = (
+      <table>
+        <tbody>
+          {extendedDataWithOthers.map(
+            function([fieldName, value]) {
+              const fill = getFieldNameColor(fieldName);
+
+              return (
+                <tr>
+                  <td>
+                    <svg width="10" heigh="10">
+                      <circle cx="5" cy="5" r="5" style={{'fill': fill}} />
+                    </svg>
+                  </td>
+                  <th>{titleCase(fieldName)}</th>
+                  <td>
+                    <div>
+                      {formatPercentAndTotal(value, total)}
+                    </div>
+                  </td>
+                </tr>
+              )
+            }
+          )}
+        </tbody>
+      </table>
+    )
+
     return (
-      <div className="div-pie-chart" style={styleDiv}>
-        <svg width={width} height={height}>
-          <circle cx={cx} cy={cy} r={r} />
-          {renderedArcs}
-        </svg>
+      <div className="div-pie-chart-outer">
+        <div className="div-pie-chart" style={styleDiv}>
+          <svg width={width} height={height}>
+            <circle cx={cx} cy={cy} r={r} />
+            {renderedArcs}
+          </svg>
+        </div>
+        <div className="div-table">
+          {renderedTable}
+        </div>
       </div>
     )
   }
