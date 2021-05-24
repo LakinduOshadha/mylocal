@@ -8,28 +8,19 @@ export default class DetailedInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: false,
+      showDetails: true,
       summary: '',
     };
   }
 
-  // async componentDidMount() {
-  //   const {entityID} = this.props;
-  //   const {showDetails} = this.state;
-  //   if (!showDetails) {
-  //     return;
-  //   }
-  //
-  //   const summary = await getSummary(entityID);
-  //   this.setState({
-  //     summary,
-  //   });
-  // }
-
-  async onClickShowDetails(e) {
+  async componentDidMount() {
     const {entityID} = this.props;
     const summary = await getSummary(entityID);
-    this.setState({summary, showDetails: true});
+    this.setState({summary});
+  }
+
+  async onClickShowDetails(e) {
+    this.setState({showDetails: true});
   }
 
   onClickHideDetails(e) {

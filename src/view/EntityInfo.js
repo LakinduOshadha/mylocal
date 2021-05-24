@@ -10,7 +10,7 @@ import EntityLink from 'view/components/EntityLink.js';
 function getProvinceInfo(entityData) {
   return {
     Name: entityData.name + ' Province',
-    Capital: entityData.capital,
+    Population: formatPopulation(entityData.population),
     Area: formatArea(entityData.area),
     'ISO 3166 code': entityData.province_id,
     'FIPS code': entityData.fips,
@@ -44,6 +44,8 @@ function getDSDInfo(entityData) {
 function getGNDInfo(entityData) {
   return {
     Name: entityData.name + ' GND',
+    Population: formatPopulation(entityData.population),
+    Area: formatArea(entityData.area),
     'GND Num': entityData.gnd_num,
     'ISO 3166 code': entityData.gnd_id,
     DSD: <EntityLink entityID={entityData.dsd_id} />,
