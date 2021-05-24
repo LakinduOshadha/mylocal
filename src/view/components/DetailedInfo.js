@@ -32,6 +32,10 @@ export default class DetailedInfo extends Component {
     this.setState({summary, showDetails: true});
   }
 
+  onClickHideDetails(e) {
+    this.setState({showDetails: false});
+  }
+
   render() {
     const {showDetails, summary} = this.state;
     const {entityID} = this.props;
@@ -53,6 +57,12 @@ export default class DetailedInfo extends Component {
       <div className="div-detailed-info">
         <h1>{entityID}</h1>
         <p>{summary}</p>
+        <a
+          className="a-show-details"
+          onClick={this.onClickHideDetails.bind(this)}
+        >
+          Hide
+        </a>
       </div>
     )
   }
