@@ -1,4 +1,4 @@
-:root {
+  :root {
   --font-family-serif: 'Linux Libertine','Georgia','Times',serif;
   --font-family: sans-serif;
 }
@@ -10,6 +10,11 @@ body {
 
 h1, h2, h3 {
   font-family: var(--font-family-serif);
+}
+
+h1 {
+  font-size: 188%;
+  font-weight: normal;
 }
 
 .monospace {
