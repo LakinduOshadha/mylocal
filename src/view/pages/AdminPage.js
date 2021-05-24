@@ -1,12 +1,14 @@
 import React from 'react';
+
+import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/Entity.js';
 import {getRegionBBox} from 'model/RegionGeo.js';
 import {getZoom} from 'model/OSM.js';
 import {redirectToDefault} from 'model/Browser';
-import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/Entity.js';
 
-import RegionMap from '../components/RegionMap.js';
-import Infobox from '../components/Infobox.js';
+import DetailedInfo from '../components/DetailedInfo.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
+import Infobox from '../components/Infobox.js';
+import RegionMap from '../components/RegionMap.js';
 
 import Page from '../pages/Page.js';
 
@@ -45,6 +47,7 @@ export default class AdminPage extends Page {
         <Infobox subTitle={ENTITY_LABEL_MAP[regionType]} title={regionID}>
           <EntityInfoTable entityID={regionID}/>
         </Infobox>
+        <DetailedInfo/>
       </div>
     );
   }
