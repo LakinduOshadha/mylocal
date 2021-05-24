@@ -1,15 +1,16 @@
-import Entity, {ENTITY, getEntityLabel} from './Entity.js';
-import GIGServer from './GIGServer.js';
+import Entity, {ENTITY, getEntityLabel} from 'model/Entity.js';
+import GIGServer from 'model/GIGServer.js';
 import {
   formatArea,
   formatPopulation,
   titleCase,
-} from 'model/FormatUtils.js';
+} from 'view/FormatUtils.js';
+import PieChart from 'view/charts/PieChart.js';
 
 const CENSUS_TABLES = [
     'ethnicity_of_population',
-    'religious_affiliation_of_population',
-    'age_group_of_population',
+    // 'religious_affiliation_of_population',
+    // 'age_group_of_population',
 ];
 
 function getAreaAndPopulation(entity) {
@@ -64,12 +65,12 @@ function getRegionSummaryFirstLine(entity) {
 
 async function getCensusInfo(tableName, entity) {
   const entityID = entity.id;
-  const census = await GIGServer.getCensus(tableName, entityID);
   const censusName = titleCase(tableName.replace('_of_population', ''))
+  const dataMap = await GIGServer.getCensus(tableName, entityID);
   return (<>
     <h2>{censusName}</h2>
     <p>
-      {JSON.stringify(census)}
+      <PieChart dataMap={dataMap}/>
     </p>
   </>);
 }

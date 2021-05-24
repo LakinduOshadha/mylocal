@@ -3,7 +3,7 @@ import {
   formatArea,
   formatPhone,
   formatPopulation,
-} from 'model/FormatUtils.js';
+} from 'view/FormatUtils.js';
 import EntityLink from 'view/components/EntityLink.js';
 
 

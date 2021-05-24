@@ -1,0 +1,13 @@
+circle {
+  fill: ghostwhite;
+  stroke: gray;
+}
+
+line {
+  fill: pink;
+  stroke: red;
+}
+
+path {
+  stroke: gray;
+}

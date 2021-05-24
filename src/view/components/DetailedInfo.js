@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {getSummary} from 'model/DetailedInfo.js';
+import {getSummary} from './DetailedInfoUtils.js';
 
 import './DetailedInfo.css';
 
@@ -19,7 +19,7 @@ export default class DetailedInfo extends Component {
     this.setState({summary});
   }
 
-  async onClickShowDetails(e) {
+  onClickShowDetails(e) {
     this.setState({showDetails: true});
   }
 
