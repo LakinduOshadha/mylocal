@@ -26,11 +26,13 @@ path {
 }
 
 th {
-  min-width: 120px;
+  width: 120px;
+  vertical-align: top;
 }
 
 td {
   text-align: right;
+  vertical-align: top;
 }
 
 .div-percent {

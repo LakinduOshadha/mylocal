@@ -8,6 +8,8 @@ import AbstractInfoTable
 
 import './AbstractInfoTable.css';
 
+const N_NEARBY_ITEMS = 3;
+
 export default class PoliceInfobox extends AbstractInfoTable {
   getTitle() {
     return 'Police';
@@ -27,7 +29,7 @@ export default class PoliceInfobox extends AbstractInfoTable {
     const {latLng} = this.props;
     const nearbyPlaces = await GIGServer.getNearby(latLng);
 
-    return nearbyPlaces.map(
+    return nearbyPlaces.slice(0, N_NEARBY_ITEMS).map(
       function(nearbyPlace) {
         const normalizedDistance = d3.format('.1f')(nearbyPlace.distance);
 
