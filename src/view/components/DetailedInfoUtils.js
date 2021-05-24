@@ -9,7 +9,7 @@ import PieChart from 'view/charts/PieChart.js';
 
 const CENSUS_TABLES = [
     'ethnicity_of_population',
-    // 'religious_affiliation_of_population',
+    'religious_affiliation_of_population',
     // 'age_group_of_population',
 ];
 
