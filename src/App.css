@@ -1,6 +1,15 @@
+:root {
+  --font-family-serif: 'Linux Libertine','Georgia','Times',serif;
+  --font-family: sans-serif;
+}
+
 body {
-  font-family: 'Futura';
+  font-family: var(--font-family);
   overflow: hidden;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-family-serif);
 }
 
 .monospace {

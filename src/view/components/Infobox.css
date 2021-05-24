@@ -8,8 +8,10 @@
 }
 
 .div-infobox {
-  background: rgba(255, 224, 224, 0.8);
-  border-radius: 16px;
+  background: ghostwhite;
+  opacity: 0.8;
+
+  border-radius: 6px;
   left: 16px;
   margin: 16px;
   padding: 16px;

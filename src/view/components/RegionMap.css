@@ -2,8 +2,3 @@
   position: absolute;
   z-index: 2000;
 }
-
-.path-region {
-  fill: hsla(0, 100%, 50%, 0.2);
-  stroke: none;
-}
