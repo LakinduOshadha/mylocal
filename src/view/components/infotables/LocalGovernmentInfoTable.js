@@ -17,12 +17,6 @@ export default class LocalGovernmentInfoTable extends AbstractInfoTable {
     const gndData = await GIGServer.getEntity(gndID);
     const lgID = gndData['lg_id'];
 
-    const {
-        [lgID]: lgData,
-    } = await GIGServer.multigetEntities([
-      lgID,
-    ]);
-
     return [
       {
         label: 'Local Government',

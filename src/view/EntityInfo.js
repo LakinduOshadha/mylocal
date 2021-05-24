@@ -38,7 +38,7 @@ function getDSDInfo(entityData) {
     'HASC code': entityData.hasc,
     District: <EntityLink entityID={entityData.district_id} />,
     Province: <EntityLink entityID={entityData.province_id} />,
-    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
+    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
   };
 }
 
@@ -52,10 +52,10 @@ function getGNDInfo(entityData) {
     DSD: <EntityLink entityID={entityData.dsd_id} />,
     District: <EntityLink entityID={entityData.district_id} />,
     Province: <EntityLink entityID={entityData.province_id} />,
-    ['Polling Division']: <EntityLink entityID={entityData.pd_id} />,
-    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
-    ['Local Government']: <EntityLink entityID={entityData.lg_id} />,
-    ['Medical Office of Health']: <EntityLink entityID={entityData.moh_id} />,
+    'Polling Division': <EntityLink entityID={entityData.pd_id} />,
+    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
+    'Local Government': <EntityLink entityID={entityData.lg_id} />,
+    'Medical Office of Health': <EntityLink entityID={entityData.moh_id} />,
   };
 }
 
@@ -83,7 +83,7 @@ function getPDInfo(entityData) {
     Name: entityData.name + ' Polling Division',
     Population: formatPopulation(entityData.population),
     Area: formatArea(entityData.area),
-    ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
+    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
     District: <EntityLink entityID={entityData.district_id} />,
     Province: <EntityLink entityID={entityData.province_id} />,
   }

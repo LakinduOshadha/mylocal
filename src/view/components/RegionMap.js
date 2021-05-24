@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {arrayFlatten} from 'model/DataStructures.js';
-import {getTranform} from 'model/LatLng.js';
 import GeoServer from 'model/GeoServer.js';
 import {Polyline} from 'react-leaflet';
 

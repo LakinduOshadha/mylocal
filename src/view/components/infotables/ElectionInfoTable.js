@@ -18,14 +18,6 @@ export default class ElectionInfoTable extends AbstractInfoTable {
     const pdID = gndData['pd_id'];
     const edID = pdID.substring(0, 5);
 
-    const {
-        [edID]: edData,
-        [pdID]: pdData,
-    } = await GIGServer.multigetEntities([
-      edID,
-      pdID,
-    ]);
-
     return [
       {
         label: 'Electoral District',

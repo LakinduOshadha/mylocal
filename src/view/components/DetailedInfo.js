@@ -34,12 +34,12 @@ export default class DetailedInfo extends Component {
     if (!showDetails) {
       return (
         <div className="div-detailed-info">
-          <a
-            className="a-show-details"
+          <div
+            className="div-show-details"
             onClick={this.onClickShowDetails.bind(this)}
           >
             Click to see details about {entityID}
-          </a>
+          </div>
         </div>
       )
     }
@@ -48,12 +48,12 @@ export default class DetailedInfo extends Component {
 
     return (
       <div className={`div-detailed-info ${className}`}>
-        <a
-          className="a-show-details"
+        <div
+          className="div-show-details"
           onClick={this.onClickHideDetails.bind(this)}
         >
           Hide
-        </a>
+        </div>
         <div className="div-summary-outer">
           {summary}
         </div>

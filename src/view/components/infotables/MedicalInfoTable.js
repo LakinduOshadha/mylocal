@@ -17,12 +17,6 @@ export default class MedicalInfoTable extends AbstractInfoTable {
     const gndData = await GIGServer.getEntity(gndID);
     const mohID = gndData['moh_id'];
 
-    const {
-        [mohID]: mohData,
-    } = await GIGServer.multigetEntities([
-      mohID,
-    ]);
-
     return [
       {
         label: 'Medical Office of Health Area',

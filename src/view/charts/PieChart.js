@@ -26,14 +26,6 @@ let FIELD_NAME_TO_COLOR = {
   'sri_lankan_tamil': 'hsl(21, 100%, 50%)',
   'buddhist': 'hsl(43, 100%, 50%)',
 
-  'roman_catholic': 'ghostwhite',
-  'other_christian': 'ghostwhite',
-  'islam': 'ghostwhite',
-  'hindu': 'ghostwhite',
-
-  'roman_catholic': 'ghostwhite',
-  'other_christian': 'ghostwhite',
-
   'others': 'gray',
 
   'female': 'pink',
