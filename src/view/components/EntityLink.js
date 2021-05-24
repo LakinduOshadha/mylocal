@@ -3,6 +3,8 @@ import {Link} from "react-router-dom";
 
 import GIGServer from 'model/GIGServer.js';
 
+import './EntityLink.css';
+
 export default class EntityLink extends Component {
   constructor(props) {
     super(props);
@@ -16,9 +18,16 @@ export default class EntityLink extends Component {
   render() {
     const {entityID} = this.props;
     const {entity} = this.state;
-    const label = entity ? entity.name : entityID;
+
+    let label = entityID;
+    let className = 'link-id';
+    if (entity) {
+        label = entity.name;
+        className = 'link-name';
+    }
+
     return (
-      <a href={`/admin/${entityID}`}>
+      <a className={className} href={`/admin/${entityID}`}>
         {label}
       </a>
     )
