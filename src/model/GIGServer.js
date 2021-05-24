@@ -29,4 +29,12 @@ export default class GIGServer extends Server {
       [`${lat},${lng}`],
     ))['nearby_entity_info_list'];
   }
+
+  static async getCensus(tableName, entityID) {
+    return (await Server.run(
+      'gig',
+      'ext_data',
+      ['census', tableName, entityID],
+    ));
+  }
 }

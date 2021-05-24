@@ -3,7 +3,14 @@ import GIGServer from './GIGServer.js';
 import {
   formatArea,
   formatPopulation,
+  titleCase,
 } from 'model/FormatUtils.js';
+
+const CENSUS_TABLES = [
+    'ethnicity_of_population',
+    'religious_affiliation_of_population',
+    'age_group_of_population',
+];
 
 function getAreaAndPopulation(entity) {
   return (
@@ -55,13 +62,35 @@ function getRegionSummaryFirstLine(entity) {
   }
 }
 
-function getRegionSummary(entity) {
+async function getCensusInfo(tableName, entity) {
+  const entityID = entity.id;
+  const census = await GIGServer.getCensus(tableName, entityID);
+  const censusName = titleCase(tableName.replace('_of_population', ''))
+  return (<>
+    <h2>{censusName}</h2>
+    <p>
+      {JSON.stringify(census)}
+    </p>
+  </>);
+}
+
+async function getCensusInfos(entity) {
+  return await Promise.all(CENSUS_TABLES.map(
+    async function (tableName) {
+      return await getCensusInfo(tableName, entity)
+    }
+  ));
+}
+
+async function getRegionSummary(entity) {
+  const censusInfo = await getCensusInfos(entity);
   return (
     <>
     {getTitle(entity)}
     <hr/>
     {getRegionSummaryFirstLine(entity)}
     {getAreaAndPopulation(entity)}
+    {censusInfo}
     </>
   );
 }

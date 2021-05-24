@@ -16,3 +16,10 @@ export function formatPhone(phoneNumber) {
     </a>
   );
 }
+
+export function titleCase(s) {
+  s = s.replaceAll('_', ' ');
+  return s.split(' ').map(
+      (word) => word.charAt(0).toUpperCase() + word.slice(1),
+  ).join(' ');
+}
