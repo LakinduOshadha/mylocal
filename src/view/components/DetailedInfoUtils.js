@@ -56,26 +56,28 @@ function getRegionSummaryFirstLine(entity) {
     case ENTITY.PROVINCE:
       return (<>
         <p>
-          The {entity.name} Province is one of the nine Provinces in Sri Lanka.
+          The <strong>{entity.name}</strong> Province is one of the nine
+           Provinces in Sri Lanka.
         </p>
       </>);
       case ENTITY.DISTRICT:
         return (<>
           <p>
-            The {entity.name} District is one of the 25 Districts in Sri Lanka.
+            The <strong>{entity.name}</strong> District is one of the 25
+             Districts in Sri Lanka.
           </p>
         </>);
       case ENTITY.DSD:
         return (<>
           <p>
-            The {entity.name} District is one of the 334 Divisional Secretariat
-             Divisions in Sri Lanka.
+            The <strong>{entity.name}</strong> DSD is one of the 334 Divisional
+             Secretariat Divisions in Sri Lanka.
           </p>
         </>);
       case ENTITY.GND:
         return (<>
           <p>
-            The {entity.name} District is one of the 14021 Grama Niladhari
+            <strong>{entity.name}</strong> is one of the 14021 Grama Niladhari
               Divisions in Sri Lanka.
           </p>
         </>);

@@ -18,9 +18,9 @@ export default class EntityLink extends Component {
     const {entity} = this.state;
     const label = entity ? entity.name : entityID;
     return (
-      <Link to={`/admin/${entityID}`}>
+      <a href={`/admin/${entityID}`}>
         {label}
-      </Link>
+      </a>
     )
   }
 }
