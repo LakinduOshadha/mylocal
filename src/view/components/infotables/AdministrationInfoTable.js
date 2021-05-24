@@ -23,7 +23,7 @@ export default class AdministrationInfoTable extends AbstractInfoTable {
       ['Province', provinceID],
       ['District', districtID],
       ['Divisional Secretariat Division', dsdID],
-      ['Drama Niladhari Division', gndID],
+      ['Grama Niladhari Division', gndID],
     ].map(
       function([entityLabel, entityID]) {
         return {

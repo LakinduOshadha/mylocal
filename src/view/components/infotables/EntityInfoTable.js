@@ -8,7 +8,7 @@ import AbstractInfoTable from './AbstractInfoTable.js';
 export default class EntityInfoTable extends AbstractInfoTable {
 
   getTitle() {
-    return 'Basic Info';
+    return '';
   }
 
   async getDataList() {

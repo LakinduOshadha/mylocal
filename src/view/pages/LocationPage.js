@@ -6,6 +6,9 @@ import AdministrationInfoTable
   from '../components/infotables/AdministrationInfoTable.js';
 import ElectionInfoTable from '../components/infotables/ElectionInfoTable.js';
 import PoliceInfoTable from '../components/infotables/PoliceInfoTable.js';
+import MedicalInfoTable from '../components/infotables/MedicalInfoTable.js';
+import LocalGovernmentInfoTable
+  from '../components/infotables/LocalGovernmentInfoTable.js';
 
 import Page from '../pages/Page.js';
 
@@ -29,12 +32,24 @@ export default class LocationPage extends Page {
           <AdministrationInfoTable
             latLng={this.state.latLng}
           />
-          <ElectionInfoTable
+
+          <LocalGovernmentInfoTable
             latLng={this.state.latLng}
           />
+
+          <MedicalInfoTable
+            latLng={this.state.latLng}
+          />
+
           <PoliceInfoTable
             latLng={this.state.latLng}
           />
+
+          <ElectionInfoTable
+            latLng={this.state.latLng}
+          />
+
+
         </Infobox>
 
       </div>

@@ -17,6 +17,18 @@ h1, h2, h3 {
   color: black;
 }
 
+h1 {
+  color: #ccc;
+}
+
+h2 {
+  color: #888;
+}
+
+h3 {
+  color: #444;
+}
+
 .monospace {
   font-family: monospace;
 }

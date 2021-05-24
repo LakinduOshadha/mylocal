@@ -54,7 +54,7 @@ function getGNDInfo(entityData) {
     Province: <EntityLink entityID={entityData.province_id} />,
     ['Polling Division']: <EntityLink entityID={entityData.pd_id} />,
     ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
-    ['Local Goverment']: <EntityLink entityID={entityData.lg_id} />,
+    ['Local Government']: <EntityLink entityID={entityData.lg_id} />,
     ['Medical Office of Health']: <EntityLink entityID={entityData.moh_id} />,
   };
 }
