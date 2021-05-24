@@ -8,10 +8,9 @@ export default function MapLocationMarker(defaultPosition) {
       const zoom = map.getZoom();
       map.flyTo({lat, lng}, map.getZoom())
       setPosition({lat, lng})
-      window.history.pushState('', '', `/location/${lat}N,${lng}E,${zoom}z`);
+      window.history.pushState('', '', `/mylocal/location/${lat}N,${lng}E,${zoom}z`);
     },
   })
-  console.debug(map.getBounds());
   const [position, setPosition] = useState(map.getCenter());
 
   return position === null ? null : (
