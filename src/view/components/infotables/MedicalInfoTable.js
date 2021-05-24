@@ -5,7 +5,7 @@ import EntityLink from 'view/components/EntityLink.js';
 
 export default class MedicalInfoTable extends AbstractInfoTable {
   getTitle() {
-    return 'Medical';
+    return 'Medical Authorities';
   }
   async getDataList() {
     const {latLng} = this.props;
@@ -20,7 +20,12 @@ export default class MedicalInfoTable extends AbstractInfoTable {
     return [
       {
         label: 'Medical Office of Health Area',
-        content: <EntityLink entityID={mohID} />,
+        content: (
+          <span>
+            <EntityLink entityID={mohID} />
+            {` MOH`}
+          </span>
+        ),
       },
     ];
   }

@@ -43,13 +43,6 @@ function getAreaAndPopulation(entity) {
   )
 }
 
-function getTitle(entity) {
-  const entityType = Entity.getEntityType(entity.id);
-  return (
-    <h1>{entity.name} {getEntityLabel(entityType)}</h1>
-  )
-}
-
 function getRegionSummaryFirstLine(entity) {
   const entityType = Entity.getEntityType(entity.id);
   switch(entityType) {
@@ -145,10 +138,6 @@ async function getRegionSummary(entity) {
   const censusInfo = await getCensusInfos(entity);
   return (
     <>
-    {getTitle(entity)}
-    <hr/>
-    {getRegionSummaryFirstLine(entity)}
-    {getAreaAndPopulation(entity)}
     {censusInfo}
     </>
   );

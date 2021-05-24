@@ -12,13 +12,13 @@ const N_NEARBY_ITEMS = 3;
 
 export default class PoliceInfobox extends AbstractInfoTable {
   getTitle() {
-    return 'Police';
+    return 'Police Stations';
   }
 
   renderRow(data) {
     return (
       <tr>
-        <td>
+        <td className="align-left">
           {data.content}
         </td>
       </tr>

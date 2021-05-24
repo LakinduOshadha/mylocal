@@ -5,7 +5,7 @@ import EntityLink from 'view/components/EntityLink.js';
 
 export default class ElectionInfoTable extends AbstractInfoTable {
   getTitle() {
-    return 'Election';
+    return 'Elections';
   }
   async getDataList() {
     const {latLng} = this.props;
@@ -20,12 +20,20 @@ export default class ElectionInfoTable extends AbstractInfoTable {
 
     return [
       {
-        label: 'Electoral District',
-        content: <EntityLink entityID={edID} />,
+        content: (
+          <span>
+            <EntityLink entityID={pdID} />
+            {` PD`}
+          </span>
+        ),
       },
       {
-        label: 'Polling Division',
-        content: <EntityLink entityID={pdID} />,
+        content: (
+          <span>
+            <EntityLink entityID={edID} />
+            {` ED`}
+          </span>
+        ),
     },
     ];
   }

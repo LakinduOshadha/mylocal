@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import {getSummary} from './DetailedInfoUtils.js';
+import GIGServer from 'model/GIGServer.js';
 
 import './DetailedInfo.css';
 
@@ -15,8 +16,9 @@ export default class DetailedInfo extends Component {
 
   async componentDidMount() {
     const {entityID} = this.props;
+    const entity = await GIGServer.getEntity(entityID);
     const summary = await getSummary(entityID);
-    this.setState({summary});
+    this.setState({summary, entity});
   }
 
   onClickShowDetails(e) {
@@ -28,17 +30,22 @@ export default class DetailedInfo extends Component {
   }
 
   render() {
-    const {showDetails, summary} = this.state;
+    const {showDetails, summary, entity} = this.state;
     const {entityID} = this.props;
 
+    if (!entity) {
+      return '...';
+    }
+
     if (!showDetails) {
+      console.debug(entity);
       return (
         <div className="div-detailed-info">
           <div
             className="div-show-details"
             onClick={this.onClickShowDetails.bind(this)}
           >
-            Click to see details about {entityID}
+            Click to see details about {entity.name} ({entity.id})
           </div>
         </div>
       )

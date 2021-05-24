@@ -19,8 +19,12 @@ export default class LocalGovernmentInfoTable extends AbstractInfoTable {
 
     return [
       {
-        label: 'Local Government',
-        content: <EntityLink entityID={lgID} />,
+        label: 'Local Authority',
+        content: (
+          <span>
+            <EntityLink entityID={lgID} />
+          </span>
+        ),
       },
     ];
   }

@@ -44,7 +44,10 @@ export default class AdminPage extends Page {
 
     return (
       <div>
-        <Infobox subTitle={ENTITY_LABEL_MAP[regionType]} title={regionID}>
+        <Infobox
+          subTitle={ENTITY_LABEL_MAP[regionType]}
+          title={regionID}
+        >
           <EntityInfoTable entityID={regionID}/>
         </Infobox>
         <DetailedInfo entityID={regionID}/>

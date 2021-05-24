@@ -11,6 +11,16 @@ export default class EntityInfoTable extends AbstractInfoTable {
     return '';
   }
 
+  renderRow(data, iRow) {
+    const key = `row-${iRow}-${data.label}`;
+    return (
+      <tr key={key}>
+        <th>{data.label}</th>
+        <td>{data.content}</td>
+      </tr>
+    );
+  }
+
   async getDataList() {
     const {entityID} = this.props;
     const entityData = await GIGServer.getEntity(entityID);

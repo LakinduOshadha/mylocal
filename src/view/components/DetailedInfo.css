@@ -1,15 +1,14 @@
 .div-detailed-info {
   background: ghostwhite;
-  border-radius: 6px;
-  margin: 16px;
-  max-width: 500px;
   opacity: 0.8;
+
+  border-radius: 6px;
+  right: 16px;
+  margin: 16px;
   padding: 16px;
   position: absolute;
-  right: 16px;
   top: 16px;
   z-index: 2000;
-
 }
 
 .show {
@@ -22,7 +21,8 @@
 }
 
 .div-summary-outer {
-  border-radius: 12px;
+  max-width: 500px;
+  height: 2000px;
 }
 
 .div-show-details {

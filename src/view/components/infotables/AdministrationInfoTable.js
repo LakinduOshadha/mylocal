@@ -22,13 +22,17 @@ export default class AdministrationInfoTable extends AbstractInfoTable {
     return [
       ['Province', provinceID],
       ['District', districtID],
-      ['Divisional Secretariat Division', dsdID],
-      ['Grama Niladhari Division', gndID],
+      ['DSD', dsdID],
+      ['GND', gndID],
     ].map(
       function([entityLabel, entityID]) {
         return {
-          label: entityLabel,
-          content: <EntityLink entityID={entityID} />,
+          content: (
+            <span>
+              <EntityLink entityID={entityID} />
+              {` ${entityLabel}`}
+            </span>
+          ),
         };
       },
     )

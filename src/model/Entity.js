@@ -26,7 +26,7 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.PD]: 'Polling Division',
   [ENTITY.ED]: 'Electoral District',
   [ENTITY.PS]: 'Police Station',
-  [ENTITY.LG]: 'Local Government Area',
+  [ENTITY.LG]: 'Local Authority',
   [ENTITY.MOH]: 'Medical Office of Health Area',
 }
 

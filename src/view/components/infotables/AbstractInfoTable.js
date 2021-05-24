@@ -26,10 +26,11 @@ export default class AbstractInfoTable extends Component {
     const key = `row-${iRow}-${data.label}`;
     return (
       <tr key={key}>
-        <th>{data.label}</th>
-        <td>{data.content}</td>
+        <td className="align-left">
+          {data.content}
+        </td>
       </tr>
-    );
+    )
   }
 
   render() {
