@@ -26,6 +26,10 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.PS]: 'Police Station',
 }
 
+export function getEntityLabel(entityType) {
+  return ENTITY_LABEL_MAP[entityType];
+}
+
 export const ISO_ENTITY_TO_ID_LENGTH = {
   [ENTITY.COUNTRY]: 2,
   [ENTITY.PROVINCE]: 4,

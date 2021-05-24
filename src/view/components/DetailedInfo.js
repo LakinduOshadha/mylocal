@@ -55,8 +55,9 @@ export default class DetailedInfo extends Component {
 
     return (
       <div className="div-detailed-info">
-        <h1>{entityID}</h1>
-        <p>{summary}</p>
+        <div className="div-summary-outer">
+          {summary}
+        </div>
         <a
           className="a-show-details"
           onClick={this.onClickHideDetails.bind(this)}
