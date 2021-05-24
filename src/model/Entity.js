@@ -9,6 +9,8 @@ export const ENTITY = {
   ED: 'ed',
   PD: 'pd',
   PS: 'ps',
+  MOH: 'moh',
+  LG: 'lg',
 }
 
 export const DEFAULT_ENTITY_ID = 'LK-1127';
@@ -24,6 +26,8 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.PD]: 'Polling Division',
   [ENTITY.ED]: 'Electoral District',
   [ENTITY.PS]: 'Police Station',
+  [ENTITY.LG]: 'Local Goverment Area',
+  [ENTITY.MOH]: 'Medical Office of Health Area',
 }
 
 export function getEntityLabel(entityType) {
@@ -67,6 +71,14 @@ export default class Entity {
 
     else if (entityID.substring(0, 2) === 'PS') {
       return ENTITY.PS;
+    }
+
+    else if (entityID.substring(0, 3) === 'MOH') {
+      return ENTITY.MOH;
+    }
+
+    else if (entityID.substring(0, 2) === 'LG') {
+      return ENTITY.LG;
     }
 
     return undefined;

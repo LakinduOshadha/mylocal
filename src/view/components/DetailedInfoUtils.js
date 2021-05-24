@@ -96,6 +96,20 @@ function getRegionSummaryFirstLine(entity) {
             Polling Divisions in Sri Lanka.
           </p>
         </>);
+      case ENTITY.LG:
+        return (<>
+          <p>
+            The <strong>{entity.name}</strong> is one of ~330
+            Local Government Areas in Sri Lanka.
+          </p>
+        </>);
+      case ENTITY.MOH:
+        return (<>
+          <p>
+            The <strong>{entity.name}</strong> is one of ~330
+            Medical Officer of Health (MOH) Areas in Sri Lanka.
+          </p>
+        </>);
     default:
       return null;
   }
@@ -151,6 +165,8 @@ export async function getSummary(entityID) {
     case ENTITY.GND:
     case ENTITY.PD:
     case ENTITY.ED:
+    case ENTITY.MOH:
+    case ENTITY.LG:
       return getRegionSummary(entity)
     default:
       return null;

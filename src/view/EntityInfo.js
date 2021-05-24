@@ -54,6 +54,8 @@ function getGNDInfo(entityData) {
     Province: <EntityLink entityID={entityData.province_id} />,
     ['Polling Division']: <EntityLink entityID={entityData.pd_id} />,
     ['Electoral District']: <EntityLink entityID={entityData.ed_id} />,
+    ['Local Goverment']: <EntityLink entityID={entityData.lg_id} />,
+    ['Medical Office of Health']: <EntityLink entityID={entityData.moh_id} />,
   };
 }
 
@@ -87,6 +89,27 @@ function getPDInfo(entityData) {
   }
 }
 
+function getLGInfo(entityData) {
+  return {
+    Name: entityData.name,
+    Population: formatPopulation(entityData.population),
+    Area: formatArea(entityData.area),
+    District: <EntityLink entityID={entityData.district_id} />,
+    Province: <EntityLink entityID={entityData.province_id} />,
+  };
+}
+
+function getMOHInfo(entityData) {
+  return {
+    Name: entityData.name + ' MOH Area',
+    Population: formatPopulation(entityData.population),
+    Area: formatArea(entityData.area),
+    District: <EntityLink entityID={entityData.district_id} />,
+    Province: <EntityLink entityID={entityData.province_id} />,
+  };
+}
+
+
 export default function getEntityInfo(entityType, entityData) {
   const entityTypeToInfoGetter = {
     [ENTITY.PROVINCE]: getProvinceInfo,
@@ -97,6 +120,9 @@ export default function getEntityInfo(entityType, entityData) {
 
     [ENTITY.ED]: getEDInfo,
     [ENTITY.PD]: getPDInfo,
+
+    [ENTITY.MOH]: getMOHInfo,
+    [ENTITY.LG]: getLGInfo,
   };
   return entityTypeToInfoGetter[entityType](entityData);
 }
