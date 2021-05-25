@@ -31,7 +31,6 @@ export default class DetailedInfo extends Component {
 
   render() {
     const {showDetails, summary, entity} = this.state;
-    const {entityID} = this.props;
 
     if (!entity) {
       return '...';

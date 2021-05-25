@@ -1,8 +1,6 @@
-import Entity, {ENTITY, getEntityLabel} from 'model/Entity.js';
+import Entity, {ENTITY} from 'model/Entity.js';
 import GIGServer from 'model/GIGServer.js';
 import {
-  formatArea,
-  formatPopulation,
   titleCase,
 } from 'view/FormatUtils.js';
 import PieChart from 'view/charts/PieChart.js';
@@ -33,80 +31,6 @@ const CENSUS_TABLES = [
   'year_of_construction_of_housing_unit',
   'persons_living_in_housing_unit',
 ];
-
-function getAreaAndPopulation(entity) {
-  return (
-    <p>
-      It has an area of {formatArea(entity.area)}, and a population
-      of {formatPopulation(entity.population)} (2012 census).
-    </p>
-  )
-}
-
-function getRegionSummaryFirstLine(entity) {
-  const entityType = Entity.getEntityType(entity.id);
-  switch(entityType) {
-    case ENTITY.PROVINCE:
-      return (<>
-        <p>
-          The <strong>{entity.name}</strong> Province is one of the nine
-           Provinces in Sri Lanka.
-        </p>
-      </>);
-      case ENTITY.DISTRICT:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> District is one of the 25
-             Districts in Sri Lanka.
-          </p>
-        </>);
-      case ENTITY.DSD:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> DSD is one of the 334 Divisional
-             Secretariat Divisions in Sri Lanka.
-          </p>
-        </>);
-      case ENTITY.GND:
-        return (<>
-          <p>
-            <strong>{entity.name}</strong> is one of the 14021 Grama Niladhari
-              Divisions in Sri Lanka.
-          </p>
-        </>);
-
-      case ENTITY.ED:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> Electoral District is one of 22
-            Electoral Districts in Sri Lanka.
-          </p>
-        </>);
-      case ENTITY.PD:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> Polling Division is one of 160
-            Polling Divisions in Sri Lanka.
-          </p>
-        </>);
-      case ENTITY.LG:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> is one of ~330
-            Local Government Areas in Sri Lanka.
-          </p>
-        </>);
-      case ENTITY.MOH:
-        return (<>
-          <p>
-            The <strong>{entity.name}</strong> is one of ~330
-            Medical Officer of Health (MOH) Areas in Sri Lanka.
-          </p>
-        </>);
-    default:
-      return null;
-  }
-}
 
 async function getCensusInfo(tableName, entity) {
   const entityID = entity.id;
