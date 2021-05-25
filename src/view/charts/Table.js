@@ -17,11 +17,11 @@ export default class PieChart extends Component {
       <table>
         <tbody>
           {extendedData.map(
-            function([fieldName, value]) {
+            function([fieldName, value], iRow) {
               const fill = getFieldNameColor(fieldName);
 
               return (
-                <tr>
+                <tr key={`tr-${iRow}-${fieldName}`}>
                   <td>
                     <svg width="10" heigh="10">
                       <circle cx="5" cy="5" r="5" style={{'fill': fill}} />

@@ -7,7 +7,7 @@ import './PieChart.css';
 
 export default class PieChart extends Component {
   render() {
-    const {dataMap} = this.props;
+    const {dataMap, tableName} = this.props;
     const {extendedData, total} = getExtendedData(dataMap);
     const [width, height]= [200, 200];
     const [cx, cy] = [width / 2, height / 2];
@@ -17,7 +17,7 @@ export default class PieChart extends Component {
 
     let runningTotal = 0;
     const renderedArcs = extendedData.map(
-      function([fieldName, value]) {
+      function([fieldName, value], iData) {
         const p1 = runningTotal / total;
         runningTotal += value;
         const p2 = runningTotal / total;
@@ -44,13 +44,13 @@ export default class PieChart extends Component {
         const fill = getFieldNameColor(fieldName);
 
         return (
-          <path d={d} fill={fill}/>
+          <path key={'pie-chart-' + iData} d={d} fill={fill}/>
         )
       }
     )
 
     return (
-      <div className="div-pie-chart-outer">
+      <div key={'div-' + tableName} className="div-pie-chart-outer">
         <div className="div-pie-chart" style={styleDiv}>
           <svg width={width} height={height}>
             <circle cx={cx} cy={cy} r={r} />

@@ -32,7 +32,7 @@ const CENSUS_TABLES = [
   'persons_living_in_housing_unit',
 ];
 
-async function getCensusInfo(tableName, entity) {
+async function renderCensusInfo(tableName, entity, iTable) {
   const entityID = entity.id;
   const censusName = titleCase(
       tableName
@@ -42,28 +42,30 @@ async function getCensusInfo(tableName, entity) {
         .replace('_in_housing_unit', '')
   )
   const dataMap = await GIGServer.getCensus(tableName, entityID);
-  return (<>
-    <h2>{censusName}</h2>
-    <p>
-      <PieChart dataMap={dataMap}/>
-    </p>
-  </>);
+  return (
+    <div key={`div-census-info-${iTable}-${tableName}`}>
+      <h2>{censusName}</h2>
+      <div>
+        <PieChart dataMap={dataMap} tableName={tableName}/>
+      </div>
+    </div>
+  );
 }
 
-async function getCensusInfos(entity) {
+async function renderCensusInfos(entity) {
   return await Promise.all(CENSUS_TABLES.map(
-    async function (tableName) {
-      return await getCensusInfo(tableName, entity)
+    async function (tableName, iTable) {
+      return await renderCensusInfo(tableName, entity, iTable)
     }
   ));
 }
 
 async function getRegionSummary(entity) {
-  const censusInfo = await getCensusInfos(entity);
+  const censusInfos = await renderCensusInfos(entity);
   return (
-    <>
-    {censusInfo}
-    </>
+    <div key={'div-region-summary-' + entity.id}>
+      {censusInfos}
+    </div>
   );
 }
 

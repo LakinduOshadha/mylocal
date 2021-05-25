@@ -15,9 +15,9 @@ export default class PoliceInfobox extends AbstractInfoTable {
     return 'Police Stations';
   }
 
-  renderRow(data) {
+  renderRow(data, iRow) {
     return (
-      <tr>
+      <tr key={'PoliceInfobox-row' + iRow}>
         <td className="align-left">
           {data.content}
         </td>
