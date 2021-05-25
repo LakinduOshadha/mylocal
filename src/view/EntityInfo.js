@@ -1,4 +1,4 @@
-import {ENTITY} from 'model/Entity.js';
+import Entity, {ENTITY} from 'model/Entity.js';
 import {
   formatArea,
   formatPhone,
@@ -7,56 +7,65 @@ import {
 import EntityLink from 'view/components/EntityLink.js';
 
 
-function getProvinceInfo(entityData) {
-  return {
-    Name: entityData.name + ' Province',
+function getIDInfo(entityData) {
+  const cmp = (v) => (entityData.id.includes(v) ? 100 : 0) + v.length;
+  const idDataEntries = Object.entries(entityData).filter(
+    function([k, v]) {
+      return k.includes('id');
+    }
+  ).sort(
+    function([kA, vA], [kB, vB]) {
+      return cmp(vB) - cmp(vA);
+    }
+  );
+
+  return idDataEntries.reduce(
+    function(idInfo, [k, v]) {
+      const parentEntityType = Entity.getEntityType(v);
+      idInfo[Entity.getEntityLabel(parentEntityType)] = (
+          <EntityLink entityID={v} />
+      );
+      return idInfo;
+    },
+    {},
+  )
+}
+
+function getBaseInfo(entityData) {
+  return Object.assign({}, getIDInfo(entityData), {
     Population: formatPopulation(entityData.population),
     Area: formatArea(entityData.area),
+  });
+}
+
+
+function getProvinceInfo(entityData) {
+  return Object.assign({}, getBaseInfo(entityData), {
     'ISO 3166 code': entityData.province_id,
     'FIPS code': entityData.fips,
-  };
+  });
 }
 
 function getDistrictInfo(entityData) {
-  return {
-    Name: entityData.name + ' District',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
+  return Object.assign({}, getBaseInfo(entityData), {
     'ISO 3166 code': entityData.district_id,
     'FIPS code': entityData.fips,
     'HASC code': entityData.hasc,
-    Province: <EntityLink entityID={entityData.province_id} />,
-  };
+  });
 }
 
 function getDSDInfo(entityData) {
-  return {
-    Name: entityData.name + ' DSD',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
+  return Object.assign({}, getBaseInfo(entityData), {
     'ISO 3166 code': entityData.dsd_id,
     'HASC code': entityData.hasc,
-    District: <EntityLink entityID={entityData.district_id} />,
-    Province: <EntityLink entityID={entityData.province_id} />,
-    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
-  };
+  });
 }
 
 function getGNDInfo(entityData) {
-  return {
-    Name: entityData.name + ' GND',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
+  return Object.assign({}, getBaseInfo(entityData), {
     'GND Num': entityData.gnd_num,
     'ISO 3166 code': entityData.gnd_id,
-    DSD: <EntityLink entityID={entityData.dsd_id} />,
-    District: <EntityLink entityID={entityData.district_id} />,
-    Province: <EntityLink entityID={entityData.province_id} />,
-    'Polling Division': <EntityLink entityID={entityData.pd_id} />,
-    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
-    'Local Government': <EntityLink entityID={entityData.lg_id} />,
-    'Medical Office of Health': <EntityLink entityID={entityData.moh_id} />,
-  };
+  });
 }
 
 function getPSInfo(entityData) {
@@ -66,49 +75,8 @@ function getPSInfo(entityData) {
     Office: formatPhone(entityData.phone_office),
     Mobile: formatPhone(entityData.fax),
     Fax: formatPhone(entityData.phone_mobile),
-  }
-}
-
-function getEDInfo(entityData) {
-  return {
-    Name: entityData.name + ' Electoral District',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
-    Province: <EntityLink entityID={entityData.province_id} />,
-  }
-}
-
-function getPDInfo(entityData) {
-  return {
-    Name: entityData.name + ' Polling Division',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
-    'Electoral District': <EntityLink entityID={entityData.ed_id} />,
-    District: <EntityLink entityID={entityData.district_id} />,
-    Province: <EntityLink entityID={entityData.province_id} />,
-  }
-}
-
-function getLGInfo(entityData) {
-  return {
-    Name: entityData.name,
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
-    District: <EntityLink entityID={entityData.district_id} />,
-    Province: <EntityLink entityID={entityData.province_id} />,
   };
 }
-
-function getMOHInfo(entityData) {
-  return {
-    Name: entityData.name + ' MOH Area',
-    Population: formatPopulation(entityData.population),
-    Area: formatArea(entityData.area),
-    District: <EntityLink entityID={entityData.district_id} />,
-    Province: <EntityLink entityID={entityData.province_id} />,
-  };
-}
-
 
 export default function getEntityInfo(entityType, entityData) {
   const entityTypeToInfoGetter = {
@@ -118,11 +86,11 @@ export default function getEntityInfo(entityType, entityData) {
     [ENTITY.GND]: getGNDInfo,
     [ENTITY.PS]: getPSInfo,
 
-    [ENTITY.ED]: getEDInfo,
-    [ENTITY.PD]: getPDInfo,
+    [ENTITY.ED]: getBaseInfo,
+    [ENTITY.PD]: getBaseInfo,
 
-    [ENTITY.MOH]: getMOHInfo,
-    [ENTITY.LG]: getLGInfo,
+    [ENTITY.MOH]: getBaseInfo,
+    [ENTITY.LG]: getBaseInfo,
   };
   return entityTypeToInfoGetter[entityType](entityData);
 }

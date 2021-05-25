@@ -30,10 +30,6 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.MOH]: 'Medical Office of Health Area',
 }
 
-export function getEntityLabel(entityType) {
-  return ENTITY_LABEL_MAP[entityType];
-}
-
 export const ISO_ENTITY_TO_ID_LENGTH = {
   [ENTITY.COUNTRY]: 2,
   [ENTITY.PROVINCE]: 4,
@@ -83,5 +79,11 @@ export default class Entity {
 
     return undefined;
   }
+
+  static getEntityLabel(entityType) {
+    return ENTITY_LABEL_MAP[entityType];
+  }
+
+
 
 }
