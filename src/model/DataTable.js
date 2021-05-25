@@ -1,5 +1,5 @@
 import MathX from 'model/MathX.js';
-const OTHERS_LIMIT = 0.0000000001;
+const OTHERS_LIMIT = 0.01;
 
 export function getExtendedData(dataMap) {
   const extendedDataRaw = Object.entries(Object.values(dataMap)[0]).map(
