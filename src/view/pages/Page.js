@@ -16,9 +16,17 @@ export default class Page extends Component {
   }
 
   async componentDidMount() {
+    console.debug('componentDidMount', this.state, this.props);
     const {latLng, zoom} = await this.getLatLngAndZoom();
     this.setState({latLng, zoom});
   }
+
+
+
+  async onChangeLocation([lat, lng]) {
+    return null;
+  }
+
 
   renderInner() {
     return null;
@@ -29,6 +37,7 @@ export default class Page extends Component {
   }
 
   render() {
+    console.debug(this.state);
     if (!this?.state?.latLng) {
       return 'Loading...';
     }
@@ -40,7 +49,9 @@ export default class Page extends Component {
         <MapContainer center={[lat, lng]} zoom={zoom}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {this.renderInnerMapLayer()}
-          <MapLocationMarker />
+          <MapLocationMarker
+            onChangeLocation={this.onChangeLocation}
+          />
         </MapContainer>
         {this.renderInner()}
       </div>

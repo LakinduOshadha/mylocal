@@ -1,15 +1,14 @@
 import {useState} from 'react';
 import {Marker, useMapEvents} from 'react-leaflet';
 
-export default function MapLocationMarker(defaultPosition) {
+export default function MapLocationMarker({onChangeLocation}) {
   const map = useMapEvents({
     click(e) {
       const {lat, lng} = e.latlng;
       const zoom = map.getZoom();
       map.flyTo({lat, lng}, map.getZoom())
       setPosition({lat, lng})
-      // window.history.pushState('', '', `/mylocal/location/${lat}N,${lng}E,${zoom}z`);
-      window.location.href = `/mylocal/location/${lat}N,${lng}E,${zoom}z`;
+      onChangeLocation([lat, lng])
     },
   })
   const [position, setPosition] = useState(map.getCenter());

@@ -13,11 +13,31 @@ import LocalGovernmentInfoTable
 import Page from '../pages/Page.js';
 
 export default class LocationPage extends Page {
+
+  constructor(props) {
+    super(props);
+    this.onChangeLocation = this.onChangeLocation.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    return {
+      latLngStr: props.match.params.latLngStr,
+    };
+  }
+
+  onChangeLocation([lat, lng]) {
+    console.debug('LocationPage.onChangeLocation', [lat, lng]);
+    this.setState({
+      latLng: [lat, lng],
+    });
+  }
+
   async getLatLngAndZoom() {
-    return parseLatLngAndZoom(this.props.match.params.latLngStr);
+    return parseLatLngAndZoom(this.state.latLngStr);
   }
 
   renderInner() {
+    console.debug('LocationPage.renderInner', this.state.latLng);
     const [lat, lng] = roundLatLng(this.state.latLng);
 
     const title = (
