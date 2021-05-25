@@ -1,5 +1,5 @@
 import MathX from 'model/MathX.js';
-const OTHERS_LIMIT = 0.005;
+const OTHERS_LIMIT = 0.0000000001;
 
 export function getExtendedData(dataMap) {
   const extendedDataRaw = Object.entries(Object.values(dataMap)[0]).map(
@@ -31,8 +31,9 @@ export function getExtendedData(dataMap) {
 
   let extendedData = extendedDataSig;
   if (others) {
-    extendedData['others'] = others;
+    extendedData.push(['others', others]);
   }
+  console.debug(extendedData);
   return {
     extendedData,
     total,
