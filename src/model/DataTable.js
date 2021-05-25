@@ -1,5 +1,5 @@
 import MathX from 'model/MathX.js';
-const OTHERS_LIMIT = 0.02;
+const OTHERS_LIMIT = 0.005;
 
 export function getExtendedData(dataMap) {
   const extendedDataRaw = Object.entries(Object.values(dataMap)[0]).map(
@@ -19,8 +19,8 @@ export function getExtendedData(dataMap) {
   const total = MathX.sum(extendedDataRaw.map(([fieldName, value]) => value));
 
   const extendedDataSig = extendedDataRaw.filter(
-    function ([_, value]) {
-      return value > total * OTHERS_LIMIT;
+    function ([label, value]) {
+      return (value > total * OTHERS_LIMIT) && (label !== 'other');
     }
   )
 
@@ -29,9 +29,10 @@ export function getExtendedData(dataMap) {
   );
   const others = total - totalSig;
 
-  const extendedData = [].concat(extendedDataSig, [
-      ['others', others],
-  ]);
+  let extendedData = extendedDataSig;
+  if (others) {
+    extendedData['others'] = others;
+  }
   return {
     extendedData,
     total,
