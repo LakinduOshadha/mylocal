@@ -14,11 +14,6 @@ import Page from '../pages/Page.js';
 
 export default class LocationPage extends Page {
 
-  constructor(props) {
-    super(props);
-    this.onChangeLocation = this.onChangeLocation.bind(this);
-  }
-
   static getDerivedStateFromProps(props, state) {
     return {
       latLngStr: props.match.params.latLngStr,

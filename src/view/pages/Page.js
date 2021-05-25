@@ -11,6 +11,12 @@ import './Page.css';
 export const DEFAULT_ZOOM = 16;
 
 export default class Page extends Component {
+  constructor(props) {
+    super(props);
+    this.onChangeLocation = this.onChangeLocation.bind(this);
+  }
+
+
   async getLatLngAndZoom() {
     return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
   }
@@ -21,11 +27,10 @@ export default class Page extends Component {
     this.setState({latLng, zoom});
   }
 
-
-
-  async onChangeLocation([lat, lng]) {
-    return null;
+  onChangeLocation([lat, lng]) {
+    window.location.href = `/location/${lat}N,${lng}E,15z`;
   }
+
 
 
   renderInner() {
