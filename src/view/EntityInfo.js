@@ -3,15 +3,18 @@ import {
   formatArea,
   formatPhone,
   formatPopulation,
+  formatAltitude,
+  formatPopDensity,
 } from 'view/FormatUtils.js';
 import EntityLink from 'view/components/EntityLink.js';
 
 
 function getIDInfo(entityData) {
   const cmp = (v) => (entityData.id.includes(v) ? 100 : 0) + v.length;
+  console.debug(entityData);
   const idDataEntries = Object.entries(entityData).filter(
     function([k, v]) {
-      return k.includes('id');
+      return k.includes('_id');
     }
   ).sort(
     function([kA, vA], [kB, vB]) {
@@ -31,10 +34,40 @@ function getIDInfo(entityData) {
   )
 }
 
+function getSetsInfo(entityData) {
+  let info = {};
+
+  [
+    ['eqs', 'Equivalent to'],
+    ['subs', 'Contains'],
+    ['supers', 'Contained in'],
+    ['ints', 'Overlaps with'],
+  ].forEach(
+    function([k, label]) {
+      const v = entityData[k];
+      if (v && v.length > 0) {
+        info[label] = (
+          <div>
+            {
+              v.sort().map(
+                (id) => (<div><EntityLink entityID={id} /></div>),
+              )
+            }
+          </div>
+        );
+      }
+    }
+  )
+
+  return info;
+}
+
 function getBaseInfo(entityData) {
-  return Object.assign({}, getIDInfo(entityData), {
-    Population: formatPopulation(entityData.population),
+  return Object.assign({}, getIDInfo(entityData), getSetsInfo(entityData), {
     Area: formatArea(entityData.area),
+    Population: formatPopulation(entityData.population),
+    'Pop. Density': formatPopDensity(entityData.population, entityData.area),
+    'Altitude (Centroid)': formatAltitude(entityData.centroid_altitude),
   });
 }
 

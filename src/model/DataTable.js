@@ -33,7 +33,6 @@ export function getExtendedData(dataMap) {
   if (others) {
     extendedData.push(['others', others]);
   }
-  console.debug(extendedData);
   return {
     extendedData,
     total,

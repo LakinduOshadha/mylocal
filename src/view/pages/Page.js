@@ -22,13 +22,12 @@ export default class Page extends Component {
   }
 
   async componentDidMount() {
-    console.debug('componentDidMount', this.state, this.props);
     const {latLng, zoom} = await this.getLatLngAndZoom();
     this.setState({latLng, zoom});
   }
 
   onChangeLocation([lat, lng]) {
-    window.location.href = `/location/${lat}N,${lng}E,15z`;
+    window.location.href = `/mylocal/location/${lat}N,${lng}E,15z`;
   }
 
 
@@ -42,7 +41,6 @@ export default class Page extends Component {
   }
 
   render() {
-    console.debug(this.state);
     if (!this?.state?.latLng) {
       return 'Loading...';
     }

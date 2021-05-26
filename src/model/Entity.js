@@ -11,6 +11,7 @@ export const ENTITY = {
   PS: 'ps',
   MOH: 'moh',
   LG: 'lg',
+  UNKNOWN: 'unknown',
 }
 
 export const DEFAULT_ENTITY_ID = 'LK-1127';
@@ -28,6 +29,19 @@ export const ENTITY_LABEL_MAP = {
   [ENTITY.PS]: 'Police Station',
   [ENTITY.LG]: 'Local Authority',
   [ENTITY.MOH]: 'Medical Office of Health Area',
+}
+
+export const ENTITY_LABEL_SHORT_MAP = {
+  [ENTITY.COUNTRY]: '',
+  [ENTITY.PROVINCE]: 'Province',
+  [ENTITY.DISTRICT]: 'District',
+  [ENTITY.DSD]: 'DSD',
+  [ENTITY.GND]: 'GND',
+  [ENTITY.PD]: 'PD',
+  [ENTITY.ED]: 'ED',
+  [ENTITY.PS]: 'PS',
+  [ENTITY.LG]: '',
+  [ENTITY.MOH]: 'MOH',
 }
 
 export const ISO_ENTITY_TO_ID_LENGTH = {
@@ -55,6 +69,9 @@ export default class Entity {
   }
 
   static getEntityType(entityID) {
+    if (!entityID) {
+      return ENTITY.UNKNOWN;
+    }
     const idLength = entityID.length;
 
     if (Entity.isISORegionType(entityID)) {
@@ -82,6 +99,10 @@ export default class Entity {
 
   static getEntityLabel(entityType) {
     return ENTITY_LABEL_MAP[entityType];
+  }
+
+  static getEntityLabelShort(entityType) {
+    return ENTITY_LABEL_SHORT_MAP[entityType];
   }
 
 
