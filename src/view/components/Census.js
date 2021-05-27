@@ -7,6 +7,8 @@ import {
 import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';
 
+import './Census.css';
+
 const CENSUS_TABLES = [
   'ethnicity_of_population',
   'religious_affiliation_of_population',
@@ -18,16 +20,16 @@ const CENSUS_TABLES = [
   'roof_type_in_housing_unit',
   'rooms_in_housing_unit',
   'floor_type_in_housing_unit',
-  // 'solid_waste_disposal_by_household',
-  // 'source_of_drinking_water_of_household',
-  // 'households_living_in_housing_unit',
-  // 'structure_of_housing_units',
-  // 'housing_ownership_status_of_household',
-  // 'toilet_facilities_of_household',
-  // 'lighting_of_household',
-  // 'living_quarters',
-  // 'type_of_housing_unit',
-  // 'marital_status_of_population',
+  'solid_waste_disposal_by_household',
+  'source_of_drinking_water_of_household',
+  'households_living_in_housing_unit',
+  'structure_of_housing_units',
+  'housing_ownership_status_of_household',
+  'toilet_facilities_of_household',
+  'lighting_of_household',
+  'living_quarters',
+  'type_of_housing_unit',
+  'marital_status_of_population',
   // 'wall_type_in_housing_units',
   // 'occupation_status_of_housing_units',
   'year_of_construction_of_housing_unit',
@@ -48,7 +50,7 @@ const ageKeysMap = {
     ['90_and_above', 10],
   ],
   year_of_construction_of_housing_unit: [
-    ['before_80', 30],
+    ['before_80', 25],
     ['1980_1989', 10],
     ['1990_1994', 5],
     ['1995_1999', 5],
@@ -71,7 +73,8 @@ const ageKeysMap = {
     ['7_rooms', 1],
     ['8_rooms', 1],
     ['9_rooms', 1],
-  ]
+  ],
+
 }
 
 function renderDescription(dataMap) {
@@ -121,7 +124,7 @@ async function renderCensusInfo(tableName, entity, iTable) {
     <div key={`div-census-info-${iTable}-${tableName}`}>
       <h2>{censusName}</h2>
       {valueIsPercent ? null : renderDescription(dataMap)}
-      <div>
+      <div className="div-census-chart-component">
         <ChartComponent
           dataMap={dataMap}
           tableName={tableName}
