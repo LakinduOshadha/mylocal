@@ -1,3 +1,7 @@
+import {
+  titleCase,
+} from 'view/FormatUtils.js';
+
 export const CENSUS_TABLES = [
   'ethnicity_of_population',
   'religious_affiliation_of_population',
@@ -24,3 +28,13 @@ export const CENSUS_TABLES = [
   'year_of_construction_of_housing_unit',
   // 'persons_living_in_housing_unit',
 ];
+
+export function getCensusLabel(tableName) {
+  return titleCase(
+      tableName
+        .replace('_of_population', '')
+        .replace('_of_household', '')
+        .replace('_by_household', '')
+        .replace('_in_housing_unit', '')
+  );
+}

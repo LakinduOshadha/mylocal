@@ -1,6 +1,6 @@
 import GIGServer from 'model/GIGServer.js';
 import MathX from 'model/MathX.js';
-import {CENSUS_TABLES} from 'model/Census.js';
+import {CENSUS_TABLES, getCensusLabel} from 'model/Census.js';
 import {
   titleCase,
   formatPercent,
@@ -75,13 +75,6 @@ function renderDescription(dataMap) {
 
 async function renderCensusInfo(tableName, entity, iTable) {
   const entityID = entity.id;
-  const censusName = titleCase(
-      tableName
-        .replace('_of_population', '')
-        .replace('_of_household', '')
-        .replace('_by_household', '')
-        .replace('_in_housing_unit', '')
-  )
   const dataMap = await GIGServer.getCensus(tableName, entityID);
 
   let ChartComponent;
@@ -96,7 +89,7 @@ async function renderCensusInfo(tableName, entity, iTable) {
 
   return (
     <div key={`div-census-info-${iTable}-${tableName}`}>
-      <h2>{censusName}</h2>
+      <h2>{getCensusLabel(tableName)}</h2>
       {valueIsPercent ? null : renderDescription(dataMap)}
       <div className="div-census-chart-component">
         <ChartComponent
