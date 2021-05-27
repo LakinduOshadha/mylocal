@@ -1,9 +1,5 @@
 import {Component} from 'react';
-import {
-  formatPercent,
-  formatPercentAndTotal,
-  titleCase,
-} from 'view/FormatUtils.js';
+import Format from 'view/Format.js';
 
 import './Table.css';
 
@@ -24,12 +20,12 @@ export default class PieChart extends Component {
                       <circle cx="5" cy="10" r="5" style={{'fill': color}} />
                     </svg>
                   </td>
-                  <th>{titleCase(key)}</th>
+                  <th>{Format.titleCase(key)}</th>
                   <td className="align-right">
                     <div>
                       {valueIsPercent
-                          ? formatPercent(value)
-                          : formatPercentAndTotal(value, total)
+                          ? Format.percent(value)
+                          : Format.percentAndTotal(value, total)
                       }
                       {}
                     </div>

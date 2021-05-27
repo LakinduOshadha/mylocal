@@ -1,6 +1,4 @@
-import {
-  formatPhone,
-} from 'view/FormatUtils.js';
+import Format from 'view/Format.js';
 
 export function getProvinceInfo(entityData) {
   return Object.assign({}, {
@@ -35,8 +33,8 @@ export function getPSInfo(entityData) {
   return {
     Name: entityData.name + ' Police Station',
     Division: entityData.division + ' Division',
-    Office: formatPhone(entityData.phone_office),
-    Mobile: formatPhone(entityData.fax),
-    Fax: formatPhone(entityData.phone_mobile),
+    Office: Format.phone(entityData.phone_office),
+    Mobile: Format.phone(entityData.fax),
+    Fax: Format.phone(entityData.phone_mobile),
   };
 }

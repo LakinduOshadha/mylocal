@@ -1,13 +1,10 @@
 import {indexArrayByKey} from 'model/DataStructures.js';
 import {ENTITY} from 'model/EntityConstants.js';
 import Entity from 'model/Entity.js';
-import {
-  formatArea,
-  formatPopulation,
-  formatAltitude,
-  formatPopDensity,
-} from 'view/FormatUtils.js';
+import Format from 'view/Format.js';
+
 import EntityLink from 'view/components/EntityLink.js';
+
 import {
   getProvinceInfo,
   getDistrictInfo,
@@ -74,10 +71,10 @@ function getBaseInfo(entityData) {
   return Object.assign({},
     {
       Name: `${entityData.name} ${Entity.getEntityLabel(entityType)}`,
-      Area: formatArea(entityData.area),
-      Population: formatPopulation(entityData.population),
-      'Pop. Density': formatPopDensity(entityData.population, entityData.area),
-      'Altitude (Centroid)': formatAltitude(entityData.centroid_altitude),
+      Area: Format.area(entityData.area),
+      Population: Format.population(entityData.population),
+      'Pop. Density': Format.popDensity(entityData.population, entityData.area),
+      'Altitude (Centroid)': Format.altitude(entityData.centroid_altitude),
     },
     renderIDInfo(entityData),
     renderSetsInfo(entityData),

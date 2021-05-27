@@ -5,10 +5,7 @@ import {
   getCensusLabel,
   CENSUS_TABLE_SPAN_INFO,
 } from 'model/Census.js';
-import {
-  titleCase,
-  formatPercent,
-} from 'view/FormatUtils.js';
+import Format from 'view/Format.js';
 import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';
 
@@ -22,8 +19,8 @@ function renderDescription(dataMap) {
 
   return data.map(
     function([k, v], i) {
-      const renderedPct = formatPercent(v / total);
-      const renderedLabel =  `"${titleCase(k)}"`
+      const renderedPct = Format.percent(v / total);
+      const renderedLabel =  `"${Format.titleCase(k)}"`
       if (v > total * 0.5) {
         return `${renderedLabel} majority (${renderedPct}). `;
       } else if (i === 0) {

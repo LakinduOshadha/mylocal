@@ -1,6 +1,4 @@
-import {
-  titleCase,
-} from 'view/FormatUtils.js';
+import Format from 'view/Format.js';
 
 export const CENSUS_TABLES = [
   'ethnicity_of_population',
@@ -70,7 +68,7 @@ export const CENSUS_TABLE_SPAN_INFO = {
 }
 
 export function getCensusLabel(tableName) {
-  return titleCase(
+  return Format.titleCase(
       tableName
         .replace('_of_population', '')
         .replace('_of_household', '')
