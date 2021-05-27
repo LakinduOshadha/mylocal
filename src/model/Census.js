@@ -21,10 +21,10 @@ export const CENSUS_TABLES = [
   'living_quarters',
   'type_of_housing_unit',
   'marital_status_of_population',
-  // 'wall_type_in_housing_units',
-  // 'occupation_status_of_housing_units',
+  'wall_type_in_housing_units',
+  'occupation_status_of_housing_units',
   'year_of_construction_of_housing_unit',
-  // 'persons_living_in_housing_unit',
+  'persons_living_in_housing_unit',
 ];
 
 export const CENSUS_TABLE_SPAN_INFO = {
@@ -65,6 +65,25 @@ export const CENSUS_TABLE_SPAN_INFO = {
     ['8_rooms', 1],
     ['9_rooms', 1],
   ],
+
+  persons_living_in_housing_unit: [
+    ['1_person', 1],
+    ['2_persons', 1],
+    ['3_persons', 1],
+    ['4_persons', 1],
+    ['5_persons', 1],
+    ['6_persons', 1],
+    ['7_persons', 1],
+    ['8_persons', 1],
+    ['9_persons', 1],
+  ],
+  households_living_in_housing_unit: [
+    ['1_household', 1],
+    ['2_households', 1],
+    ['3_households', 1],
+    ['4_households', 1],
+    ['5_or_more', 1],
+  ]
 }
 
 export function getCensusLabel(tableName) {

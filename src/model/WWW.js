@@ -14,7 +14,6 @@ export default class WWW {
       urlRelative,
       async function () {
         const urlAbsolute = WWW.getURLAbsolute(urlRelative);
-        console.debug(`WWW.getJSON: ${urlAbsolute}`);
         return await d3.json(urlAbsolute);
       }
     )
