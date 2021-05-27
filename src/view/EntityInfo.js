@@ -2,24 +2,26 @@ import {indexArrayByKey} from 'model/DataStructures.js';
 import Entity, {ENTITY} from 'model/Entity.js';
 import {
   formatArea,
-  formatPhone,
   formatPopulation,
   formatAltitude,
   formatPopDensity,
 } from 'view/FormatUtils.js';
 import EntityLink from 'view/components/EntityLink.js';
 
+import {
+  getProvinceInfo,
+  getDistrictInfo,
+  getDSDInfo,
+  getGNDInfo,
+  getPSInfo,
+} from 'view/EntityInfoCustom.js';
+
 import './EntityInfo.css';
 
 function renderIDInfo(entityData) {
-  const cmp = (v) => (entityData.id.includes(v) ? 100 : 0) + v.length;
   const idDataEntries = Object.entries(entityData).filter(
     function([k, v]) {
       return k.includes('_id');
-    }
-  ).sort(
-    function([kA, vA], [kB, vB]) {
-      return cmp(vB) - cmp(vA);
     }
   );
 
@@ -69,7 +71,6 @@ function renderSetsInfo(entityData) {
           }
           </div>
         );
-
       }
     }
   )
@@ -78,52 +79,21 @@ function renderSetsInfo(entityData) {
 }
 
 function getBaseInfo(entityData) {
-  return Object.assign({}, renderIDInfo(entityData), renderSetsInfo(entityData), {
-    Area: formatArea(entityData.area),
-    Population: formatPopulation(entityData.population),
-    'Pop. Density': formatPopDensity(entityData.population, entityData.area),
-    'Altitude (Centroid)': formatAltitude(entityData.centroid_altitude),
-  });
-}
-
-
-function getProvinceInfo(entityData) {
-  return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.id,
-    'FIPS code': entityData.fips,
-  });
-}
-
-function getDistrictInfo(entityData) {
-  return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.id,
-    'FIPS code': entityData.fips,
-    'HASC code': entityData.hasc,
-  });
-}
-
-function getDSDInfo(entityData) {
-  return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.id,
-    'HASC code': entityData.hasc,
-  });
-}
-
-function getGNDInfo(entityData) {
-  return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.id,
-    'GND Num': entityData.gnd_num,
-  });
-}
-
-function getPSInfo(entityData) {
-  return {
-    Name: entityData.name + ' Police Station',
-    Division: entityData.division + ' Division',
-    Office: formatPhone(entityData.phone_office),
-    Mobile: formatPhone(entityData.fax),
-    Fax: formatPhone(entityData.phone_mobile),
-  };
+  if (!entityData.area) {
+    return {};
+  }
+  const entityType = Entity.getEntityType(entityData.id);
+  return Object.assign({},
+    {
+      Name: `${entityData.name} ${Entity.getEntityLabel(entityType)}`,
+      Area: formatArea(entityData.area),
+      Population: formatPopulation(entityData.population),
+      'Pop. Density': formatPopDensity(entityData.population, entityData.area),
+      'Altitude (Centroid)': formatAltitude(entityData.centroid_altitude),
+    },
+    renderIDInfo(entityData),
+    renderSetsInfo(entityData),
+  );
 }
 
 export default function getEntityInfo(entityType, entityData) {
@@ -133,12 +103,10 @@ export default function getEntityInfo(entityType, entityData) {
     [ENTITY.DSD]: getDSDInfo,
     [ENTITY.GND]: getGNDInfo,
     [ENTITY.PS]: getPSInfo,
-
-    [ENTITY.ED]: getBaseInfo,
-    [ENTITY.PD]: getBaseInfo,
-
-    [ENTITY.MOH]: getBaseInfo,
-    [ENTITY.LG]: getBaseInfo,
   };
-  return entityTypeToInfoGetter[entityType](entityData);
+  return Object.assign({},
+    getBaseInfo(entityData),
+    entityTypeToInfoGetter[entityType]
+      ? entityTypeToInfoGetter[entityType](entityData) : {},
+  );
 }
