@@ -14,10 +14,10 @@ const CENSUS_TABLES = [
   'age_group_of_population',
   'relationship_to_household_head_of_population',
   'communication_items_owned_by_household',
-  // 'cooking_fuel_of_household',
-  // 'roof_type_in_housing_unit',
-  // 'rooms_in_housing_unit',
-  // 'floor_type_in_housing_unit',
+  'cooking_fuel_of_household',
+  'roof_type_in_housing_unit',
+  'rooms_in_housing_unit',
+  'floor_type_in_housing_unit',
   // 'solid_waste_disposal_by_household',
   // 'source_of_drinking_water_of_household',
   // 'households_living_in_housing_unit',
@@ -61,6 +61,17 @@ const ageKeysMap = {
     ['2010', 1],
     ['2011', 1],
   ],
+  rooms_in_housing_unit: [
+    ['1_room', 1],
+    ['2_rooms', 1],
+    ['3_rooms', 1],
+    ['4_rooms', 1],
+    ['5_rooms', 1],
+    ['6_rooms', 1],
+    ['7_rooms', 1],
+    ['8_rooms', 1],
+    ['9_rooms', 1],
+  ]
 }
 
 function renderDescription(dataMap) {
