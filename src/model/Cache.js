@@ -1,6 +1,6 @@
 const md5 = require('md5');
-const CACHE_VERSION = 'v2021-05-27.1909';
-const CACHE_ENABLED = true;
+const CACHE_VERSION = 'v2021-05-27.1936';
+const CACHE_ENABLED = false;
 
 // localStorage.clear();
 
