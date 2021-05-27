@@ -1,3 +1,5 @@
+import MathX from 'model/MathX.js';
+
 let FIELD_NAME_TO_COLOR = {
   'bharatha': 'hsl(21, 100%, 80%)',
   'burgher': 'purple',
@@ -28,8 +30,10 @@ export function hsla(h, s, l, a) {
 }
 
 export function getRandomColor() {
-  const l = parseInt(Math.random() * 100);
-  return hsla(210, 100, l, 0.8);
+  const h = MathX.randomInt(0, 360);
+  const s = MathX.randomInt(20, 80);
+  const l = MathX.randomInt(20, 80);
+  return hsla(h, s, l, 1);
 }
 
 

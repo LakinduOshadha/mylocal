@@ -4,4 +4,8 @@ export default class MathX {
       return a + b
     }, 0);
   }
+
+  static randomInt(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 }

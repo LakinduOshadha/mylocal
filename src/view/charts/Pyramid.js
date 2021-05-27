@@ -6,45 +6,32 @@ import Table from './Table.js';
 
 import './Pyramid.css';
 
-const AGE_KEYS = [
-  'less_than_10',
-  '10_19',
-  '20_29',
-  '30_39',
-  '40_49',
-  '50_59',
-  '60_69',
-  '70_79',
-  '80_89',
-  '90_and_above',
-]
-
 export default class Pyramid extends Component {
   render() {
-    const {dataMap, tableName} = this.props;
+    const {dataMap, tableName, ageKeys} = this.props;
     const innerDataMap = Object.values(dataMap)[0];
 
     const [width, height]= [300, 400];
-    const [cx, cy] = [width / 2, height / 2];
-    const r = Math.min(cx, cy);
-
     const styleDiv = {width: width * 2, height}
 
-    const dataValues = AGE_KEYS.map(k => innerDataMap[k]);
+    const dataValues = ageKeys.map(k => innerDataMap[k[0]]);
+    const totalKeySpan = MathX.sum(ageKeys.map(k => k[1]));
     const total = MathX.sum(dataValues);
-    const max = Math.max(...dataValues)
+    const max = Math.max(...ageKeys.map(k => innerDataMap[k[0]] / k[1]));
 
-    const nData = AGE_KEYS.length;
+    const nData = ageKeys.length;
     let tableInfos = [];
-    const renderedBars = AGE_KEYS.map(
-      function(ageKey, iData) {
+    let rollingKeySpan = 0;
+    const renderedBars = ageKeys.map(
+      function([ageKey, keySpan], iData) {
         const value = innerDataMap[ageKey];
         const fieldName = ageKey;
 
-        const widthBar = width * (value / max);
-        const heightBar = height / nData;
+        const widthBar = width * (value / max) / keySpan;
+        const heightBar = height * (keySpan / totalKeySpan);
         const x = width / 2 - widthBar / 2;
-        const y = height * iData / nData;
+        const y = height * rollingKeySpan / totalKeySpan;
+        rollingKeySpan += keySpan;
 
         const fill = hsla(120 * (1 - iData / nData), 80, 50, 1);
         tableInfos.push({
