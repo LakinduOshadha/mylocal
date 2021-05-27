@@ -3,6 +3,8 @@ import {withRouter} from "react-router-dom";
 
 import {MapContainer, TileLayer} from 'react-leaflet';
 
+import {ENTITY} from 'model/EntityConstants.js';
+import GeoServer from 'model/GeoServer.js';
 import {LAT_LNG} from 'model/LatLngConstants.js';
 import MapLocationMarker from '../components/MapLocationMarker.js';
 
@@ -16,7 +18,6 @@ export default class Page extends Component {
     this.onChangeLocation = this.onChangeLocation.bind(this);
   }
 
-
   async getLatLngAndZoom() {
     return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
   }
@@ -26,11 +27,13 @@ export default class Page extends Component {
     this.setState({latLng, zoom});
   }
 
-  onChangeLocation([lat, lng]) {
-    window.location.href = `/mylocal/location/${lat}N,${lng}E,15z`;
+  async onChangeLocation([lat, lng]) {
+    const region = await GeoServer.getRegionInfo([lat, lng]);
+    const gndID = region[ENTITY.GND];
+    if (gndID) {
+      window.location.href = `/mylocal/admin/${gndID}`;
+    }
   }
-
-
 
   renderInner() {
     return null;

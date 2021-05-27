@@ -11,8 +11,9 @@ export default function MapLocationMarker({onChangeLocation}) {
     },
   })
   const [position, setPosition] = useState(map.getCenter());
-
-  return position === null ? null : (
-    <Marker position={position} />
-  );
+  //
+  // return position === null ? null : (
+  //   <Marker position={position} />
+  // );
+  return null;
 }
