@@ -46,7 +46,7 @@ function renderSetsInfo(entityData) {
   );
 }
 
-function getBaseInfo(entityData) {
+async function getBaseInfo(entityData) {
   if (!entityData.area) {
     return {};
   }
@@ -64,7 +64,7 @@ function getBaseInfo(entityData) {
   );
 }
 
-export default function getEntityInfo(entityType, entityData) {
+export default async function getEntityInfo(entityType, entityData) {
   const entityTypeToInfoGetter = {
     [ENTITY.PROVINCE]: getProvinceInfo,
     [ENTITY.DISTRICT]: getDistrictInfo,
@@ -73,8 +73,8 @@ export default function getEntityInfo(entityType, entityData) {
     [ENTITY.PS]: getPSInfo,
   };
   return Object.assign({},
-    getBaseInfo(entityData),
+    await getBaseInfo(entityData),
     entityTypeToInfoGetter[entityType]
-      ? entityTypeToInfoGetter[entityType](entityData) : {},
+      ? (await entityTypeToInfoGetter[entityType](entityData)) : {},
   );
 }

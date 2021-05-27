@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import {ENTITY} from 'model/EntityConstants.js';
 import Entity from 'model/Entity.js';
 import GIGServer from 'model/GIGServer.js';
 
@@ -17,6 +18,8 @@ export default class EntityLink extends Component {
 
   render() {
     const {entityID} = this.props;
+    const entityType = Entity.getEntityType(entityID)
+
     if (entityID === 'LK') {
       return 'Sri Lanka';
     }
@@ -25,15 +28,20 @@ export default class EntityLink extends Component {
     let label = entityID;
     let className = 'entity-link ';
     if (entity) {
-        const entityType = Entity.getEntityType(entityID)
         label = `${entity.name} ${Entity.getEntityLabelShort(entityType)}`;
         className += 'link-name';
     } else {
       className += 'link-id';
     }
 
+    let pageName = 'admin';
+    if (entityType === ENTITY.PS) {
+      pageName = 'place';
+    }
+
+
     return (
-      <a className={className} href={`/mylocal/admin/${entityID}`}>
+      <a className={className} href={`/mylocal/${pageName}/${entityID}`}>
         {label}
       </a>
     )

@@ -17,7 +17,7 @@ export default class PieChart extends Component {
                 <tr key={`tr-${iRow}-${key}`}>
                   <td>
                     <svg width="10" heigh="10">
-                      <circle cx="5" cy="10" r="5" style={{'fill': color}} />
+                      <circle cx="5" cy="7" r="5" style={{'fill': color}} />
                     </svg>
                   </td>
                   <th>{Format.titleCase(key)}</th>

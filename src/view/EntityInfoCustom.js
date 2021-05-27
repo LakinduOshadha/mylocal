@@ -1,13 +1,16 @@
+import {ENTITY} from 'model/EntityConstants.js';
+import {getPlacesWithinRegion} from 'model/Places.js';
 import Format from 'view/Format.js';
+import {renderID, renderIDListList} from 'view/components/EntityLink.js';
 
-export function getProvinceInfo(entityData) {
+export async function getProvinceInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
   });
 }
 
-export function getDistrictInfo(entityData) {
+export async function getDistrictInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
@@ -15,26 +18,32 @@ export function getDistrictInfo(entityData) {
   });
 }
 
-export function getDSDInfo(entityData) {
+export async function getDSDInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'HASC code': entityData.hasc,
   });
 }
 
-export function getGNDInfo(entityData) {
+export async function getGNDInfo(entityData) {
+  const policeEntities = await getPlacesWithinRegion(ENTITY.PS, entityData.id);
+  const placeInfo = (policeEntities.length > 0) ? {
+    'Police Stations': renderID(policeEntities[0].id),
+  } : null;
+
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
-  });
+  }, placeInfo);
 }
 
-export function getPSInfo(entityData) {
+export async function getPSInfo(entityData) {
   return {
     Name: entityData.name + ' Police Station',
     Division: entityData.division + ' Division',
-    Office: Format.phone(entityData.phone_office),
-    Mobile: Format.phone(entityData.fax),
-    Fax: Format.phone(entityData.phone_mobile),
+    Office: Format.phoneNum(entityData.phone_office),
+    Mobile: Format.phoneNum(entityData.fax),
+    Fax: Format.phoneNum(entityData.phone_mobile),
+    'GND of Location': renderID(entityData.gnd_id),
   };
 }
