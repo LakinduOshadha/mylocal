@@ -1,6 +1,8 @@
 import GIGServer from 'model/GIGServer.js';
+import MathX from 'model/MathX.js';
 import {
   titleCase,
+  formatPercent,
 } from 'view/FormatUtils.js';
 import PieChart from 'view/charts/PieChart.js';
 
@@ -32,7 +34,25 @@ const CENSUS_TABLES = [
 ];
 
 function renderDescription(dataMap) {
-  return 'TODO';
+  const data = Object.entries(Object.values(dataMap)[0])
+    .filter((x) => (x[0] !== 'entity_id') && (!x[0].includes('total_')))
+    .sort((a, b) => b[1] - a[1]);
+  const total = MathX.sum(data.map(x => x[1]));
+
+  return data.map(
+    function([k, v], i) {
+      const renderedPct = formatPercent(v / total);
+      const renderedLabel =  `"${titleCase(k)}"`
+      if (v > total * 0.5) {
+        return `${renderedLabel} majority (${renderedPct}). `;
+      } else if (i === 0) {
+        return `${renderedLabel} plurality (${renderedPct}). `;
+      } else if (v > total * 0.25) {
+        return `Significant ${renderedLabel} minority (${renderedPct}). `;
+      }
+      return undefined;
+    }
+  ).join('');
 }
 
 async function renderCensusInfo(tableName, entity, iTable) {

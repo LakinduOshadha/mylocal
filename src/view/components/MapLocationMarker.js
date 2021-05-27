@@ -5,7 +5,6 @@ export default function MapLocationMarker({onChangeLocation}) {
   const map = useMapEvents({
     click(e) {
       const {lat, lng} = e.latlng;
-      const zoom = map.getZoom();
       map.flyTo({lat, lng}, map.getZoom())
       setPosition({lat, lng})
       onChangeLocation([lat, lng])
