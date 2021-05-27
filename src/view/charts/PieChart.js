@@ -7,8 +7,8 @@ import './PieChart.css';
 
 export default class PieChart extends Component {
   render() {
-    const {dataMap, tableName} = this.props;
-    const {extendedData, total} = getExtendedData(dataMap);
+    const {dataMap, tableName, valueIsPercent} = this.props;
+    const {extendedData, total} = getExtendedData(dataMap, valueIsPercent);
     const [width, height]= [200, 200];
     const [cx, cy] = [width / 2, height / 2];
     const r = Math.min(cx, cy);
@@ -57,13 +57,19 @@ export default class PieChart extends Component {
 
     return (
       <div key={'div-' + tableName} className="div-pie-chart-outer">
-        <div className="div-pie-chart" style={styleDiv}>
-          <svg width={width} height={height}>
-            {renderedArcs}
-          </svg>
-        </div>
+        {valueIsPercent ? null : (
+          <div className="div-pie-chart" style={styleDiv}>
+            <svg width={width} height={height}>
+              {renderedArcs}
+            </svg>
+          </div>
+        )}
         <div className="div-table">
-          {<Table tableInfos={tableInfos} total={runningTotal}/>}
+          {<Table
+            tableInfos={tableInfos}
+            total={total}
+            valueIsPercent={valueIsPercent}
+          />}
         </div>
       </div>
     )

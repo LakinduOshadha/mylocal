@@ -8,12 +8,12 @@ import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';
 
 const CENSUS_TABLES = [
-  // 'ethnicity_of_population',
-  // 'religious_affiliation_of_population',
-  // 'gender_of_population',
-  // 'age_group_of_population',
-  // 'relationship_to_household_head_of_population',
-  // 'communication_items_owned_by_household',
+  'ethnicity_of_population',
+  'religious_affiliation_of_population',
+  'gender_of_population',
+  'age_group_of_population',
+  'relationship_to_household_head_of_population',
+  'communication_items_owned_by_household',
   // 'cooking_fuel_of_household',
   // 'roof_type_in_housing_unit',
   // 'rooms_in_housing_unit',
@@ -103,15 +103,19 @@ async function renderCensusInfo(tableName, entity, iTable) {
       ChartComponent = PieChart;
   }
 
+  const valueIsPercent =
+    (tableName === 'communication_items_owned_by_household');
+
   return (
     <div key={`div-census-info-${iTable}-${tableName}`}>
       <h2>{censusName}</h2>
-      {renderDescription(dataMap)}
+      {valueIsPercent ? null : renderDescription(dataMap)}
       <div>
         <ChartComponent
           dataMap={dataMap}
           tableName={tableName}
           ageKeys={ageKeysMap[tableName]}
+          valueIsPercent={valueIsPercent}
         />
       </div>
     </div>

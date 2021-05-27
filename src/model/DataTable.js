@@ -1,7 +1,7 @@
 import MathX from 'model/MathX.js';
 const DEFAULT_OTHERS_LIMIT = 0.01;
 
-export function getExtendedData(dataMap) {
+export function getExtendedData(dataMap, valueIsPercent=false) {
   const extendedDataRaw = Object.entries(Object.values(dataMap)[0]).map(
       function ([fieldName, value]) {
         return [fieldName, value];
@@ -17,7 +17,7 @@ export function getExtendedData(dataMap) {
     }
   );
 
-  const total = MathX.sum(
+  const total = (valueIsPercent) ? 1: MathX.sum(
     extendedDataRaw.map(([fieldName, value]) => value)
   );
 
@@ -30,7 +30,7 @@ export function getExtendedData(dataMap) {
   const totalSig = MathX.sum(extendedDataSig.map(
       ([fieldName, value]) => value),
   );
-  const others = total - totalSig;
+  const others = valueIsPercent ? 0 : (total - totalSig);
 
   let extendedData = extendedDataSig;
   if (others) {

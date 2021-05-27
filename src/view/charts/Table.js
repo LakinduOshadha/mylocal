@@ -1,5 +1,6 @@
 import {Component} from 'react';
 import {
+  formatPercent,
   formatPercentAndTotal,
   titleCase,
 } from 'view/FormatUtils.js';
@@ -8,7 +9,7 @@ import './Table.css';
 
 export default class PieChart extends Component {
   render() {
-    const {tableInfos, total} = this.props;
+    const {tableInfos, total, valueIsPercent} = this.props;
 
     return (
       <table>
@@ -26,7 +27,11 @@ export default class PieChart extends Component {
                   <th>{titleCase(key)}</th>
                   <td className="align-right">
                     <div>
-                      {formatPercentAndTotal(value, total)}
+                      {valueIsPercent
+                          ? formatPercent(value)
+                          : formatPercentAndTotal(value, total)
+                      }
+                      {}
                     </div>
                   </td>
                 </tr>
