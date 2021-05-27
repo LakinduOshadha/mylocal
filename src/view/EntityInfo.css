@@ -1,8 +1,8 @@
-.div-id-groups {
+.div-id-list-list {
   display: table-row;
 }
 
-.div-id-group {
+.div-id-list {
   display: table-cell;
   padding-right: 6px;
 }

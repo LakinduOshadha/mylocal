@@ -14,53 +14,48 @@ import {
 } from 'view/EntityInfoCustom.js';
 import './EntityInfo.css';
 
+function renderID(id) {
+  return (<div><EntityLink entityID={id} /></div>);
+}
+
+function renderIDList(idList) {
+  return (<div className="div-id-list">{idList.sort().map(renderID)}</div>)
+}
+
+function renderIDListList(idListList) {
+  return (
+    <div className="div-id-list-list">
+      {idListList.sort().map(renderIDList)}
+    </div>
+  );
+}
+
 function renderIDInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
     function(idInfo, [_, id]) {
-      idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = (
-          <EntityLink entityID={id} />
-      );
+      idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = renderID(id);
       return idInfo;
     }, {},
   )
 }
 
 function renderSetsInfo(entityData) {
-  let info = {};
-
   [
     ['eqs', 'Equivalent to'],
     ['subs', 'Contains'],
     ['supers', 'Contained in'],
     ['ints', 'Overlaps with'],
-  ].forEach(
-    function([k, label]) {
-      const ids = entityData[k];
-      if (!ids || ids.length === 0) {
-        return;
-      }
-
-      const typeToIds = indexArrayByKey(ids, Entity.getEntityType);
-
-      info[label] = (
-        <div className="div-id-groups">{
-          Object.values(typeToIds).map(
-            function(ids) {
-              return (
-                <div className="div-id-group">{
-                    ids.sort().map(
-                      (id) => (<div><EntityLink entityID={id} /></div>),
-                    )
-                }</div>
-              );
-            }
-          )
-        }</div>
+  ].reduce(
+    function(info, [k, label]) {
+      const idListList = Object.values(
+        indexArrayByKey(entityData[k], Entity.getEntityType),
       );
-    }
-  )
-
-  return info;
+      return Object.assign(info, {
+        [label]: (<div>{renderIDListList(idListList)}</div>),
+      });
+    },
+    {},
+  );
 }
 
 function getBaseInfo(entityData) {
