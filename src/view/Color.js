@@ -22,9 +22,14 @@ FIELD_NAME_TO_COLOR['islam'] = FIELD_NAME_TO_COLOR['moor'];
 FIELD_NAME_TO_COLOR['roman_catholic'] = FIELD_NAME_TO_COLOR['burgher'];
 FIELD_NAME_TO_COLOR['other_christian'] = FIELD_NAME_TO_COLOR['chetty'];
 
+
+export function hsla(h, s, l, a) {
+  return `hsl(${h},${s}%,${l}%, ${a})`;
+}
+
 export function getRandomColor() {
   const l = parseInt(Math.random() * 100);
-  return `hsl(210,100%,${l}%)`;
+  return hsla(210, 100, l, 0.8);
 }
 
 

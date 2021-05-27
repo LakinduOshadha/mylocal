@@ -5,6 +5,7 @@ import {
   formatPercent,
 } from 'view/FormatUtils.js';
 import PieChart from 'view/charts/PieChart.js';
+import Pyramid from 'view/charts/Pyramid.js';
 
 const CENSUS_TABLES = [
   'ethnicity_of_population',
@@ -65,12 +66,22 @@ async function renderCensusInfo(tableName, entity, iTable) {
         .replace('_in_housing_unit', '')
   )
   const dataMap = await GIGServer.getCensus(tableName, entityID);
+
+  let ChartComponent;
+  switch(tableName) {
+    case 'age_group_of_population':
+      ChartComponent = Pyramid;
+      break;
+    default:
+      ChartComponent = PieChart;
+  }
+
   return (
     <div key={`div-census-info-${iTable}-${tableName}`}>
       <h2>{censusName}</h2>
       {renderDescription(dataMap)}
       <div>
-        <PieChart dataMap={dataMap} tableName={tableName}/>
+        <ChartComponent dataMap={dataMap} tableName={tableName}/>
       </div>
     </div>
   );

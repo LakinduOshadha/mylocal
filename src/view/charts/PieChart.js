@@ -16,6 +16,7 @@ export default class PieChart extends Component {
     const styleDiv = {width: width * 2, height}
 
     let runningTotal = 0;
+    let tableInfos = [];
     const renderedArcs = extendedData.map(
       function([fieldName, value], iData) {
         const p1 = runningTotal / total;
@@ -42,6 +43,11 @@ export default class PieChart extends Component {
         ].join(' ');
 
         const fill = getFieldNameColor(fieldName);
+        tableInfos.push({
+          key: fieldName,
+          value: value,
+          color: fill,
+        })
 
         return (
           <path key={'pie-chart-' + iData} d={d} fill={fill}/>
@@ -53,12 +59,11 @@ export default class PieChart extends Component {
       <div key={'div-' + tableName} className="div-pie-chart-outer">
         <div className="div-pie-chart" style={styleDiv}>
           <svg width={width} height={height}>
-            <circle cx={cx} cy={cy} r={r} />
             {renderedArcs}
           </svg>
         </div>
         <div className="div-table">
-          {<Table dataMap={dataMap} />}
+          {<Table tableInfos={tableInfos} total={runningTotal}/>}
         </div>
       </div>
     )

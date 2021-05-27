@@ -1,5 +1,5 @@
 import MathX from 'model/MathX.js';
-const OTHERS_LIMIT = 0.01;
+const DEFAULT_OTHERS_LIMIT = 0.01;
 
 export function getExtendedData(dataMap) {
   const extendedDataRaw = Object.entries(Object.values(dataMap)[0]).map(
@@ -16,11 +16,14 @@ export function getExtendedData(dataMap) {
       return valueB - valueA;
     }
   );
-  const total = MathX.sum(extendedDataRaw.map(([fieldName, value]) => value));
+
+  const total = MathX.sum(
+    extendedDataRaw.map(([fieldName, value]) => value)
+  );
 
   const extendedDataSig = extendedDataRaw.filter(
     function ([label, value]) {
-      return (value > total * OTHERS_LIMIT) && (label !== 'other');
+      return (value > total * DEFAULT_OTHERS_LIMIT) && (label !== 'other');
     }
   )
 

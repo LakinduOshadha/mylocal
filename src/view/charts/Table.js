@@ -1,34 +1,30 @@
 import {Component} from 'react';
-import {getExtendedData} from 'model/DataTable.js';
-import {getFieldNameColor} from 'view/Color.js';
 import {
   formatPercentAndTotal,
   titleCase,
 } from 'view/FormatUtils.js';
 
-import './PieChart.css';
+import './Table.css';
 
 export default class PieChart extends Component {
   render() {
-    const {dataMap} = this.props;
-    const {extendedData, total} = getExtendedData(dataMap);
+    const {tableInfos, total} = this.props;
 
     return (
       <table>
         <tbody>
-          {extendedData.map(
-            function([fieldName, value], iRow) {
-              const fill = getFieldNameColor(fieldName);
+          {tableInfos.map(
+            function({key, value, color}, iRow) {
 
               return (
-                <tr key={`tr-${iRow}-${fieldName}`}>
+                <tr key={`tr-${iRow}-${key}`}>
                   <td>
                     <svg width="10" heigh="10">
-                      <circle cx="5" cy="5" r="5" style={{'fill': fill}} />
+                      <circle cx="5" cy="10" r="5" style={{'fill': color}} />
                     </svg>
                   </td>
-                  <th>{titleCase(fieldName)}</th>
-                  <td>
+                  <th>{titleCase(key)}</th>
+                  <td className="align-right">
                     <div>
                       {formatPercentAndTotal(value, total)}
                     </div>

@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 export const formatNumWithComma = d3.format(",")
-export const formatPercent = d3.format(".0%")
+export const formatPercent = d3.format(".2p")
 export const formatArea = (area) => formatNumWithComma(area) + ' km²';
 export const formatAltitude = (altitude) => formatNumWithComma(altitude) + ' m';
 
