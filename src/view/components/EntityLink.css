@@ -1,7 +1,10 @@
-.link-id {
+.entity-link {
+
+}
+.entity-link-id {
   opacity: 0.2;
 }
 
-.link-name {
+.entity-link-name {
   opacity: 1.0;
 }

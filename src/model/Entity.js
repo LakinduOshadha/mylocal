@@ -105,6 +105,13 @@ export default class Entity {
     return ENTITY_LABEL_SHORT_MAP[entityType];
   }
 
+  static getIDEntries(entityData) {
+    return Object.entries(entityData).filter(
+      function([k, v]) {
+        return k.includes('_id');
+      }
+    );
+  }
 
 
 }

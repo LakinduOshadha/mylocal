@@ -1,6 +1,7 @@
 td {
   text-align: left;
   padding-bottom: 6px;
+  max-width: 200px;
 }
 
 th {

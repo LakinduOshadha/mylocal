@@ -7,7 +7,6 @@ import {
   formatPopDensity,
 } from 'view/FormatUtils.js';
 import EntityLink from 'view/components/EntityLink.js';
-
 import {
   getProvinceInfo,
   getDistrictInfo,
@@ -15,25 +14,16 @@ import {
   getGNDInfo,
   getPSInfo,
 } from 'view/EntityInfoCustom.js';
-
 import './EntityInfo.css';
 
 function renderIDInfo(entityData) {
-  const idDataEntries = Object.entries(entityData).filter(
-    function([k, v]) {
-      return k.includes('_id');
-    }
-  );
-
-  return idDataEntries.reduce(
-    function(idInfo, [k, v]) {
-      const parentEntityType = Entity.getEntityType(v);
-      idInfo[Entity.getEntityLabel(parentEntityType)] = (
-          <EntityLink entityID={v} />
+  return Entity.getIDEntries(entityData).reduce(
+    function(idInfo, [_, id]) {
+      idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = (
+          <EntityLink entityID={id} />
       );
       return idInfo;
-    },
-    {},
+    }, {},
   )
 }
 
@@ -48,30 +38,27 @@ function renderSetsInfo(entityData) {
   ].forEach(
     function([k, label]) {
       const ids = entityData[k];
-      if (ids && ids.length > 0) {
-
-        const typeToIds = indexArrayByKey(ids, Entity.getEntityType);
-
-        info[label] = (
-          <div className="div-id-groups">
-          {
-            Object.values(typeToIds).map(
-              function(ids) {
-                return (
-                  <div className="div-id-group">
-                    {
-                      ids.sort().map(
-                        (id) => (<div><EntityLink entityID={id} /></div>),
-                      )
-                    }
-                  </div>
-                );
-              }
-            )
-          }
-          </div>
-        );
+      if (!ids || ids.length == 0) {
+        return;
       }
+
+      const typeToIds = indexArrayByKey(ids, Entity.getEntityType);
+
+      info[label] = (
+        <div className="div-id-groups">{
+          Object.values(typeToIds).map(
+            function(ids) {
+              return (
+                <div className="div-id-group">{
+                    ids.sort().map(
+                      (id) => (<div><EntityLink entityID={id} /></div>),
+                    )
+                }</div>
+              );
+            }
+          )
+        }</div>
+      );
     }
   )
 

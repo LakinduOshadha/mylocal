@@ -23,11 +23,13 @@ export default class EntityLink extends Component {
     const {entity} = this.state;
 
     let label = entityID;
-    let className = 'link-id';
+    let className = 'entity-link ';
     if (entity) {
         const entityType = Entity.getEntityType(entityID)
         label = `${entity.name} ${Entity.getEntityLabelShort(entityType)}`;
-        className = 'link-name';
+        className += 'link-name';
+    } else {
+      className += 'link-id';
     }
 
     return (
