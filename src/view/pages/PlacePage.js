@@ -1,6 +1,7 @@
 import React from 'react';
 import GIGServer from 'model/GIGServer.js';
-import Entity, {ENTITY_LABEL_MAP} from 'model/Entity.js';
+import Entity from 'model/Entity.js';
+import {ENTITY_LABEL_MAP} from 'model/EntityConstants.js';
 
 import Page, {DEFAULT_ZOOM} from '../pages/Page.js';
 import Infobox from '../components/Infobox.js';

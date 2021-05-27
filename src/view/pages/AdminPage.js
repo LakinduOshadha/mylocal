@@ -1,6 +1,8 @@
 import React from 'react';
 
-import Entity, {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/Entity.js';
+import Entity from 'model/Entity.js';
+import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/EntityConstants.js';
+
 import {getRegionBBox} from 'model/RegionGeo.js';
 import {getZoom} from 'model/OSM.js';
 import {redirectToDefault} from 'model/Browser';

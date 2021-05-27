@@ -1,4 +1,6 @@
-import Entity, {ENTITY} from 'model/Entity.js';
+import Entity from 'model/Entity.js';
+import {ENTITY} from 'model/EntityConstants.js';
+
 import GIGServer from 'model/GIGServer.js';
 import {renderCensusInfos} from './Census.js';
 
