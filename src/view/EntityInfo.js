@@ -3,7 +3,7 @@ import {ENTITY} from 'model/EntityConstants.js';
 import Entity from 'model/Entity.js';
 import Format from 'view/Format.js';
 
-import EntityLink from 'view/components/EntityLink.js';
+import {renderID, renderIDListList} from 'view/components/EntityLink.js';
 
 import {
   getProvinceInfo,
@@ -13,22 +13,6 @@ import {
   getPSInfo,
 } from 'view/EntityInfoCustom.js';
 import './EntityInfo.css';
-
-function renderID(id) {
-  return (<div><EntityLink entityID={id} /></div>);
-}
-
-function renderIDList(idList) {
-  return (<div className="div-id-list">{idList.sort().map(renderID)}</div>)
-}
-
-function renderIDListList(idListList) {
-  return (
-    <div className="div-id-list-list">
-      {idListList.sort().map(renderIDList)}
-    </div>
-  );
-}
 
 function renderIDInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
