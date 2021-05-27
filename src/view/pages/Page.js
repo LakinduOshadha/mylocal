@@ -28,11 +28,11 @@ export default class Page extends Component {
   }
 
   async onChangeLocation([lat, lng]) {
-    const region = await GeoServer.getRegionInfo([lat, lng]);
-    const gndID = region[ENTITY.GND];
-    if (gndID) {
-      window.location.href = `/mylocal/admin/${gndID}`;
-    }
+    // const region = await GeoServer.getRegionInfo([lat, lng]);
+    // const gndID = region[ENTITY.GND];
+    // if (gndID) {
+    //   window.location.href = `/mylocal/admin/${gndID}`;
+    // }
   }
 
   renderInner() {

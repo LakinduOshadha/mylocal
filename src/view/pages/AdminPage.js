@@ -6,18 +6,32 @@ import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/EntityConstants.js';
 import {getRegionBBox} from 'model/RegionGeo.js';
 import {getZoom} from 'model/OSM.js';
 import {redirectToDefault} from 'model/Browser';
+import {ENTITY} from 'model/EntityConstants.js';
+import GeoServer from 'model/GeoServer.js';
 
 import DetailedInfo from '../components/DetailedInfo.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 import Infobox from '../components/Infobox.js';
 import RegionMap from '../components/RegionMap.js';
-
 import Page from '../pages/Page.js';
 
 export default class AdminPage extends Page {
 
+  constructor(props) {
+    super(props);
+    this.state =  {
+      regionID: this.props.match.params.regionID || DEFAULT_ENTITY_ID,
+    };
+  }
+
   getRegionID() {
-    return this.props.match.params.regionID || DEFAULT_ENTITY_ID;
+    return this.state.regionID;
+  }
+
+  async onChangeLocation([lat, lng]) {
+    const region = await GeoServer.getRegionInfo([lat, lng]);
+    const gndID = region[ENTITY.GND];
+    this.setState({regionID: gndID});
   }
 
   async getLatLngAndZoom() {
@@ -45,7 +59,7 @@ export default class AdminPage extends Page {
     const regionType = Entity.getEntityType(regionID);
 
     return (
-      <div>
+      <div key={`div-admin-inner-${regionID}`}>
         <Infobox
           subTitle={ENTITY_LABEL_MAP[regionType]}
           title={regionID}
