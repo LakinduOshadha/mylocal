@@ -24,7 +24,7 @@ function renderIDInfo(entityData) {
 }
 
 function renderSetsInfo(entityData) {
-  [
+  return [
     ['eqs', 'Equivalent to'],
     ['subs', 'Contains'],
     ['supers', 'Contained in'],
