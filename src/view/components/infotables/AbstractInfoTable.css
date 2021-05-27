@@ -4,7 +4,8 @@ td {
 }
 
 th {
-  white-space: nowrap;
+  min-width: 120px;
+  font-weight: normal;
 }
 
 .align-left {

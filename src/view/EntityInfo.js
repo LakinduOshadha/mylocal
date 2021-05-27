@@ -34,6 +34,9 @@ function renderSetsInfo(entityData) {
       const idListList = Object.values(
         indexArrayByKey(entityData[k], Entity.getEntityType),
       );
+      if (idListList.length === 0) {
+        return info;
+      }
       return Object.assign(info, {
         [label]: (<div>{renderIDListList(idListList)}</div>),
       });

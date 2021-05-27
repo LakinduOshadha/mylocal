@@ -72,7 +72,7 @@ let FIELD_NAME_TO_COLOR = {
   'metal_sheet': 'silver',
   'concrete': 'green',
   'zink_aluminium_sheet': 'blue',
-  'cement': 'white',
+  'cement': 'lightgray',
   'tile_or_granite_or_terrazo': 'orange',
   'mud': 'darkbrown',
   'wood': 'brown',
