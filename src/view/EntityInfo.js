@@ -1,3 +1,4 @@
+import {indexArrayByKey} from 'model/DataStructures.js';
 import Entity, {ENTITY} from 'model/Entity.js';
 import {
   formatArea,
@@ -10,9 +11,8 @@ import EntityLink from 'view/components/EntityLink.js';
 
 import './EntityInfo.css';
 
-function getIDInfo(entityData) {
+function renderIDInfo(entityData) {
   const cmp = (v) => (entityData.id.includes(v) ? 100 : 0) + v.length;
-  console.debug(entityData);
   const idDataEntries = Object.entries(entityData).filter(
     function([k, v]) {
       return k.includes('_id');
@@ -35,7 +35,7 @@ function getIDInfo(entityData) {
   )
 }
 
-function getSetsInfo(entityData) {
+function renderSetsInfo(entityData) {
   let info = {};
 
   [
@@ -47,17 +47,8 @@ function getSetsInfo(entityData) {
     function([k, label]) {
       const ids = entityData[k];
       if (ids && ids.length > 0) {
-        const typeToIds = ids.reduce(
-          function(typeToIds, id) {
-            const type = Entity.getEntityType(id);
-            if (!typeToIds[type]) {
-              typeToIds[type] = [];
-            }
-            typeToIds[type].push(id);
-            return typeToIds;
-          },
-          {},
-        );
+
+        const typeToIds = indexArrayByKey(ids, Entity.getEntityType);
 
         info[label] = (
           <div className="div-id-groups">
@@ -87,7 +78,7 @@ function getSetsInfo(entityData) {
 }
 
 function getBaseInfo(entityData) {
-  return Object.assign({}, getIDInfo(entityData), getSetsInfo(entityData), {
+  return Object.assign({}, renderIDInfo(entityData), renderSetsInfo(entityData), {
     Area: formatArea(entityData.area),
     Population: formatPopulation(entityData.population),
     'Pop. Density': formatPopDensity(entityData.population, entityData.area),
@@ -98,14 +89,14 @@ function getBaseInfo(entityData) {
 
 function getProvinceInfo(entityData) {
   return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.province_id,
+    'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
   });
 }
 
 function getDistrictInfo(entityData) {
   return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.district_id,
+    'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
     'HASC code': entityData.hasc,
   });
@@ -113,15 +104,15 @@ function getDistrictInfo(entityData) {
 
 function getDSDInfo(entityData) {
   return Object.assign({}, getBaseInfo(entityData), {
-    'ISO 3166 code': entityData.dsd_id,
+    'ISO 3166 code': entityData.id,
     'HASC code': entityData.hasc,
   });
 }
 
 function getGNDInfo(entityData) {
   return Object.assign({}, getBaseInfo(entityData), {
+    'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
-    'ISO 3166 code': entityData.gnd_id,
   });
 }
 

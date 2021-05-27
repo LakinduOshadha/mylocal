@@ -26,3 +26,17 @@ export function invertDict(dict) {
     {},
   )
 }
+
+export function indexArrayByKey(arr, funcGetKey) {
+  return arr.reduce(
+    function(keyToArr, elem) {
+      const key = funcGetKey(elem);
+      if (!keyToArr[key]) {
+        keyToArr[key] = [];
+      }
+      keyToArr[key].push(elem);
+      return keyToArr;
+    },
+    {},
+  )
+}
