@@ -12,6 +12,7 @@ import {
   getGNDInfo,
   getPSInfo,
 } from 'view/EntityInfoCustom.js';
+
 import './EntityInfo.css';
 
 function renderIDInfo(entityData) {

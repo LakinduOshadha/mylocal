@@ -22,11 +22,11 @@ function renderDescription(dataMap) {
       const renderedPct = Format.percent(v / total);
       const renderedLabel =  `"${Format.titleCase(k)}"`
       if (v > total * 0.5) {
-        return `${renderedLabel} majority (${renderedPct}). `;
+        return `Mostly ${renderedLabel} (${renderedPct}). `;
       } else if (i === 0) {
-        return `${renderedLabel} plurality (${renderedPct}). `;
+        return `Mostly ${renderedLabel} (${renderedPct}). `;
       } else if (v > total * 0.25) {
-        return `Significant ${renderedLabel} minority (${renderedPct}). `;
+        return `Followed by ${renderedLabel} (${renderedPct}). `;
       }
       return undefined;
     }
