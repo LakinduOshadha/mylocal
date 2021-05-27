@@ -8,6 +8,7 @@ import {
 } from 'view/FormatUtils.js';
 import EntityLink from 'view/components/EntityLink.js';
 
+import './EntityInfo.css';
 
 function getIDInfo(entityData) {
   const cmp = (v) => (entityData.id.includes(v) ? 100 : 0) + v.length;
@@ -44,17 +45,40 @@ function getSetsInfo(entityData) {
     ['ints', 'Overlaps with'],
   ].forEach(
     function([k, label]) {
-      const v = entityData[k];
-      if (v && v.length > 0) {
-        info[label] = (
-          <div>
-            {
-              v.sort().map(
-                (id) => (<div><EntityLink entityID={id} /></div>),
-              )
+      const ids = entityData[k];
+      if (ids && ids.length > 0) {
+        const typeToIds = ids.reduce(
+          function(typeToIds, id) {
+            const type = Entity.getEntityType(id);
+            if (!typeToIds[type]) {
+              typeToIds[type] = [];
             }
+            typeToIds[type].push(id);
+            return typeToIds;
+          },
+          {},
+        );
+
+        info[label] = (
+          <div className="div-id-groups">
+          {
+            Object.values(typeToIds).map(
+              function(ids) {
+                return (
+                  <div className="div-id-group">
+                    {
+                      ids.sort().map(
+                        (id) => (<div><EntityLink entityID={id} /></div>),
+                      )
+                    }
+                  </div>
+                );
+              }
+            )
+          }
           </div>
         );
+
       }
     }
   )
