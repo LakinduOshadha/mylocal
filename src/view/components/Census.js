@@ -1,6 +1,10 @@
 import GIGServer from 'model/GIGServer.js';
 import MathX from 'model/MathX.js';
-import {CENSUS_TABLES, getCensusLabel} from 'model/Census.js';
+import {
+  CENSUS_TABLES,
+  getCensusLabel,
+  CENSUS_TABLE_SPAN_INFO,
+} from 'model/Census.js';
 import {
   titleCase,
   formatPercent,
@@ -9,47 +13,6 @@ import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';
 
 import './Census.css';
-
-const ageKeysMap = {
-  age_group_of_population: [
-    ['less_than_10', 10],
-    ['10_19', 10],
-    ['20_29', 10],
-    ['30_39', 10],
-    ['40_49', 10],
-    ['50_59', 10],
-    ['60_69', 10],
-    ['70_79', 10],
-    ['80_89', 10],
-    ['90_and_above', 10],
-  ],
-  year_of_construction_of_housing_unit: [
-    ['before_80', 25],
-    ['1980_1989', 10],
-    ['1990_1994', 5],
-    ['1995_1999', 5],
-    ['2000_2004', 5],
-    ['2005', 1],
-    ['2006', 1],
-    ['2007', 1],
-    ['2008', 1],
-    ['2009', 1],
-    ['2010', 1],
-    ['2011', 1],
-  ],
-  rooms_in_housing_unit: [
-    ['1_room', 1],
-    ['2_rooms', 1],
-    ['3_rooms', 1],
-    ['4_rooms', 1],
-    ['5_rooms', 1],
-    ['6_rooms', 1],
-    ['7_rooms', 1],
-    ['8_rooms', 1],
-    ['9_rooms', 1],
-  ],
-
-}
 
 function renderDescription(dataMap) {
   const data = Object.entries(Object.values(dataMap)[0])
@@ -74,11 +37,10 @@ function renderDescription(dataMap) {
 }
 
 async function renderCensusInfo(tableName, entity, iTable) {
-  const entityID = entity.id;
-  const dataMap = await GIGServer.getCensus(tableName, entityID);
+  const dataMap = await GIGServer.getCensus(tableName, entity.id);
 
   let ChartComponent;
-  if (ageKeysMap[tableName]) {
+  if (CENSUS_TABLE_SPAN_INFO[tableName]) {
       ChartComponent = Pyramid;
   } else {
       ChartComponent = PieChart;
@@ -95,7 +57,7 @@ async function renderCensusInfo(tableName, entity, iTable) {
         <ChartComponent
           dataMap={dataMap}
           tableName={tableName}
-          ageKeys={ageKeysMap[tableName]}
+          ageKeys={CENSUS_TABLE_SPAN_INFO[tableName]}
           valueIsPercent={valueIsPercent}
         />
       </div>
