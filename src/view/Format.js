@@ -30,12 +30,20 @@ export default class Format {
     if (total === 0) {
       return '-';
     }
+    const p = value / total;
+    let fontSize = Math.max(12, parseInt(Math.sqrt(p) * 24));
+    const stylePercent = {fontSize}
+    const styleValue = {
+      fontSize: parseInt(fontSize * 0.8),
+      color: 'gray',
+    }
+
     return (
       <span>
-        <div className="div-percent">
-          {Format.percent(value / total)}
+        <div className={'div-percent'} style={stylePercent}>
+          {Format.percent(p)}
         </div>
-        <div className="div-total">
+        <div className="div-total" style={styleValue}>
           {Format.numWithComma(value)}
         </div>
       </span>
