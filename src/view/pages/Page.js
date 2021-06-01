@@ -12,7 +12,12 @@ import './Page.css';
 
 export const DEFAULT_ZOOM = 16;
 
+export function redirectToErrorPage() {
+  window.location.href = "/mylocal/error";
+}
+
 export default class Page extends Component {
+
   constructor(props) {
     super(props);
     this.onChangeLocation = this.onChangeLocation.bind(this);

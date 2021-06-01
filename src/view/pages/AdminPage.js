@@ -5,7 +5,6 @@ import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/EntityConstants.js';
 
 import {getRegionBBox} from 'model/RegionGeo.js';
 import {getZoom} from 'model/OSM.js';
-import {redirectToDefault} from 'model/Browser';
 import {ENTITY} from 'model/EntityConstants.js';
 import GeoServer from 'model/GeoServer.js';
 
@@ -13,7 +12,7 @@ import DetailedInfo from '../components/DetailedInfo.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
 import Infobox from '../components/Infobox.js';
 import RegionMap from '../components/RegionMap.js';
-import Page from '../pages/Page.js';
+import Page, {redirectToErrorPage} from '../pages/Page.js';
 
 export default class AdminPage extends Page {
 
@@ -41,7 +40,7 @@ export default class AdminPage extends Page {
     try {
       [[minLat, minLng], [maxLat, maxLng]] = await getRegionBBox(regionID);
     } catch {
-      redirectToDefault();
+      redirectToErrorPage();
     }
 
     const latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];

@@ -9,6 +9,7 @@ import {
 import {DEFAULT_ENTITY_ID} from 'model/EntityConstants.js';
 
 import AdminPage from 'view/pages/AdminPage.js';
+import ErrorPage from 'view/pages/ErrorPage.js';
 import PlacePage from 'view/pages/PlacePage.js';
 
 import './App.css';
@@ -21,6 +22,7 @@ export default class App extends Component {
           <Switch>
             <Route path="/admin/:regionID" component={AdminPage}/>
             <Route path="/place/:entityID" component={PlacePage}/>
+            <Route path="/error" component={ErrorPage}/>
             <Route>
                <Redirect to={`/admin/${DEFAULT_ENTITY_ID}`} />
             </Route>
