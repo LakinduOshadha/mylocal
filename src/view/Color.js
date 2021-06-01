@@ -193,6 +193,5 @@ export function getFieldNameColor(fieldName) {
     return color;
   }
   FIELD_NAME_TO_COLOR[fieldName] = getRandomColor();
-  console.debug(`'${fieldName}': '', //`);
   return FIELD_NAME_TO_COLOR[fieldName];
 }
