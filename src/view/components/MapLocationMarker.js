@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Marker, useMapEvents} from 'react-leaflet';
+import {useMapEvents} from 'react-leaflet';
 
 export default function MapLocationMarker({onChangeLocation}) {
   const map = useMapEvents({
@@ -10,10 +10,7 @@ export default function MapLocationMarker({onChangeLocation}) {
       onChangeLocation([lat, lng])
     },
   })
+  // eslint-disable-next-line
   const [position, setPosition] = useState(map.getCenter());
-  //
-  // return position === null ? null : (
-  //   <Marker position={position} />
-  // );
   return null;
 }

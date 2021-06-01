@@ -1,7 +1,7 @@
 import {ENTITY} from 'model/EntityConstants.js';
 import {getPlacesWithinRegion} from 'model/Places.js';
 import Format from 'view/Format.js';
-import {renderID, renderIDListList} from 'view/components/EntityLink.js';
+import {renderID} from 'view/components/EntityLink.js';
 
 export async function getProvinceInfo(entityData) {
   return Object.assign({}, {
