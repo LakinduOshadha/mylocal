@@ -1,17 +1,15 @@
+DIR_REACT_APP=/Users/nuwan.senaratna/Not.Dropbox/DEV/react/mylocal
 # Build react
-npm run build
+# npm run build
 
 # Copy apache confs
 cp scripts/local_apache/apache.conf /usr/local/etc/httpd/httpd.conf
 
 # Copy build
 DIR_APACHE_WWW=/usr/local/var/www
-cd $DIR_APACHE_WWW
-rm -rf mylocal
-mkdir mylocal
-
-DIR_REACT_APP=/Users/nuwan.senaratna/Not.Dropbox/DEV/react/mylocal
-cp -r  $DIR_REACT_APP/build/* mylocal/
+rm -rf $DIR_APACHE_WWW/mylocal
+ln -s $DIR_REACT_APP/build $DIR_APACHE_WWW/mylocal
+ls -la $DIR_APACHE_WWW
 
 # Restart apache and tail logs
 httpd -k restart

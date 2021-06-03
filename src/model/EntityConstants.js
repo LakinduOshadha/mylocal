@@ -14,7 +14,7 @@ export const ENTITY = {
   UNKNOWN: 'unknown',
 }
 
-export const DEFAULT_ENTITY_ID = 'LK-1103';
+export const DEFAULT_ENTITY_ID = 'LK-1127015';
 
 export const ENTITIES = Object.values(ENTITY);
 
