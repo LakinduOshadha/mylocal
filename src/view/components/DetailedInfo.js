@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 import {getSummary} from './DetailedInfoUtils.js';
 import GIGServer from 'model/GIGServer.js';
 import Reference from './Reference.js';
+import XButton from './XButton.js';
 
 import './DetailedInfo.css';
 
@@ -10,9 +11,11 @@ export default class DetailedInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: true,
+      showDetails: false,
       summary: '',
     };
+    this.onClickShowDetails = this.onClickShowDetails.bind(this);
+    this.onClickHideDetails = this.onClickHideDetails.bind(this);
   }
 
   async componentDidMount() {
@@ -44,7 +47,7 @@ export default class DetailedInfo extends Component {
             className="div-show-details"
             onClick={this.onClickShowDetails.bind(this)}
           >
-            Click to see details about {entity.name} ({entity.id})
+            Details about {entity.name} ({entity.id})
           </div>
         </div>
       )
@@ -54,12 +57,8 @@ export default class DetailedInfo extends Component {
 
     return (
       <div className={`div-detailed-info ${className}`}>
-        <div
-          className="div-show-details"
-          onClick={this.onClickHideDetails.bind(this)}
-        >
-          Hide
-        </div>
+        <XButton onClick={this.onClickHideDetails}/>
+
         <Reference
           title="Data Source"
           label="Department of Census and Statistics, Sri Lanka"
