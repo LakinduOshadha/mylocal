@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import {getSummary} from './DetailedInfoUtils.js';
 import GIGServer from 'model/GIGServer.js';
+import Reference from './Reference.js';
 
 import './DetailedInfo.css';
 
@@ -37,7 +38,6 @@ export default class DetailedInfo extends Component {
     }
 
     if (!showDetails) {
-      console.debug(entity);
       return (
         <div className="div-detailed-info">
           <div
@@ -60,6 +60,11 @@ export default class DetailedInfo extends Component {
         >
           Hide
         </div>
+        <Reference
+          title="Data Source"
+          label="Department of Census and Statistics, Sri Lanka"
+          link="http://www.statistics.gov.lk/"
+        />
         <div className="div-summary-outer">
           {summary}
         </div>

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Reference from 'view/components/Reference.js';
 import './AbstractInfoTable.css';
 
 export default class AbstractInfoTable extends Component {
@@ -46,6 +47,11 @@ export default class AbstractInfoTable extends Component {
             {this.state.dataList.map(this.renderRow)}
           </tbody>
         </table>
+        <Reference
+          title="Data Source"
+          label="Department of Census and Statistics, Sri Lanka"
+          link="http://www.statistics.gov.lk/"
+        />
       </div>
     )
   }

@@ -28,3 +28,8 @@
 .div-show-details {
   font-size: 12px;
 }
+
+.div-data-source {
+  font-size: smaller;
+  font-style: italic;
+}
