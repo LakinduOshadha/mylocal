@@ -3,10 +3,10 @@ export default function Reference(props) {
   const {title, label, link} = props;
   return (
     <div className="div-reference">
-      {`${title}: `}
+      ({`${title}: `}
       <a href={link}>
         {label}
-      </a>
+      </a>)
     </div>
   )
 }

@@ -1,13 +1,14 @@
 import GIGServer from 'model/GIGServer.js';
 import MathX from 'model/MathX.js';
 import {
-  CENSUS_TABLES,
+  CENSUS_TABLE_GROUPS,
   getCensusLabel,
   CENSUS_TABLE_SPAN_INFO,
 } from 'model/Census.js';
 import Format from 'view/Format.js';
 import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';
+import Reference from 'view/components/Reference.js';
 
 import './Census.css';
 
@@ -48,7 +49,7 @@ async function renderCensusInfo(tableName, entity, iTable) {
 
   return (
     <div key={`div-census-info-${iTable}-${tableName}`}>
-      <h2>{getCensusLabel(tableName)}</h2>
+      <h3>{getCensusLabel(tableName)}</h3>
       {valueIsPercent ? null : renderDescription(dataMap)}
       <div className="div-census-chart-component">
         <ChartComponent
@@ -58,15 +59,36 @@ async function renderCensusInfo(tableName, entity, iTable) {
           valueIsPercent={valueIsPercent}
         />
       </div>
+      <Reference
+        title="Data Source"
+        label="Department of Census and Statistics, Sri Lanka"
+        link="http://www.statistics.gov.lk/"
+      />
     </div>
   );
 }
 
-export async function renderCensusInfos(entity) {
-  return await Promise.all(
-    CENSUS_TABLES.map(
+async function renderCensusInfoGroup(groupName, tableNames, entity) {
+  const renderedInner = await Promise.all(
+    tableNames.map(
       async function (tableName, iTable) {
         return await renderCensusInfo(tableName, entity, iTable)
+      }
+    )
+  );
+  return (
+    <div>
+      <h2>{groupName}</h2>
+      {renderedInner}
+    </div>
+  )
+}
+
+export async function renderCensusInfoGroups(entity) {
+  return await Promise.all(
+    Object.entries(CENSUS_TABLE_GROUPS).map(
+      async function ([groupName, tableNames]) {
+        return await renderCensusInfoGroup(groupName, tableNames, entity)
       }
     )
   );

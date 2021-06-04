@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import {getSummary} from './DetailedInfoUtils.js';
 import GIGServer from 'model/GIGServer.js';
-import Reference from './Reference.js';
 import XButton from './XButton.js';
 
 import './DetailedInfo.css';
@@ -58,12 +57,6 @@ export default class DetailedInfo extends Component {
     return (
       <div className={`div-detailed-info ${className}`}>
         <XButton onClick={this.onClickHideDetails}/>
-
-        <Reference
-          title="Data Source"
-          label="Department of Census and Statistics, Sri Lanka"
-          link="http://www.statistics.gov.lk/"
-        />
         <div className="div-summary-outer">
           {summary}
         </div>

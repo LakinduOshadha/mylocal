@@ -2,10 +2,10 @@ import Entity from 'model/Entity.js';
 import {ENTITY} from 'model/EntityConstants.js';
 
 import GIGServer from 'model/GIGServer.js';
-import {renderCensusInfos} from './Census.js';
+import {renderCensusInfoGroups} from './Census.js';
 
 async function getRegionSummary(entity) {
-  const censusInfos = await renderCensusInfos(entity);
+  const censusInfos = await renderCensusInfoGroups(entity);
   return (
     <div key={'div-region-summary-' + entity.id}>
       {censusInfos}
