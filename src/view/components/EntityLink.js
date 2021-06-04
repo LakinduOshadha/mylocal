@@ -58,7 +58,7 @@ export function renderID(id, i) {
 
 export function renderIDList(idList, i) {
   return (
-    <div key={`div-id-list-${i}`}>
+    <div key={`div-id-list-${i}`} className="div-id-list">
       {idList.sort().map(renderID)}
     </div>
   );
@@ -66,7 +66,7 @@ export function renderIDList(idList, i) {
 
 export function renderIDListList(idListList, i) {
   return (
-    <div key={`div-id-list-list-${i}`}>
+    <div key={`div-id-list-list-${i}`} className="div-id-list-list">
       {idListList.sort().map(renderIDList)}
     </div>
   );
