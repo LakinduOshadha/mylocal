@@ -26,15 +26,16 @@ export async function getDSDInfo(entityData) {
 }
 
 export async function getGNDInfo(entityData) {
-  const policeEntities = await getPlacesWithinRegion(ENTITY.PS, entityData.id);
-  const placeInfo = (policeEntities.length > 0) ? {
-    'Police Stations': renderID(policeEntities[0].id),
-  } : null;
+  // const policeEntities = await getPlacesWithinRegion(ENTITY.PS, entityData.id);
+  // const placeInfo = (policeEntities.length > 0) ? {
+  //   'Police Stations': renderID(policeEntities[0].id),
+  // } : null;
 
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
-  }, placeInfo);
+  });
+  // }, placeInfo);
 }
 
 export async function getPSInfo(entityData) {
