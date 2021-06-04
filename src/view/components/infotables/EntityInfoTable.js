@@ -12,10 +12,21 @@ export default class EntityInfoTable extends AbstractInfoTable {
   }
 
   renderRow(data, iRow) {
+    let classNameCustom = '';
     const key = `row-${iRow}-${data.label}`;
+
+    if (!data.content) {
+      return (
+        <tr key={key}>
+          <th className={classNameCustom}>
+            <h3>{data.label}</h3>
+          </th>
+        </tr>
+      );
+    }
     return (
       <tr key={key}>
-        <th>{data.label}</th>
+        <th className={classNameCustom}>{data.label}</th>
         <td>{data.content}</td>
       </tr>
     );

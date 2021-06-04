@@ -53,14 +53,15 @@ async function getBaseInfo(entityData) {
   const entityType = Entity.getEntityType(entityData.id);
   return Object.assign({},
     {
+      'Basic Info': undefined,
       Name: `${entityData.name} ${Entity.getEntityLabel(entityType)}`,
       Area: Format.area(entityData.area),
       Population: Format.population(entityData.population),
       'Pop. Density': Format.popDensity(entityData.population, entityData.area),
       'Altitude (Centroid)': Format.altitude(entityData.centroid_altitude),
+      'Parent Regions': undefined,
     },
     renderIDInfo(entityData),
-    renderSetsInfo(entityData),
   );
 }
 
@@ -76,5 +77,7 @@ export default async function getEntityInfo(entityType, entityData) {
     await getBaseInfo(entityData),
     entityTypeToInfoGetter[entityType]
       ? (await entityTypeToInfoGetter[entityType](entityData)) : {},
+    {'Related Regions': undefined},
+    renderSetsInfo(entityData),
   );
 }
