@@ -1,12 +1,12 @@
 import Format from 'view/Format.js';
 
 export const CENSUS_TABLE_GROUPS = {
-  'Basic Demographics': [
+  'Demographic Information': [
     'gender_of_population',
     'age_group_of_population',
     'marital_status_of_population',
   ],
-  'Other Information': [
+  'Household Information': [
     'communication_items_owned_by_household',
     'lighting_of_household',
     'cooking_fuel_of_household',
@@ -30,7 +30,8 @@ export const CENSUS_TABLE_GROUPS = {
     'relationship_to_household_head_of_population',
     'households_living_in_housing_unit',
     'housing_ownership_status_of_household',
-
+  ],
+  'Ethno-Religious Information': [
     'ethnicity_of_population',
     'religious_affiliation_of_population',
   ],
