@@ -1,10 +1,20 @@
 import * as d3 from 'd3';
 
+const FT_PER_M = 3.28084;
+const MILE_PER_KM = 0.621371;
+
 export default class Format {
   static numWithComma = d3.format(",")
   static percent = d3.format(".2p")
-  static area = (area) => Format.numWithComma(area) + ' km²';
-  static altitude = (altitude) => Format.numWithComma(altitude) + ' m';
+
+  static area(area) {
+    return `${Format.numWithComma(area)} km²`;
+  };
+
+  static altitude(altitude) {
+    return `${Format.numWithComma(altitude)} m
+      (${Format.numWithComma(Math.round(altitude * FT_PER_M))} ft)`;
+  };
   static population = Format.numWithComma;
 
   static phoneNum(phoneNumber) {
