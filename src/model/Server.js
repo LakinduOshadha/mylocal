@@ -1,18 +1,27 @@
 import WWW from './WWW.js';
 
-const HOST = process.env.REACT_APP_SERVER_HOST;
-const PORT = parseInt(process.env.REACT_APP_SERVER_PORT);
-
-const URL_BASE = `http://${HOST}:${PORT}`
+function getServerPort(serverType) {
+  switch(serverType) {
+    case 'gig':
+      return 81;
+    case 'geo':
+      return 82;
+    default:
+      throw Error(`Unknown serverType: ${serverType}`);
+  }
+}
 
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
-    return URL_BASE
-      + `/${serverType}_server/`
-      + `${cmd}/${paramsList.join('/')}`
+    const host = '127.0.0.1';
+    const port = getServerPort(serverType);
+    return `http://${host}:${port}`
+      + `/${cmd}/${paramsList.join('/')}`
   }
 
   static async run(serverType, cmd, paramsList) {
-    return await WWW.getJSON(Server.getURL(serverType, cmd, paramsList));
+    const url = Server.getURL(serverType, cmd, paramsList);
+    const data = await WWW.getJSON(url);
+    return data;
   }
 }

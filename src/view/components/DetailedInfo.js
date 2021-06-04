@@ -15,10 +15,10 @@ export default class DetailedInfo extends Component {
   }
 
   async componentDidMount() {
-    const {entityID} = this.props;
-    const entity = await GIGServer.getEntity(entityID);
-    const summary = await getSummary(entityID);
-    this.setState({summary, entity});
+    // const {entityID} = this.props;
+    // const entity = await GIGServer.getEntity(entityID);
+    // const summary = await getSummary(entityID);
+    // this.setState({summary, entity});
   }
 
   onClickShowDetails(e) {
