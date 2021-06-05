@@ -5,7 +5,7 @@ import Entity from 'core/Entity.js';
 import getEntityInfo from 'view/EntityInfo.js';
 import InfoTable from 'stateless/molecules/InfoTable.js';
 
-export default class EntityInfoTable extends Component {
+export default class EntityInfoPane extends Component {
 
   async getDataTable() {
     const {entityID} = this.props;
