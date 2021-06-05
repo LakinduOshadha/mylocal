@@ -9,7 +9,7 @@ import {ENTITY} from 'core/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
 import DetailedInfo from 'stateful/molecules/DetailedInfo.js';
-import InfoTable from 'view/components/infotables/InfoTable.js';
+import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
 import Infobox from 'stateless/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
 import Page, {redirectToErrorPage} from '../pages/Page.js';
@@ -63,7 +63,7 @@ export default class AdminPage extends Page {
           subTitle={ENTITY_LABEL_MAP[regionType]}
           title={regionID}
         >
-          <InfoTable entityID={regionID}/>
+          <EntityInfoTable entityID={regionID}/>
         </Infobox>
         <DetailedInfo entityID={regionID}/>
       </div>
