@@ -6,9 +6,9 @@ It is implemented as a React App, and depends on two python-flask-waitress based
 
 # Running gig_server and geo_server
 
-The docker image for gig_server is **nuuuwan/gig_server**. 
+The docker image for gig_server is **nuuuwan/gig_server**.
 
-To pull the image, and run it, 
+To pull the image, and run it,
 
 ```bash
 docker run -p 81:81 -d --name aws_gig_server nuuuwan/gig_server
@@ -17,10 +17,10 @@ docker run -p 81:81 -d --name aws_gig_server nuuuwan/gig_server
 Similarly, the docker image for geo_server is **nuuuwan/geo_server**. To pull and run,
 
 ```bash
-docker run -p 82:82 -d --name aws_gig_server nuuuwan/geo_server
+docker run -p 82:82 -d --name aws_geo_server nuuuwan/geo_server
 ```
 
-Note, mylocal expects gig_server and geo_server to run on ports 81 and 82 of a predefined host, respectively. 
+Note, mylocal expects gig_server and geo_server to run on ports 81 and 82 of a predefined host, respectively.
 
 # Running mylocal
 
@@ -31,12 +31,3 @@ REACT_APP_SERVER_HOST=123.123.123.123
 ```
 
 Now, build and deploy the react app.
-
-
-
-
-
-
-
-
-
