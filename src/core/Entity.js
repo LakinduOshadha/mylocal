@@ -4,7 +4,7 @@ import {
   ENTITY_LABEL_MAP,
   ENTITY_LABEL_SHORT_MAP,
   ISO_ID_LENGTH_TO_ENTITY,
-} from './EntityConstants.js';
+} from 'constants/EntityConstants.js';
 
 export default class Entity {
 

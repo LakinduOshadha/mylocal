@@ -6,7 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import {DEFAULT_ENTITY_ID} from 'core/EntityConstants.js';
+import {DEFAULT_ENTITY_ID} from 'constants/EntityConstants.js';
 
 import AdminPage from 'stateful/pages/AdminPage.js';
 import ErrorPage from 'stateful/pages/ErrorPage.js';

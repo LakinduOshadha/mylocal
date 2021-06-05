@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {ENTITY} from 'core/EntityConstants.js';
+import {ENTITY} from 'constants/EntityConstants.js';
 import Entity from 'core/Entity.js';
 import GIGServer from 'core/GIGServer.js';
 

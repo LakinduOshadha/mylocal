@@ -1,5 +1,3 @@
-import {invertDict} from './DataStructures.js';
-
 export const ENTITY = {
   COUNTRY: 'country',
   PROVINCE: 'province',
@@ -51,7 +49,13 @@ export const ISO_ENTITY_TO_ID_LENGTH = {
   [ENTITY.DSD]: 7,
   [ENTITY.GND]: 10,
 }
-export const ISO_ID_LENGTH_TO_ENTITY = invertDict(ISO_ENTITY_TO_ID_LENGTH);
+export const ISO_ID_LENGTH_TO_ENTITY = {
+  2: [ENTITY.COUNTRY],
+  4: [ENTITY.PROVINCE],
+  5: [ENTITY.DISTRICT],
+  7: [ENTITY.DSD],
+  10: [ENTITY.GND],
+}
 
 export const EC_ID_LENGTH_TO_ENTITY = {
   5: ENTITY.ED,
