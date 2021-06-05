@@ -1,5 +1,5 @@
-import {ENTITY} from 'core/EntityConstants.js';
-import {getPlacesWithinRegion} from 'core/Places.js';
+// import {ENTITY} from 'core/EntityConstants.js';
+// import {getPlacesWithinRegion} from 'core/Places.js';
 import Format from 'view/Format.js';
 import {renderID} from 'view/components/EntityLink.js';
 
