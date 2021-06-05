@@ -8,7 +8,7 @@ import {getZoom} from 'core/OSM.js';
 import {ENTITY} from 'core/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
-import DetailedInfo from 'view/components/DetailedInfo.js';
+import DetailedInfo from 'stateful/molecules/DetailedInfo.js';
 import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
 import Infobox from 'stateless/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
