@@ -1,4 +1,4 @@
-import {CENSUS_TABLE_GROUPS} from 'core/Census.js';
+import {CENSUS_TABLE_GROUPS} from 'constants/CensusConstants.js';
 import CensusInfoGroup from './CensusInfoGroup.js';
 
 export default function CensusInfoGroupList(props) {
