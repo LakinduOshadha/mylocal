@@ -1,7 +1,7 @@
 // import {ENTITY} from 'core/EntityConstants.js';
 // import {getPlacesWithinRegion} from 'core/Places.js';
 import Format from 'stateless/atoms/Format.js';
-import {renderID} from 'stateful/atoms/EntityLink.js';
+import EntityLink from 'stateful/atoms/entity/EntityLink.js';
 
 export async function getProvinceInfo(entityData) {
   return Object.assign({}, {
@@ -49,6 +49,6 @@ export async function getPSInfo(entityData) {
     Office: Format.phoneNum(entityData.phone_office),
     Mobile: Format.phoneNum(entityData.fax),
     Fax: Format.phoneNum(entityData.phone_mobile),
-    'GND of Location': renderID(entityData.gnd_id),
+    'GND of Location': <EntityLink entityID={entityData.gnd_id}/>,
   };
 }

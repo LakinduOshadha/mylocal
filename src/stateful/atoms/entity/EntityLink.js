@@ -46,27 +46,3 @@ export default class EntityLink extends Component {
     )
   }
 }
-
-export function renderID(id, i) {
-  return (
-    <div key={`div-id-${i}`}>
-      <EntityLink entityID={id} />
-    </div>
-  );
-}
-
-export function renderIDList(idList, i) {
-  return (
-    <div key={`div-id-list-${i}`} className="div-id-list">
-      {idList.sort().map(renderID)}
-    </div>
-  );
-}
-
-export function renderIDListList(idListList, i) {
-  return (
-    <div key={`div-id-list-list-${i}`} className="div-id-list-list">
-      {idListList.sort().map(renderIDList)}
-    </div>
-  );
-}

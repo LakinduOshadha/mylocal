@@ -3,7 +3,8 @@ import {ENTITY} from 'core/EntityConstants.js';
 import Entity from 'core/Entity.js';
 import Format from 'stateless/atoms/Format.js';
 
-import {renderID, renderIDListList} from 'stateful/atoms/EntityLink.js';
+import EntityLink from 'stateful/atoms/entity/EntityLink.js';
+import EntityLinkListList from 'stateful/atoms/entity/EntityLinkListList.js';
 
 import {
   getProvinceInfo,
@@ -18,7 +19,9 @@ import './EntityInfo.css';
 function renderIDInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
     function(idInfo, [_, id]) {
-      idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = renderID(id);
+      idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = (
+        <EntityLink entityID={id} />
+      );
       return idInfo;
     }, {},
   )
@@ -39,7 +42,7 @@ function renderSetsInfo(entityData) {
         return info;
       }
       return Object.assign(info, {
-        [label]: (<div>{renderIDListList(idListList)}</div>),
+        [label]: (<EntityLinkListList entityIDListList={idListList} />),
       });
     },
     {},
