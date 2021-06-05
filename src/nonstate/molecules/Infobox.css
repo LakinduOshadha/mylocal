@@ -18,6 +18,9 @@
   position: absolute;
   top: 16px;
   z-index: 2000;
+
+  overflow: scroll;
+  height: 100%;
 }
 
 tr, th, td {

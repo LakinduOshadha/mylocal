@@ -9,6 +9,8 @@ import {
 } from 'stateful/molecules/EntityInfo.js';
 import InfoTable from 'nonstate/molecules/InfoTable.js';
 
+import './EntityInfoPane.css';
+
 export default class EntityInfoPane extends Component {
 
   constructor(props) {
@@ -41,12 +43,12 @@ export default class EntityInfoPane extends Component {
     }
 
     return (
-      <>
+      <div className="div-entity-info-pane">
         <InfoTable title="Basic Info" dataMap={baseInfo} />
         <InfoTable title="Parent Regions" dataMap={parentEntityInfo} />
         <InfoTable title="Alternative Region Codes" dataMap={customInfo} />
         <InfoTable title="Related Regions" dataMap={relatedEntityInfo} />
-      </>
+      </div>
     )
   }
 }
