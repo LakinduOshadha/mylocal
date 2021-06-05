@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import Reference from 'nonstate/atoms/Reference.js';
 
+import './InfoTable.css';
+
 export default class InfoTable extends Component {
 
   renderRow([label, content], iRow) {
