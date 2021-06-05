@@ -2,7 +2,7 @@ import React from 'react';
 
 import GeoServer from 'core/GeoServer.js';
 import AbstractInfoTable from './AbstractInfoTable.js';
-import EntityLink from 'view/components/EntityLink.js';
+import EntityLink from 'stateful/atoms/EntityLink.js';
 import './AbstractInfoTable.css';
 
 export default class AdministrationInfoTable extends AbstractInfoTable {

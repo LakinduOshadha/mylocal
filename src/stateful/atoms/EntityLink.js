@@ -39,7 +39,6 @@ export default class EntityLink extends Component {
       pageName = 'place';
     }
 
-
     return (
       <a className={className} href={`/mylocal/${pageName}/${entityID}`}>
         {label}

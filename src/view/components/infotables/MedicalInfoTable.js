@@ -1,7 +1,7 @@
 import GeoServer from 'core/GeoServer.js';
 import GIGServer from 'core/GIGServer.js';
 import AbstractInfoTable from './AbstractInfoTable.js';
-import EntityLink from 'view/components/EntityLink.js';
+import EntityLink from 'stateful/atoms/EntityLink.js';
 
 export default class MedicalInfoTable extends AbstractInfoTable {
   getTitle() {

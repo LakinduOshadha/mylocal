@@ -3,7 +3,7 @@ import {ENTITY} from 'core/EntityConstants.js';
 import Entity from 'core/Entity.js';
 import Format from 'stateless/atoms/Format.js';
 
-import {renderID, renderIDListList} from 'view/components/EntityLink.js';
+import {renderID, renderIDListList} from 'stateful/atoms/EntityLink.js';
 
 import {
   getProvinceInfo,
