@@ -16,7 +16,13 @@ export async function asyncCacheGet(cacheKey, asyncFallback) {
     data = await asyncFallback();
     if (data) {
       dataJson = JSON.stringify(data);
-      localStorage.setItem(finalCacheKey, dataJson);
+      try {
+        localStorage.setItem(finalCacheKey, dataJson);
+      } catch {
+        localStorage.clear();
+        localStorage.setItem(finalCacheKey, dataJson);
+      }
+
     }
   } else {
     data = JSON.parse(dataJson);
