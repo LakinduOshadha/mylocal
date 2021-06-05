@@ -6,8 +6,8 @@ import {
   CENSUS_TABLE_SPAN_INFO,
 } from 'core/Census.js';
 import Format from 'view/Format.js';
-import PieChart from 'view/charts/PieChart.js';
-import Pyramid from 'view/charts/Pyramid.js';
+import PieChart from 'stateless/molecules/PieChart.js';
+import Pyramid from 'stateless/molecules/Pyramid.js';
 import Reference from 'view/components/Reference.js';
 
 import './Census.css';
