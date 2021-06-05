@@ -10,7 +10,7 @@ export default class DetailedInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: false,
+      showDetails: true,
       summary: '',
     };
     this.onClickShowDetails = this.onClickShowDetails.bind(this);

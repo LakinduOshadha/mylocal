@@ -2,13 +2,12 @@ import Entity from 'core/Entity.js';
 import {ENTITY} from 'core/EntityConstants.js';
 
 import GIGServer from 'core/GIGServer.js';
-import {renderCensusInfoGroups} from './Census.js';
+import CensusInfoGroupList from 'stateful/molecules/CensusInfoGroupList.js';
 
-async function getRegionSummary(entity) {
-  const censusInfos = await renderCensusInfoGroups(entity);
+function getRegionSummary(entity) {
   return (
     <div key={'div-region-summary-' + entity.id}>
-      {censusInfos}
+      <CensusInfoGroupList entity={entity} />
     </div>
   );
 }
