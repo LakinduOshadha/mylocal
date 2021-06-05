@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {getSummary} from './DetailedInfoUtils.js';
 import GIGServer from 'core/GIGServer.js';
-import XButton from './XButton.js';
+import XButton from 'stateless/atoms/XButton.js';
 
 import './DetailedInfo.css';
 

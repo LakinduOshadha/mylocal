@@ -1,4 +1,4 @@
-import './Reference.css';
+import 'stateless/atoms/Reference.css';
 export default function Reference(props) {
   const {title, label, link} = props;
   return (

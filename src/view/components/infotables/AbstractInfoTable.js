@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Reference from 'view/components/Reference.js';
+import Reference from 'stateless/atoms/Reference.js';
 import './AbstractInfoTable.css';
 
 export default class AbstractInfoTable extends Component {

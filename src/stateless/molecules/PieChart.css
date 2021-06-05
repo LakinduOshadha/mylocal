@@ -1,0 +1,43 @@
+circle {
+  fill: ghostwhite;
+  stroke: gray;
+}
+
+line {
+  fill: pink;
+  stroke: red;
+}
+
+path {
+  stroke: none;
+}
+
+
+.div-pie-chart-outer {
+  display: table-row;
+}
+
+.div-pie-chart {
+  display: table-cell;
+}
+
+.div-table {
+  display: table-cell;
+}
+
+th {
+  vertical-align: top;
+}
+
+td {
+  vertical-align: top;
+}
+
+.div-percent {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.div-total {
+  font-size: 9px;
+}

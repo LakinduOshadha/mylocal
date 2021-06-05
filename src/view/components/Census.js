@@ -8,7 +8,7 @@ import {
 import Format from 'view/Format.js';
 import PieChart from 'stateless/molecules/PieChart.js';
 import Pyramid from 'stateless/molecules/Pyramid.js';
-import Reference from 'view/components/Reference.js';
+import Reference from 'stateless/atoms/Reference.js';
 
 import './Census.css';
 
