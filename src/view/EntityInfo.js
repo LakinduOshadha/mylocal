@@ -16,7 +16,7 @@ import {
 
 import './EntityInfo.css';
 
-function renderIDInfo(entityData) {
+export function getParentEntityInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
     function(idInfo, [_, id]) {
       idInfo[Entity.getEntityLabel(Entity.getEntityType(id))] = (
@@ -27,7 +27,7 @@ function renderIDInfo(entityData) {
   )
 }
 
-function renderSetsInfo(entityData) {
+export function getRelatedEntityInfo(entityData) {
   return [
     ['eqs', 'Equivalent to'],
     ['subs', 'Contains'],
@@ -49,27 +49,22 @@ function renderSetsInfo(entityData) {
   );
 }
 
-async function getBaseInfo(entityData) {
-  if (!entityData.area) {
-    return {};
-  }
+export async function getBaseInfo(entityData) {
   const entityType = Entity.getEntityType(entityData.id);
   return Object.assign({},
     {
-      'Basic Info': undefined,
       Name: `${entityData.name} ${Entity.getEntityLabel(entityType)}`,
       Area: Format.area(entityData.area),
       Population: Format.population(entityData.population),
       'Pop. Density': Format.popDensity(entityData.population, entityData.area),
       'Altitude (Centroid)': Format.altitude(entityData.centroid_altitude),
-      'Parent Regions': undefined,
     },
-    renderIDInfo(entityData),
   );
 }
 
-export default async function getEntityInfo(entityType, entityData) {
-  const entityTypeToInfoGetter = {
+export async function getCustomInfo(entityData) {
+  const entityType = Entity.getEntityType(entityData.id);
+  const getter = {
     [ENTITY.PROVINCE]: getProvinceInfo,
     [ENTITY.DISTRICT]: getDistrictInfo,
     [ENTITY.DSD]: getDSDInfo,
@@ -77,10 +72,6 @@ export default async function getEntityInfo(entityType, entityData) {
     [ENTITY.PS]: getPSInfo,
   };
   return Object.assign({},
-    await getBaseInfo(entityData),
-    entityTypeToInfoGetter[entityType]
-      ? (await entityTypeToInfoGetter[entityType](entityData)) : {},
-    {'Related Regions': undefined},
-    renderSetsInfo(entityData),
+    getter[entityType] ? (await getter[entityType](entityData)) : {},
   );
 }
