@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Reference from 'stateless/atoms/Reference.js';
+import Reference from 'nonstate/atoms/Reference.js';
 
 export default class InfoTable extends Component {
 

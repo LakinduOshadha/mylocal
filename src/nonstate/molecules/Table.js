@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import Format from 'stateless/atoms/Format.js';
+import Format from 'nonstate/atoms/Format.js';
 
 import './Table.css';
 

@@ -4,10 +4,10 @@ import {
   getCensusLabel,
   CENSUS_TABLE_SPAN_INFO,
 } from 'core/Census.js';
-import PieChart from 'stateless/molecules/PieChart.js';
-import Pyramid from 'stateless/molecules/Pyramid.js';
-import Reference from 'stateless/atoms/Reference.js';
-import CensusDescription from 'stateless/atoms/CensusDescription.js';
+import PieChart from 'nonstate/molecules/PieChart.js';
+import Pyramid from 'nonstate/molecules/Pyramid.js';
+import Reference from 'nonstate/atoms/Reference.js';
+import CensusDescription from 'nonstate/atoms/CensusDescription.js';
 
 import './Census.css';
 

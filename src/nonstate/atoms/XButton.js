@@ -1,4 +1,4 @@
-import 'stateless/atoms/XButton.css';
+import 'nonstate/atoms/XButton.css';
 
 export default function XButton(props) {
   return (

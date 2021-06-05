@@ -7,7 +7,7 @@ import {
   getCustomInfo,
   getRelatedEntityInfo,
 } from 'stateful/molecules/EntityInfo.js';
-import InfoTable from 'stateless/molecules/InfoTable.js';
+import InfoTable from 'nonstate/molecules/InfoTable.js';
 
 export default class EntityInfoPane extends Component {
 

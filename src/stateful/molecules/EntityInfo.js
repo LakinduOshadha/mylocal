@@ -1,7 +1,7 @@
 import {indexArrayByKey} from 'core/DataStructures.js';
 import {ENTITY} from 'core/EntityConstants.js';
 import Entity from 'core/Entity.js';
-import Format from 'stateless/atoms/Format.js';
+import Format from 'nonstate/atoms/Format.js';
 
 import EntityLink from 'stateful/atoms/EntityLink.js';
 import EntityLinkListList from 'stateful/molecules/EntityLinkListList.js';

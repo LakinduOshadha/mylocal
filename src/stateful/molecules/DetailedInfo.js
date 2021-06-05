@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import XButton from 'stateless/atoms/XButton.js';
+import XButton from 'nonstate/atoms/XButton.js';
 import CensusInfoGroupList from 'stateful/molecules/CensusInfoGroupList.js';
 
 import './DetailedInfo.css';
