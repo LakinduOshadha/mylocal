@@ -1,6 +1,6 @@
 // import {ENTITY} from 'core/EntityConstants.js';
 // import {getPlacesWithinRegion} from 'core/Places.js';
-import Format from 'view/Format.js';
+import Format from 'stateless/atoms/Format.js';
 import {renderID} from 'view/components/EntityLink.js';
 
 export async function getProvinceInfo(entityData) {

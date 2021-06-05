@@ -5,7 +5,7 @@ import {
   getCensusLabel,
   CENSUS_TABLE_SPAN_INFO,
 } from 'core/Census.js';
-import Format from 'view/Format.js';
+import Format from 'stateless/atoms/Format.js';
 import PieChart from 'stateless/molecules/PieChart.js';
 import Pyramid from 'stateless/molecules/Pyramid.js';
 import Reference from 'stateless/atoms/Reference.js';

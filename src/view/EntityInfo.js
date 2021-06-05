@@ -1,7 +1,7 @@
 import {indexArrayByKey} from 'core/DataStructures.js';
 import {ENTITY} from 'core/EntityConstants.js';
 import Entity from 'core/Entity.js';
-import Format from 'view/Format.js';
+import Format from 'stateless/atoms/Format.js';
 
 import {renderID, renderIDListList} from 'view/components/EntityLink.js';
 

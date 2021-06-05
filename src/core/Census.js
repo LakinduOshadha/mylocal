@@ -1,4 +1,4 @@
-import Format from 'view/Format.js';
+import Format from 'stateless/atoms/Format.js';
 
 export const CENSUS_TABLE_GROUPS = {
   'Demographic Information': [
