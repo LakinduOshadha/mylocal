@@ -1,6 +1,5 @@
 import Format from 'nonstate/atoms/Format.js';
 
-
 export function getCensusLabel(tableName) {
   return Format.titleCase(
       tableName

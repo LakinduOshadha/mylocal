@@ -1,4 +1,4 @@
-import {indexArrayByKey} from 'core/DataStructures.js';
+import {indexArrayByKey} from 'base/DataStructures.js';
 import {ENTITY} from 'constants/EntityConstants.js';
 import Entity from 'core/Entity.js';
 import Format from 'nonstate/atoms/Format.js';

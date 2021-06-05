@@ -1,4 +1,4 @@
-import WWW from './WWW.js';
+import WWW from 'base/WWW.js';
 
 function getServerPort(serverType) {
   switch(serverType) {

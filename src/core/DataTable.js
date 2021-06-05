@@ -1,4 +1,4 @@
-import MathX from 'core/MathX.js';
+import MathX from 'base/MathX.js';
 const DEFAULT_OTHERS_LIMIT = 0.001;
 
 export function getExtendedData(dataMap, valueIsPercent=false) {

@@ -4,7 +4,7 @@ import Entity from 'core/Entity.js';
 import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'constants/EntityConstants.js';
 
 import {getRegionBBox} from 'core/RegionGeo.js';
-import {getZoom} from 'core/OSM.js';
+import {getZoom} from 'base/OSM.js';
 import {ENTITY} from 'constants/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 

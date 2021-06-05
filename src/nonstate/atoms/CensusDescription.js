@@ -1,5 +1,5 @@
 
-import MathX from 'core/MathX.js';
+import MathX from 'base/MathX.js';
 import Format from './Format.js';
 
 export default function CensusDescription(props) {

@@ -1,5 +1,5 @@
 import {FIELD_NAME_TO_COLOR} from 'constants/ColorConstants.js';
-import MathX from 'core/MathX.js';
+import MathX from 'base/MathX.js';
 
 export function hsla(h, s, l, a) {
   return `hsl(${h},${s}%,${l}%, ${a})`;

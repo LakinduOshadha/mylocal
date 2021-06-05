@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {arrayFlatten} from 'core/DataStructures.js';
+import {arrayFlatten} from 'base/DataStructures.js';
 import GeoServer from 'core/GeoServer.js';
 import {Polyline} from 'react-leaflet';
 
