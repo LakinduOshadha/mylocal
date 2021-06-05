@@ -5,7 +5,7 @@ import {ENTITY_LABEL_MAP} from 'core/EntityConstants.js';
 
 import Page, {DEFAULT_ZOOM} from '../pages/Page.js';
 import Infobox from 'stateless/molecules/Infobox.js';
-import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
+import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
 
 export default class PlacePage extends Page {
 

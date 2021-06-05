@@ -8,10 +8,10 @@ import {getZoom} from 'core/OSM.js';
 import {ENTITY} from 'core/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
-import DetailedInfo from '../components/DetailedInfo.js';
-import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
+import DetailedInfo from 'view/components/DetailedInfo.js';
+import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
 import Infobox from 'stateless/molecules/Infobox.js';
-import RegionMap from '../components/RegionMap.js';
+import RegionMap from 'view/components/RegionMap.js';
 import Page, {redirectToErrorPage} from '../pages/Page.js';
 
 export default class AdminPage extends Page {

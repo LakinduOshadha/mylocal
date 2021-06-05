@@ -6,7 +6,7 @@ import {MapContainer, TileLayer} from 'react-leaflet';
 import {ENTITY} from 'core/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 import {LAT_LNG} from 'core/LatLngConstants.js';
-import MapLocationMarker from '../components/MapLocationMarker.js';
+import MapLocationMarker from 'view/components/MapLocationMarker.js';
 
 import './Page.css';
 

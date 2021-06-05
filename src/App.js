@@ -8,9 +8,9 @@ import {
 
 import {DEFAULT_ENTITY_ID} from 'core/EntityConstants.js';
 
-import AdminPage from 'view/pages/AdminPage.js';
-import ErrorPage from 'view/pages/ErrorPage.js';
-import PlacePage from 'view/pages/PlacePage.js';
+import AdminPage from 'stateful/pages/AdminPage.js';
+import ErrorPage from 'stateful/pages/ErrorPage.js';
+import PlacePage from 'stateful/pages/PlacePage.js';
 
 import './App.css';
 
