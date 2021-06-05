@@ -9,7 +9,7 @@ import {ENTITY} from 'core/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
 import DetailedInfo from 'stateful/molecules/DetailedInfo.js';
-import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
+import EntityInfoTable from 'stateful/molecules/EntityInfoTable.js';
 import Infobox from 'stateless/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
 import Page, {redirectToErrorPage} from '../pages/Page.js';
