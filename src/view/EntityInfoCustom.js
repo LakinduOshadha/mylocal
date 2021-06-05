@@ -1,6 +1,3 @@
-import Format from 'stateless/atoms/Format.js';
-import EntityLink from 'stateful/atoms/EntityLink.js';
-
 export async function getProvinceInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
@@ -28,15 +25,4 @@ export async function getGNDInfo(entityData) {
     'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
   });
-}
-
-export async function getPSInfo(entityData) {
-  return {
-    Name: entityData.name + ' Police Station',
-    Division: entityData.division + ' Division',
-    Office: Format.phoneNum(entityData.phone_office),
-    Mobile: Format.phoneNum(entityData.fax),
-    Fax: Format.phoneNum(entityData.phone_mobile),
-    'GND of Location': <EntityLink entityID={entityData.gnd_id}/>,
-  };
 }

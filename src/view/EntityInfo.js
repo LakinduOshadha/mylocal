@@ -11,10 +11,7 @@ import {
   getDistrictInfo,
   getDSDInfo,
   getGNDInfo,
-  getPSInfo,
 } from 'view/EntityInfoCustom.js';
-
-import './EntityInfo.css';
 
 export function getParentEntityInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
@@ -69,7 +66,6 @@ export async function getCustomInfo(entityData) {
     [ENTITY.DISTRICT]: getDistrictInfo,
     [ENTITY.DSD]: getDSDInfo,
     [ENTITY.GND]: getGNDInfo,
-    [ENTITY.PS]: getPSInfo,
   };
   return Object.assign({},
     getter[entityType] ? (await getter[entityType](entityData)) : {},
