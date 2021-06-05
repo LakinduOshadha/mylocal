@@ -1,6 +1,6 @@
 import {Component} from 'react';
 
-import MathX from 'model/MathX.js';
+import MathX from 'core/MathX.js';
 import {hsla} from 'view/Color.js';
 import Table from './Table.js';
 

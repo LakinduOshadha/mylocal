@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 import {getSummary} from './DetailedInfoUtils.js';
-import GIGServer from 'model/GIGServer.js';
+import GIGServer from 'core/GIGServer.js';
 import XButton from './XButton.js';
 
 import './DetailedInfo.css';

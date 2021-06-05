@@ -1,10 +1,10 @@
-import GIGServer from 'model/GIGServer.js';
-import MathX from 'model/MathX.js';
+import GIGServer from 'core/GIGServer.js';
+import MathX from 'core/MathX.js';
 import {
   CENSUS_TABLE_GROUPS,
   getCensusLabel,
   CENSUS_TABLE_SPAN_INFO,
-} from 'model/Census.js';
+} from 'core/Census.js';
 import Format from 'view/Format.js';
 import PieChart from 'view/charts/PieChart.js';
 import Pyramid from 'view/charts/Pyramid.js';

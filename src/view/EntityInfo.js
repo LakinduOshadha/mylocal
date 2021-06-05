@@ -1,6 +1,6 @@
-import {indexArrayByKey} from 'model/DataStructures.js';
-import {ENTITY} from 'model/EntityConstants.js';
-import Entity from 'model/Entity.js';
+import {indexArrayByKey} from 'core/DataStructures.js';
+import {ENTITY} from 'core/EntityConstants.js';
+import Entity from 'core/Entity.js';
 import Format from 'view/Format.js';
 
 import {renderID, renderIDListList} from 'view/components/EntityLink.js';

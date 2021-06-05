@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {arrayFlatten} from 'model/DataStructures.js';
-import GeoServer from 'model/GeoServer.js';
+import {arrayFlatten} from 'core/DataStructures.js';
+import GeoServer from 'core/GeoServer.js';
 import {Polyline} from 'react-leaflet';
 
 import './RegionMap.css';

@@ -1,4 +1,4 @@
-import MathX from 'model/MathX.js';
+import MathX from 'core/MathX.js';
 
 export const COLOR_SL_FLAG = {
   SINHALA: 'hsl(355, 63%, 34%)',

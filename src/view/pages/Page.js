@@ -3,9 +3,9 @@ import {withRouter} from "react-router-dom";
 
 import {MapContainer, TileLayer} from 'react-leaflet';
 
-import {ENTITY} from 'model/EntityConstants.js';
-import GeoServer from 'model/GeoServer.js';
-import {LAT_LNG} from 'model/LatLngConstants.js';
+import {ENTITY} from 'core/EntityConstants.js';
+import GeoServer from 'core/GeoServer.js';
+import {LAT_LNG} from 'core/LatLngConstants.js';
 import MapLocationMarker from '../components/MapLocationMarker.js';
 
 import './Page.css';

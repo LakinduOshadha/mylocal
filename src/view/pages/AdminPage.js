@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Entity from 'model/Entity.js';
-import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'model/EntityConstants.js';
+import Entity from 'core/Entity.js';
+import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'core/EntityConstants.js';
 
-import {getRegionBBox} from 'model/RegionGeo.js';
-import {getZoom} from 'model/OSM.js';
-import {ENTITY} from 'model/EntityConstants.js';
-import GeoServer from 'model/GeoServer.js';
+import {getRegionBBox} from 'core/RegionGeo.js';
+import {getZoom} from 'core/OSM.js';
+import {ENTITY} from 'core/EntityConstants.js';
+import GeoServer from 'core/GeoServer.js';
 
 import DetailedInfo from '../components/DetailedInfo.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';

@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import {getExtendedData} from 'model/DataTable.js';
+import {getExtendedData} from 'core/DataTable.js';
 import {getFieldNameColor} from 'view/Color.js';
 import Table from './Table.js';
 

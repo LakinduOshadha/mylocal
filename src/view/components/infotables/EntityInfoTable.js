@@ -1,5 +1,5 @@
-import GIGServer from 'model/GIGServer.js';
-import Entity from 'model/Entity.js';
+import GIGServer from 'core/GIGServer.js';
+import Entity from 'core/Entity.js';
 
 import getEntityInfo from 'view/EntityInfo.js';
 

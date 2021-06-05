@@ -1,6 +1,6 @@
 import React from 'react';
 
-import GeoServer from 'model/GeoServer.js';
+import GeoServer from 'core/GeoServer.js';
 import AbstractInfoTable from './AbstractInfoTable.js';
 import EntityLink from 'view/components/EntityLink.js';
 import './AbstractInfoTable.css';

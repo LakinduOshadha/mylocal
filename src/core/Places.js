@@ -1,4 +1,4 @@
-import GIGServer from 'model/GIGServer.js';
+import GIGServer from 'core/GIGServer.js';
 
 export async function getPlacesWithinRegion(placeEntityType, regionID) {
   const placeEntityIDs =

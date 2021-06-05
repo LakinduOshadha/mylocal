@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import {ENTITY} from 'model/EntityConstants.js';
-import Entity from 'model/Entity.js';
-import GIGServer from 'model/GIGServer.js';
+import {ENTITY} from 'core/EntityConstants.js';
+import Entity from 'core/Entity.js';
+import GIGServer from 'core/GIGServer.js';
 
 import './EntityLink.css';
 

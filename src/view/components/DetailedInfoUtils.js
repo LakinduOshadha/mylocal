@@ -1,7 +1,7 @@
-import Entity from 'model/Entity.js';
-import {ENTITY} from 'model/EntityConstants.js';
+import Entity from 'core/Entity.js';
+import {ENTITY} from 'core/EntityConstants.js';
 
-import GIGServer from 'model/GIGServer.js';
+import GIGServer from 'core/GIGServer.js';
 import {renderCensusInfoGroups} from './Census.js';
 
 async function getRegionSummary(entity) {
