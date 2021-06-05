@@ -1,8 +1,8 @@
 import WWW from 'base/WWW.js';
 
 function gerServerHost() {
-  return '54.89.230.251';
-  // return '0.0.0.0';
+  const { REACT_APP_SERVER_HOST } = process.env;
+  return REACT_APP_SERVER_HOST;
 }
 
 function getServerPort(serverType) {
@@ -16,6 +16,7 @@ function getServerPort(serverType) {
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
     const host = gerServerHost();
+    console.debug({host});
     const port = getServerPort(serverType);
     return `http://${host}:${port}`
       + `/${cmd}/${paramsList.join('/')}`
