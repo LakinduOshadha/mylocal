@@ -1,6 +1,6 @@
 import {Component} from 'react';
 import {getExtendedData} from 'core/DataTable.js';
-import {getFieldNameColor} from 'view/Color.js';
+import {getFieldNameColor} from 'core/Color.js';
 import Table from './Table.js';
 
 import './PieChart.css';
