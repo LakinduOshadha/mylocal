@@ -10,7 +10,7 @@ import GeoServer from 'core/GeoServer.js';
 
 import DetailedInfo from '../components/DetailedInfo.js';
 import EntityInfoTable from '../components/infotables/EntityInfoTable.js';
-import Infobox from '../components/Infobox.js';
+import Infobox from 'stateless/molecules/Infobox.js';
 import RegionMap from '../components/RegionMap.js';
 import Page, {redirectToErrorPage} from '../pages/Page.js';
 
