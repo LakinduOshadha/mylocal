@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import GIGServer from 'core/GIGServer.js';
-import Entity from 'core/Entity.js';
 
 import {
   getBaseInfo,
