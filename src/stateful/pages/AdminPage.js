@@ -8,7 +8,7 @@ import {getZoom} from 'base/OSM.js';
 import {ENTITY} from 'constants/EntityConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
-import DetailedInfo from 'stateful/molecules/DetailedInfo.js';
+import DetailedInfoPane from 'stateful/molecules/DetailedInfoPane.js';
 import EntityInfoPane from 'stateful/molecules/EntityInfoPane.js';
 import Infobox from 'nonstate/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
@@ -65,7 +65,7 @@ export default class AdminPage extends Page {
         >
           <EntityInfoPane entityID={regionID}/>
         </Infobox>
-        <DetailedInfo entityID={regionID}/>
+        <DetailedInfoPane entityID={regionID}/>
       </div>
     );
   }

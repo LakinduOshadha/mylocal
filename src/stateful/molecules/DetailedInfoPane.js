@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 import XButton from 'nonstate/atoms/XButton.js';
 import CensusInfoGroupList from 'stateful/molecules/CensusInfoGroupList.js';
 
-import './DetailedInfo.css';
+import './DetailedInfoPane.css';
 
-export default class DetailedInfo extends Component {
+export default class DetailedInfoPane extends Component {
   constructor(props) {
     super(props);
     this.state = {
