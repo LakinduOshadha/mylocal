@@ -17,7 +17,7 @@ export default class EntityLink extends Component {
   }
 
   render() {
-    const {entityID} = this.props;
+    const {entityID, iEntityID} = this.props;
     const entityType = Entity.getEntityType(entityID)
 
     if (entityID === 'LK') {
@@ -39,8 +39,14 @@ export default class EntityLink extends Component {
       pageName = 'place';
     }
 
+    const key = `a-${iEntityID}-${entityID}`;
+
     return (
-      <a className={className} href={`/mylocal/${pageName}/${entityID}`}>
+      <a
+        key={key}
+        className={className}
+        href={`/mylocal/${pageName}/${entityID}`}
+      >
         {label}
       </a>
     )

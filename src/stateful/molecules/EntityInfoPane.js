@@ -44,7 +44,7 @@ export default class EntityInfoPane extends Component {
       <>
         <InfoTable title="Basic Info" dataMap={baseInfo} />
         <InfoTable title="Parent Regions" dataMap={parentEntityInfo} />
-        <InfoTable title="Custom Info" dataMap={customInfo} />
+        <InfoTable title="Alternative Region Codes" dataMap={customInfo} />
         <InfoTable title="Related Regions" dataMap={relatedEntityInfo} />
       </>
     )

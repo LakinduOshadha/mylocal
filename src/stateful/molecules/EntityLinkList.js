@@ -10,7 +10,14 @@ export default function EntityLinkList(props) {
     >
       {entityIDList.sort().map(
         function(entityID, iEntityID) {
-          return (<EntityLink entityID={entityID} iEntityID={iEntityID}/>);
+          const key = `entity-link-${iEntityID}-${entityID}`;
+          return (
+            <EntityLink
+              key={key}
+              entityID={entityID}
+              iEntityID={iEntityID}
+            />
+          );
         }
       )}
     </div>

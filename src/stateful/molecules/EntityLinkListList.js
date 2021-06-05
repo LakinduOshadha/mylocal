@@ -10,8 +10,10 @@ export default function EntityLinkListList(props) {
     >
       {entityIDListList.sort().map(
         function(entityIDList, iEntityIDList) {
+          const key = `entity-link-list-${iEntityIDList}`;
           return (
             <EntityLinkList
+              key={key}
               entityIDList={entityIDList}
               iEntityIDList={iEntityIDList}
             />
