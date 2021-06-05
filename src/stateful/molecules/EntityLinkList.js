@@ -1,6 +1,4 @@
-import EntityLink from './EntityLink.js';
-
-import './EntityLink.css';
+import EntityLink from 'stateful/atoms/EntityLink.js';
 
 export default function EntityLinkList(props) {
   const {entityIDList, iEntityIDList} = props;

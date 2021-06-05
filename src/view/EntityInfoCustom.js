@@ -1,7 +1,7 @@
 // import {ENTITY} from 'core/EntityConstants.js';
 // import {getPlacesWithinRegion} from 'core/Places.js';
 import Format from 'stateless/atoms/Format.js';
-import EntityLink from 'stateful/atoms/entity/EntityLink.js';
+import EntityLink from 'stateful/atoms/EntityLink.js';
 
 export async function getProvinceInfo(entityData) {
   return Object.assign({}, {
