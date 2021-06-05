@@ -4,23 +4,11 @@ import Reference from 'stateless/atoms/Reference.js';
 export default class InfoTable extends Component {
 
   renderRow(data, iRow) {
-    let classNameCustom = '';
     const key = `row-${iRow}-${data.label}`;
-
-    if (!data.content) {
-
-      return (
-        <tr key={key}>
-          <th className={classNameCustom}>
-            <h3>{data.label}</h3>
-          </th>
-        </tr>
-      );
-    }
 
     return (
       <tr key={key}>
-        <th className={classNameCustom}>{data.label}</th>
+        <th>{data.label}</th>
         <td>{data.content}</td>
       </tr>
     );
