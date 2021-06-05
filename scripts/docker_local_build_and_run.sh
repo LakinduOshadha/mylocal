@@ -1,4 +1,7 @@
+cd /Users/nuwan.senaratna/Not.Dropbox/DEV/react/mylocal
+ls
 docker build -t nuuuwan/mylocal .
+
 docker run nuuuwan/mylocal ls
 docker run nuuuwan/mylocal ls /usr/share/nginx/html
 
