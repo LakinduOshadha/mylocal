@@ -1,8 +1,6 @@
 const md5 = require('md5');
-const CACHE_VERSION = 'v2021-06-05';
+const CACHE_VERSION = 'v2021-06-05.1543';
 const CACHE_ENABLED = true;
-
-// localStorage.clear();
 
 export async function asyncCacheGet(cacheKey, asyncFallback) {
 

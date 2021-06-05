@@ -1,19 +1,21 @@
 import WWW from 'base/WWW.js';
 
+function gerServerHost() {
+  return '52.90.59.127';
+  // return '0.0.0.0';
+}
+
 function getServerPort(serverType) {
-  switch(serverType) {
-    case 'gig':
-      return 81;
-    case 'geo':
-      return 82;
-    default:
-      throw Error(`Unknown serverType: ${serverType}`);
+  const SERVER_TYPE_TO_PORT = {
+    gig: 81,
+    geo: 82,
   }
+  return SERVER_TYPE_TO_PORT[serverType];
 }
 
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
-    const host = '127.0.0.1';
+    const host = gerServerHost();
     const port = getServerPort(serverType);
     return `http://${host}:${port}`
       + `/${cmd}/${paramsList.join('/')}`

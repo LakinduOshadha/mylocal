@@ -38,11 +38,9 @@ export default class AdminPage extends Page {
 
   async getLatLngAndZoom() {
     const regionID = this.getRegionID()
-    console.debug(regionID);
     let minLat, minLng, maxLat, maxLng;
     try {
       [[minLat, minLng], [maxLat, maxLng]] = await getRegionBBox(regionID);
-      console.debug(regionID, [[minLat, minLng], [maxLat, maxLng]]);
     } catch {
       redirectToErrorPage();
     }
