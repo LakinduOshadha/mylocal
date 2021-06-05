@@ -28,12 +28,11 @@ export default class AdminPage extends Page {
   }
 
   async onChangeLocation([lat, lng]) {
-    const {regionID} = this.state;
-    const regionType = Entity.getEntityType(regionID);
     const region = await GeoServer.getRegionInfo([lat, lng]);
-
-    const gndID = region[regionType] ?? region[ENTITY.PROVINCE];
-    this.setState({regionID: gndID});
+    const gndID = region[ENTITY.GND];
+    if (gndID) {
+      this.setState({regionID: gndID});
+    }
   }
 
   async getLatLngAndZoom() {
