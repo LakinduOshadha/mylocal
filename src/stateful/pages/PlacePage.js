@@ -5,7 +5,7 @@ import {ENTITY_LABEL_MAP} from 'core/EntityConstants.js';
 
 import Page, {DEFAULT_ZOOM} from '../pages/Page.js';
 import Infobox from 'stateless/molecules/Infobox.js';
-import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
+import InfoTable from 'view/components/infotables/InfoTable.js';
 
 export default class PlacePage extends Page {
 
@@ -30,7 +30,7 @@ export default class PlacePage extends Page {
         subTitle={entityLabel}
         title={entityID}
       >
-        <EntityInfoTable entityID={entityID} />
+        <InfoTable entityID={entityID} />
       </Infobox>
     );
   }

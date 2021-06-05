@@ -5,7 +5,7 @@ import Entity from 'core/Entity.js';
 
 import getEntityInfo from 'view/EntityInfo.js';
 
-export default class EntityInfoTable extends Component {
+export default class InfoTable extends Component {
   constructor(props) {
     super(props);
     this.state = {dataList: undefined};
