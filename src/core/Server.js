@@ -1,7 +1,7 @@
 import WWW from 'base/WWW.js';
 
 function gerServerHost() {
-  return '52.90.59.127';
+  return '54.89.230.251';
   // return '0.0.0.0';
 }
 
