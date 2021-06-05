@@ -1,5 +1,7 @@
 import EntityLinkList from './EntityLinkList.js';
 
+import './EntityLink.css';
+
 export default function EntityLinkListList(props) {
   const {entityIDListList, ientityIDListList} = props;
 
