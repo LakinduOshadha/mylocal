@@ -41,13 +41,8 @@ export default class RegionMap extends Component {
 
     return (
       <Polyline
+        className="polyline-region-map"
         positions={multiPolygon}
-        pathOptions={{
-          color: 'red',
-          weight: 2,
-          fill: 'red',
-          fillOpacity: 0.1,
-        }}
       />
     )
   }

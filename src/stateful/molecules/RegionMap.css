@@ -2,3 +2,10 @@
   position: absolute;
   z-index: 2000;
 }
+
+.polyline-region-map {
+  stroke: red;
+  stroke-width: 1px;
+  fill: red;
+  fill-opacity: 0.2;
+}
