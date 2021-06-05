@@ -172,9 +172,6 @@ let FIELD_NAME_TO_COLOR = {
 
 };
 
-
-
-
 export function hsla(h, s, l, a) {
   return `hsl(${h},${s}%,${l}%, ${a})`;
 }
