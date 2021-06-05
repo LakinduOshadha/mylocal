@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 
-import {getSummary} from './DetailedInfoUtils.js';
 import GIGServer from 'core/GIGServer.js';
 import XButton from 'stateless/atoms/XButton.js';
+import CensusInfoGroupList from 'stateful/molecules/CensusInfoGroupList.js';
 
 import './DetailedInfo.css';
 
@@ -20,8 +20,7 @@ export default class DetailedInfo extends Component {
   async componentDidMount() {
     const {entityID} = this.props;
     const entity = await GIGServer.getEntity(entityID);
-    const summary = await getSummary(entityID);
-    this.setState({summary, entity});
+    this.setState({entity});
   }
 
   onClickShowDetails(e) {
@@ -33,7 +32,7 @@ export default class DetailedInfo extends Component {
   }
 
   render() {
-    const {showDetails, summary, entity} = this.state;
+    const {showDetails, entity} = this.state;
 
     if (!entity) {
       return '...';
@@ -58,7 +57,7 @@ export default class DetailedInfo extends Component {
       <div className={`div-detailed-info ${className}`}>
         <XButton onClick={this.onClickHideDetails}/>
         <div className="div-summary-outer">
-          {summary}
+          <CensusInfoGroupList entity={entity} />
         </div>
       </div>
     )
