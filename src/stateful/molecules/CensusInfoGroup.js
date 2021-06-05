@@ -1,13 +1,13 @@
 import CensusInfo from './CensusInfo.js';
 
 export default function CensusInfoGroup(props) {
-  const {groupName, tableNames, entity} = props;
+  const {groupName, tableNames, entityID} = props;
   const renderedInner = tableNames.map(
     function (tableName, iTable) {
       return (
         <CensusInfo
           tableName={tableName}
-          entity={entity}
+          entityID={entityID}
           iTable={iTable}
         />
       );

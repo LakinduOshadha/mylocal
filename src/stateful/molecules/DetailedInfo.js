@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-import GIGServer from 'core/GIGServer.js';
 import XButton from 'stateless/atoms/XButton.js';
 import CensusInfoGroupList from 'stateful/molecules/CensusInfoGroupList.js';
 
@@ -11,41 +10,31 @@ export default class DetailedInfo extends Component {
     super(props);
     this.state = {
       showDetails: true,
-      summary: '',
     };
-    this.onClickShowDetails = this.onClickShowDetails.bind(this);
-    this.onClickHideDetails = this.onClickHideDetails.bind(this);
+    this.onClickShow = this.onClickShow.bind(this);
+    this.onClickHide = this.onClickHide.bind(this);
   }
 
-  async componentDidMount() {
-    const {entityID} = this.props;
-    const entity = await GIGServer.getEntity(entityID);
-    this.setState({entity});
-  }
-
-  onClickShowDetails(e) {
+  onClickShow(e) {
     this.setState({showDetails: true});
   }
 
-  onClickHideDetails(e) {
+  onClickHide(e) {
     this.setState({showDetails: false});
   }
 
   render() {
-    const {showDetails, entity} = this.state;
-
-    if (!entity) {
-      return '...';
-    }
+    const {showDetails} = this.state;
+    const {entityID} = this.props;
 
     if (!showDetails) {
       return (
         <div className="div-detailed-info">
           <div
             className="div-show-details"
-            onClick={this.onClickShowDetails.bind(this)}
+            onClick={this.onClickShow.bind(this)}
           >
-            Details about {entity.name} ({entity.id})
+            Details about {entityID})
           </div>
         </div>
       )
@@ -55,9 +44,9 @@ export default class DetailedInfo extends Component {
 
     return (
       <div className={`div-detailed-info ${className}`}>
-        <XButton onClick={this.onClickHideDetails}/>
+        <XButton onClick={this.onClickHide}/>
         <div className="div-summary-outer">
-          <CensusInfoGroupList entity={entity} />
+          <CensusInfoGroupList entityID={entityID} />
         </div>
       </div>
     )

@@ -18,8 +18,8 @@ export default class CensusInfo extends Component {
   }
 
   async componentDidMount() {
-    const {tableName, entity} = this.props;
-    const dataMap = await GIGServer.getCensus(tableName, entity.id);
+    const {tableName, entityID} = this.props;
+    const dataMap = await GIGServer.getCensus(tableName, entityID);
     this.setState({dataMap});
   }
 
