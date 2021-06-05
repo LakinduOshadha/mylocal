@@ -11,7 +11,7 @@ import GeoServer from 'core/GeoServer.js';
 import DetailedInfo from 'view/components/DetailedInfo.js';
 import EntityInfoTable from 'view/components/infotables/EntityInfoTable.js';
 import Infobox from 'stateless/molecules/Infobox.js';
-import RegionMap from 'view/components/RegionMap.js';
+import RegionMap from 'stateful/molecules/RegionMap.js';
 import Page, {redirectToErrorPage} from '../pages/Page.js';
 
 export default class AdminPage extends Page {
