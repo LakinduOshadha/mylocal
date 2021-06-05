@@ -11,7 +11,7 @@ import {
   getDistrictInfo,
   getDSDInfo,
   getGNDInfo,
-} from 'view/EntityInfoCustom.js';
+} from 'stateful/molecules/EntityInfoCustom.js';
 
 export function getParentEntityInfo(entityData) {
   return Entity.getIDEntries(entityData).reduce(
