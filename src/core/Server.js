@@ -16,7 +16,6 @@ function getServerPort(serverType) {
 export default class Server {
   static getURL(serverType, cmd, paramsList) {
     const host = gerServerHost();
-    console.debug({host});
     const port = getServerPort(serverType);
     return `http://${host}:${port}`
       + `/${cmd}/${paramsList.join('/')}`
