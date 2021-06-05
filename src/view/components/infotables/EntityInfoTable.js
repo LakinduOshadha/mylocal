@@ -1,11 +1,21 @@
+import React, {Component} from 'react';
+import Reference from 'stateless/atoms/Reference.js';
 import GIGServer from 'core/GIGServer.js';
 import Entity from 'core/Entity.js';
 
 import getEntityInfo from 'view/EntityInfo.js';
 
-import AbstractInfoTable from './AbstractInfoTable.js';
+export default class EntityInfoTable extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {dataList: undefined};
+  }
 
-export default class EntityInfoTable extends AbstractInfoTable {
+  async componentDidMount() {
+    this.setState({
+        dataList: await this.getDataList(),
+    });
+  }
 
   getTitle() {
     return '';
@@ -45,6 +55,28 @@ export default class EntityInfoTable extends AbstractInfoTable {
           content: v,
         }
       }
+    )
+  }
+
+  render() {
+    if (!this.state.dataList) {
+      return <div>...</div>;
+    }
+
+    return (
+      <div className="div-info-table">
+        <h3>{this.getTitle()}</h3>
+        <table>
+          <tbody>
+            {this.state.dataList.map(this.renderRow)}
+          </tbody>
+        </table>
+        <Reference
+          title="Data Source"
+          label="Department of Census and Statistics, Sri Lanka"
+          link="http://www.statistics.gov.lk/"
+        />
+      </div>
     )
   }
 }
