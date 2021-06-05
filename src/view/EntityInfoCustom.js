@@ -1,5 +1,3 @@
-// import {ENTITY} from 'core/EntityConstants.js';
-// import {getPlacesWithinRegion} from 'core/Places.js';
 import Format from 'stateless/atoms/Format.js';
 import EntityLink from 'stateful/atoms/EntityLink.js';
 
@@ -29,17 +27,11 @@ export async function getDSDInfo(entityData) {
 }
 
 export async function getGNDInfo(entityData) {
-  // const policeEntities = await getPlacesWithinRegion(ENTITY.PS, entityData.id);
-  // const placeInfo = (policeEntities.length > 0) ? {
-  //   'Police Stations': renderID(policeEntities[0].id),
-  // } : null;
-
   return Object.assign({}, {
     'Region Codes': undefined,
     'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
   });
-  // }, placeInfo);
 }
 
 export async function getPSInfo(entityData) {
