@@ -11,3 +11,11 @@ th {
 .align-left {
   text-align: left;
 }
+
+.table-info-table {
+  margin-top: 0px;
+}
+
+.h3-info-table-title {
+  margin-bottom: 0px;
+}

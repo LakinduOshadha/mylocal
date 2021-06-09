@@ -21,8 +21,8 @@ export default class InfoTable extends Component {
 
     return (
       <div className="div-info-table">
-        <h3>{title}</h3>
-        <table>
+        <h3 className="h3-info-table-title">{title}</h3>
+        <table className="table-info-table">
           <tbody>
             {Object.entries(dataMap).map(this.renderRow)}
           </tbody>
