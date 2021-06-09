@@ -1,53 +1,49 @@
-  :root {
-  --font-family-serif: 'Linux Libertine','Georgia','Times',serif;
-  /* --font-family: sans-serif; */
-  /* --font-family: Futura; */
-  /* --font-family: 'Avenir Book', sans-serif; */
-  --font-family: 'Geneva', sans-serif;
+:root {
+  --color-sl-maroon: #8d2029;
+  --color-sl-orange: #ff5b00;
+  --color-sl-yellow: #ffb700;
+  --color-sl-yellow-light: #fff0ca;
+  --color-sl-green: #005641;
+
+  --color-gray-f8: #f8f8f8;
+  --color-gray-fc: #fcfcfc;
+  --color-gray-fd: #fdfdfd;
 }
 
 body {
-  font-family: var(--font-family);
-  font-size: 12px;
-  overflow: hidden;
-  display: flex;
-  flex-direction:column;
-}
-
-h1, h2, h3 {
-  /* font-family: var(--font-family-serif); */
-  font-weight: normal;
   color: black;
+  font-family: sans-serif, Arial, Helvetica;
+  font-weight: 300;
+  line-height: 1.4;
 }
 
-h1 {
-  color: #ccc;
-  font-size: 36px;
+h1, h2, h3, p {
+  font-weight: 300;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 12px;
+  line-height: 1.4;
 }
 
-h2 {
-  color: #888;
-  font-size: 24px;
+div {
+  line-height: 1.4;
 }
 
-h3 {
-  color: #444;
-  font-size: 18px;
+hr {
+  color: #eee;
+  border-width: 0.5px;
 }
 
-p {
-  font-size: 12px;
-}
-
-.monospace {
-  font-family: monospace;
+strong {
+  color: var(--color-sl-maroon);
+  font-weight: 300;
 }
 
 a {
-  color: darkblue;
   text-decoration: none;
+  color: var(--color-sl-green);
 }
 
 a:hover {
-  color: lightblue;
+  color: var(--color-sl-orange);
 }
