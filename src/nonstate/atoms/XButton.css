@@ -2,3 +2,7 @@
   text-align: right;
   color: gray;
 }
+
+.div-x-button:hover {
+  cursor: pointer;
+}
