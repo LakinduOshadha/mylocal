@@ -1,0 +1,10 @@
+.div-pyramid-outer {
+}
+
+.div-pyramid {
+  display: table-cell;
+}
+
+.svg-pyramid {
+  margin-top: 24px;
+}
