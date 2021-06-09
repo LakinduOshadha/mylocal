@@ -14,12 +14,17 @@ export default function CensusDescription(props) {
     function([k, v], i) {
       const renderedPct = Format.percent(v / total);
       const renderedLabel =  `"${Format.titleCase(k)}"`
-      if (v > total * 0.5) {
-        return `Mostly ${renderedLabel} (${renderedPct}). `;
+      if (v > total * 0.99) {
+        return `Almost completely ${renderedLabel} (${renderedPct}). `;
+      } else if (v > total * 0.8) {
+        return `Overwhelmingly ${renderedLabel} (${renderedPct}). `;
+      } else if (v > total * 0.6) {
+          return `Mostly ${renderedLabel} (${renderedPct}). `;
+
       } else if (i === 0) {
-        return `Mostly ${renderedLabel} (${renderedPct}). `;
-      } else if (v > total * 0.25) {
-        return `Followed by ${renderedLabel} (${renderedPct}). `;
+        return `${renderedLabel} (${renderedPct}). `;
+      } else if (v > total * 0.1) {
+        return `${renderedLabel} (${renderedPct}). `;
       }
       return undefined;
     }
