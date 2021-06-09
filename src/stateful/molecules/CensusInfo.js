@@ -47,7 +47,12 @@ export default class CensusInfo extends Component {
         key={`div-census-info-${iTable}-${tableName}`}
         className="div-census-info"
       >
-        <h4>{getCensusLabel(tableName)}</h4>
+        <h4 className="h4-census-label">{getCensusLabel(tableName)}</h4>
+        <Reference
+          title="Data Source"
+          label="Department of Census and Statistics, Sri Lanka"
+          link="http://www.statistics.gov.lk/"
+        />
         {valueIsPercent ? null : <CensusDescription dataMap={dataMap} />}
         <div className="div-census-chart-component">
           <ChartComponent
@@ -57,11 +62,6 @@ export default class CensusInfo extends Component {
             valueIsPercent={valueIsPercent}
           />
         </div>
-        <Reference
-          title="Data Source"
-          label="Department of Census and Statistics, Sri Lanka"
-          link="http://www.statistics.gov.lk/"
-        />
       </div>
     );
   }
