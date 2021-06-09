@@ -7,7 +7,7 @@ import Pyramid from 'nonstate/molecules/Pyramid.js';
 import Reference from 'nonstate/atoms/Reference.js';
 import CensusDescription from 'nonstate/atoms/CensusDescription.js';
 
-import './Census.css';
+import './CensusInfo.css';
 
 export default class CensusInfo extends Component {
   constructor(props) {
@@ -43,8 +43,11 @@ export default class CensusInfo extends Component {
       (tableName === 'communication_items_owned_by_household');
 
     return (
-      <div key={`div-census-info-${iTable}-${tableName}`}>
-        <h3>{getCensusLabel(tableName)}</h3>
+      <div
+        key={`div-census-info-${iTable}-${tableName}`}
+        className="div-census-info"
+      >
+        <h4>{getCensusLabel(tableName)}</h4>
         {valueIsPercent ? null : <CensusDescription dataMap={dataMap} />}
         <div className="div-census-chart-component">
           <ChartComponent

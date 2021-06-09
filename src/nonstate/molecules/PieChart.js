@@ -9,11 +9,9 @@ export default class PieChart extends Component {
   render() {
     const {dataMap, tableName, valueIsPercent} = this.props;
     const {extendedData, total} = getExtendedData(dataMap, valueIsPercent);
-    const [width, height]= [200, 200];
+    const [width, height]= [120, 120];
     const [cx, cy] = [width / 2, height / 2];
     const r = Math.min(cx, cy);
-
-    const styleDiv = {width: width * 2, height}
 
     let runningTotal = 0;
     let tableInfos = [];
@@ -57,13 +55,6 @@ export default class PieChart extends Component {
 
     return (
       <div key={'div-' + tableName} className="div-pie-chart-outer">
-        {valueIsPercent ? null : (
-          <div className="div-pie-chart" style={styleDiv}>
-            <svg width={width} height={height}>
-              {renderedArcs}
-            </svg>
-          </div>
-        )}
         <div className="div-table">
           {<Table
             tableInfos={tableInfos}
@@ -71,6 +62,13 @@ export default class PieChart extends Component {
             valueIsPercent={valueIsPercent}
           />}
         </div>
+        {valueIsPercent ? null : (
+          <div className="div-pie-chart" >
+            <svg className="svg-pie-chart" width={width} height={height}>
+              {renderedArcs}
+            </svg>
+          </div>
+        )}
       </div>
     )
   }

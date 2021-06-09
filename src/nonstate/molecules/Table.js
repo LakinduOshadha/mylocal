@@ -17,15 +17,24 @@ export default class PieChart extends Component {
                 <tr key={`tr-${iRow}-${key}`}>
                   <td>
                     <svg width="10" heigh="10">
-                      <circle cx="5" cy="7" r="5" style={{'fill': color}} />
+                      <circle cx="5" cy="9" r="4" style={{'fill': color}} />
                     </svg>
                   </td>
                   <th>{Format.titleCase(key)}</th>
-                  <td className="align-right">
+                  <td className="align-right highlight">
                     <div>
                       {valueIsPercent
                           ? Format.percent(value)
-                          : Format.percentAndTotal(value, total)
+                          : Format.percent(value / total)
+                      }
+                      {}
+                    </div>
+                  </td>
+                  <td className="align-right">
+                    <div>
+                      {valueIsPercent
+                          ? null
+                          : Format.numWithComma(value)
                       }
                       {}
                     </div>

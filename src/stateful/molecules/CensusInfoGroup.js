@@ -18,7 +18,7 @@ export default function CensusInfoGroup(props) {
 
   return (
     <div>
-      <h2>{groupName}</h2>
+      <h3>{groupName}</h3>
       {renderedInner}
     </div>
   )

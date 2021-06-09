@@ -14,11 +14,14 @@ path {
 
 
 .div-pie-chart-outer {
-  display: table-row;
 }
 
 .div-pie-chart {
   display: table-cell;
+}
+
+.svg-pie-chart {
+  margin-top: 24px;
 }
 
 .div-table {
