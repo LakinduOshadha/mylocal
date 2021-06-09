@@ -19,7 +19,7 @@ export default class AdminPage extends Page {
   constructor(props) {
     super(props);
     this.state =  {
-      regionID: this.props.match.params.regionID || DEFAULT_ENTITY_ID,
+      regionID: this.props.match?.params?.regionID || DEFAULT_ENTITY_ID,
     };
   }
 

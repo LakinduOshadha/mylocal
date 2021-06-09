@@ -1,8 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+import XButton from 'nonstate/atoms/XButton.js';
+
+test('renders "Demographic Information" elem', () => {
+  render(
+   <XButton />
+  );
+  const elem = screen.getByText('✕');
+  expect(elem).toBeInTheDocument();
 });
