@@ -1,4 +1,5 @@
 import CensusInfo from './CensusInfo.js';
+import './CensusInfoGroup.css';
 
 export default function CensusInfoGroup(props) {
   const {groupName, tableNames, entityID} = props;
@@ -18,7 +19,7 @@ export default function CensusInfoGroup(props) {
 
   return (
     <div>
-      <h3>{groupName}</h3>
+      <h3 className="h3-census-group-name">{groupName}</h3>
       {renderedInner}
     </div>
   )
