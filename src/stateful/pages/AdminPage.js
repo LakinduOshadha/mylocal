@@ -1,7 +1,11 @@
 import React from 'react';
 
 import Entity from 'core/Entity.js';
-import {ENTITY_LABEL_MAP, DEFAULT_ENTITY_ID} from 'constants/EntityConstants.js';
+import {
+  ENTITY_LABEL_MAP,
+  DEFAULT_ENTITY_ID
+} from 'constants/EntityConstants.js';
+import {LAT_LNG} from 'constants/LatLngConstants.js';
 
 import {getRegionBBox} from 'core/RegionGeo.js';
 import {getZoom} from 'base/OSM.js';
@@ -37,16 +41,17 @@ export default class AdminPage extends Page {
 
   async getLatLngAndZoom() {
     const regionID = this.getRegionID()
-    let minLat, minLng, maxLat, maxLng;
-    try {
-      [[minLat, minLng], [maxLat, maxLng]] = await getRegionBBox(regionID);
-    } catch {
-      redirectToErrorPage();
-    }
 
-    const latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
-    const latSpan = maxLat - minLat;
-    const zoom = getZoom(latSpan);
+    let latLng, zoom;
+    try {
+      const [[minLat, minLng], [maxLat, maxLng]] =
+        await getRegionBBox(regionID);
+      latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
+      zoom = getZoom(maxLat - minLat);
+    } catch {
+      latLng = LAT_LNG.COLOMBO_LIPTON_CIRCUS;
+      zoom = 14;
+    }
 
     return {
       latLng,
