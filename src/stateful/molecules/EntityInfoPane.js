@@ -10,20 +10,11 @@ import {
   getRelatedEntityInfo,
 } from 'stateful/molecules/EntityInfo.js';
 
-
-
 import './EntityInfoPane.css';
 
 export default class EntityInfoPane extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {dataTable: undefined};
-  }
-
   async componentDidMount() {
     const {entityID} = this.props;
-
     try {
       const entityData = await GIGServer.getEntity(entityID);
       this.setState({
@@ -35,7 +26,12 @@ export default class EntityInfoPane extends Component {
     } catch(err) {}
   }
 
+
   render() {
+    if (!this.state) {
+      return <Loader />;
+    }
+
     const {
       baseInfo,
       parentEntityInfo,
@@ -43,9 +39,6 @@ export default class EntityInfoPane extends Component {
       relatedEntityInfo,
     } = this.state;
 
-    if (!baseInfo) {
-      return <Loader />;
-    }
 
     return (
       <div className="div-entity-info-pane">
