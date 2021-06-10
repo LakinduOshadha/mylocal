@@ -1,4 +1,5 @@
 import {Component} from 'react';
+
 import GIGServer from 'core/GIGServer.js';
 import {CENSUS_TABLE_SPAN_INFO} from 'constants/CensusConstants.js';
 import {getCensusLabel} from 'core/Census.js';
@@ -8,8 +9,8 @@ import Reference from 'nonstate/atoms/Reference.js';
 import PieChart from 'nonstate/molecules/PieChart.js';
 import Pyramid from 'nonstate/molecules/Pyramid.js';
 
-
 import './CensusInfo.css';
+
 
 export default class CensusInfo extends Component {
   constructor(props) {
