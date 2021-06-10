@@ -36,6 +36,7 @@ export default class AdminPage extends Component {
       AdminPage.getDefaultLatLngAndZoom(),
       {regionID: this.props.match?.params?.regionID || DEFAULT_ENTITY_ID},
     );
+    this.onChangeLocation = this.onChangeLocation.bind(this);
   }
 
   getRegionID() {
