@@ -20,13 +20,18 @@ export function redirectToErrorPage() {
 
 export default class Page extends Component {
 
+  static getDefaultLatLngAndZoom() {
+    return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
+  }
+
   constructor(props) {
     super(props);
     this.onChangeLocation = this.onChangeLocation.bind(this);
+    this.state = Page.getDefaultLatLngAndZoom();
   }
 
   async getLatLngAndZoom() {
-    return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
+    return Page.getDefaultLatLngAndZoom();
   }
 
   async componentDidMount() {

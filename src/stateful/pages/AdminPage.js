@@ -22,9 +22,10 @@ export default class AdminPage extends Page {
 
   constructor(props) {
     super(props);
-    this.state =  {
-      regionID: this.props.match?.params?.regionID || DEFAULT_ENTITY_ID,
-    };
+    this.state = Object.assign({},
+      Page.getDefaultLatLngAndZoom(),
+      {regionID: this.props.match?.params?.regionID || DEFAULT_ENTITY_ID},
+    );
   }
 
   getRegionID() {
