@@ -1,8 +1,7 @@
 import WWW from 'base/WWW.js';
 
-const TEST_KILL_SERVER = false;
-const TEST_GIG_SERVER = false;
-const TEST_GEO_SERVER = false;
+export const TEST_GIG_SERVER_DISABLED = false;
+export const TEST_GEO_SERVER_DISABLED = false;
 
 function gerServerHost() {
   const { REACT_APP_SERVER_HOST } = process.env;
@@ -16,13 +15,10 @@ export default class Server {
   }
 
   static async run(serverType, cmd, paramsList) {
-    if (TEST_KILL_SERVER) {
+    if (serverType === 'gig' && TEST_GIG_SERVER_DISABLED) {
       return null;
     }
-    if (serverType === 'gig' && TEST_GIG_SERVER) {
-      return null;
-    }
-    if (serverType === 'geo' && TEST_GEO_SERVER) {
+    if (serverType === 'geo' && TEST_GEO_SERVER_DISABLED) {
       return null;
     }
 
