@@ -9,6 +9,8 @@
   position: absolute;
   top: 16px;
   z-index: 2000;
+
+  width : 400px;
 }
 
 .show {
