@@ -26,12 +26,14 @@
   max-width: 500px;
 }
 
-.a-show-details {
+.div-show-details {
   font-size: 12px;
+  color: var(--color-sl-green);
 }
 
-.a-show-details:hover {
+.div-show-details:hover {
   cursor: pointer;
+  color: var(--color-sl-orange);
 }
 
 .div-data-source {

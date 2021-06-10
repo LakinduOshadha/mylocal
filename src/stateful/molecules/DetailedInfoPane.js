@@ -30,12 +30,12 @@ export default class DetailedInfoPane extends Component {
     if (!showDetails) {
       return (
         <div className="div-detailed-info">
-          <a
-            className="a-show-details"
+          <div
+            className="div-show-details"
             onClick={this.onClickShow.bind(this)}
           >
             Click to see Details about {entityID})
-          </a>
+          </div>
         </div>
       )
     }
