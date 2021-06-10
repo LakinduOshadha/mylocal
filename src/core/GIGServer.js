@@ -1,5 +1,7 @@
 import Server from './Server.js';
 
+class GIGServerError extends Error {}
+
 export default class GIGServer extends Server {
 
   static async multigetEntities(entityIDs) {
@@ -8,11 +10,17 @@ export default class GIGServer extends Server {
       'entities',
       [entityIDs.join(';')],
     );
+    if (!entities) {
+      throw GIGServerError();
+    }
     return entities;
   }
 
   static async getEntity(entityID) {
     const entities = await GIGServer.multigetEntities([entityID]);
+    if (!entities) {
+      throw GIGServerError();
+    }
     return entities && entities[entityID];
   }
 
@@ -22,6 +30,9 @@ export default class GIGServer extends Server {
       'entity_ids',
       [entityName],
     );
+    if (!entityIDs) {
+      throw GIGServerError();
+    }
     return entityIDs;
   }
 
@@ -31,7 +42,10 @@ export default class GIGServer extends Server {
       'nearby',
       [`${lat},${lng}`],
     ))
-    return nearby && nearby['nearby_entity_info_list'];
+    if (!nearby) {
+      throw GIGServerError();
+    }
+    return nearby['nearby_entity_info_list'];
   }
 
   static async getCensus(tableName, entityID) {
@@ -40,6 +54,9 @@ export default class GIGServer extends Server {
       'ext_data',
       ['census', tableName, entityID],
     );
+    if (!census) {
+      throw GIGServerError();
+    }
     return census;
   }
 }
