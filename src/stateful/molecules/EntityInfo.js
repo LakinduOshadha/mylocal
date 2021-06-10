@@ -46,7 +46,7 @@ export function getRelatedEntityInfo(entityData) {
   );
 }
 
-export async function getBaseInfo(entityData) {
+export function getBaseInfo(entityData) {
   const entityType = Entity.getEntityType(entityData.id);
   return Object.assign({},
     {
@@ -59,7 +59,7 @@ export async function getBaseInfo(entityData) {
   );
 }
 
-export async function getCustomInfo(entityData) {
+export function getCustomInfo(entityData) {
   const entityType = Entity.getEntityType(entityData.id);
   const getter = {
     [ENTITY.PROVINCE]: getProvinceInfo,
@@ -68,6 +68,6 @@ export async function getCustomInfo(entityData) {
     [ENTITY.GND]: getGNDInfo,
   };
   return Object.assign({},
-    getter[entityType] ? (await getter[entityType](entityData)) : {},
+    getter[entityType] ? (getter[entityType](entityData)) : {},
   );
 }

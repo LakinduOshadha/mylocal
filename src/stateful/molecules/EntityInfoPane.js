@@ -18,9 +18,9 @@ export default class EntityInfoPane extends Component {
     try {
       const entityData = await GIGServer.getEntity(entityID);
       this.setState({
-        baseInfo: await getBaseInfo(entityData),
+        baseInfo: getBaseInfo(entityData),
         parentEntityInfo: getParentEntityInfo(entityData),
-        customInfo: await getCustomInfo(entityData),
+        customInfo: getCustomInfo(entityData),
         relatedEntityInfo: getRelatedEntityInfo(entityData),
       });
     } catch(err) {}

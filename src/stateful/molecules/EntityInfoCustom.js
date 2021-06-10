@@ -1,11 +1,11 @@
-export async function getProvinceInfo(entityData) {
+export function getProvinceInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
   });
 }
 
-export async function getDistrictInfo(entityData) {
+export function getDistrictInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'FIPS code': entityData.fips,
@@ -13,14 +13,14 @@ export async function getDistrictInfo(entityData) {
   });
 }
 
-export async function getDSDInfo(entityData) {
+export function getDSDInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'HASC code': entityData.hasc,
   });
 }
 
-export async function getGNDInfo(entityData) {
+export function getGNDInfo(entityData) {
   return Object.assign({}, {
     'ISO 3166 code': entityData.id,
     'GND Num': entityData.gnd_num,
