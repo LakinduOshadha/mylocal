@@ -16,7 +16,7 @@ import DetailedInfoPane from 'stateful/molecules/DetailedInfoPane.js';
 import EntityInfoPane from 'stateful/molecules/EntityInfoPane.js';
 import Infobox from 'nonstate/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
-import Page, {redirectToErrorPage} from '../pages/Page.js';
+import Page from '../pages/Page.js';
 
 export default class AdminPage extends Page {
 
