@@ -1,7 +1,7 @@
 import WWW from 'base/WWW.js';
 
 const TEST_KILL_SERVER = false;
-const TEST_GIG_SERVER = true;
+const TEST_GIG_SERVER = false;
 const TEST_GEO_SERVER = false;
 
 function gerServerHost() {
