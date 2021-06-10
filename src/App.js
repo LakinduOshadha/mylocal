@@ -9,7 +9,6 @@ import {
 import {DEFAULT_ENTITY_ID} from 'constants/EntityConstants.js';
 
 import AdminPage from 'stateful/pages/AdminPage.js';
-import ErrorPage from 'stateful/pages/ErrorPage.js';
 
 import './App.css';
 
@@ -20,7 +19,6 @@ export default class App extends Component {
         <Router basename="/mylocal">
           <Switch>
             <Route path="/admin/:regionID" component={AdminPage}/>
-            <Route path="/error" component={ErrorPage}/>
             <Route>
                <Redirect to={`/admin/${DEFAULT_ENTITY_ID}`} />
             </Route>
