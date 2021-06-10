@@ -13,7 +13,6 @@ export default class Server {
 
   static async run(serverType, cmd, paramsList) {
     const url = Server.getURL(serverType, cmd, paramsList);
-    console.debug(url);
     const data = await WWW.getJSON(url);
     return data;
   }
