@@ -1,6 +1,8 @@
 import WWW from 'base/WWW.js';
 
-const TEST_SIMULATE_NO_SERVER = true;
+const TEST_KILL_SERVER = false;
+const TEST_GIG_SERVER = true;
+const TEST_GEO_SERVER = false;
 
 function gerServerHost() {
   const { REACT_APP_SERVER_HOST } = process.env;
@@ -14,9 +16,16 @@ export default class Server {
   }
 
   static async run(serverType, cmd, paramsList) {
-    if (TEST_SIMULATE_NO_SERVER) {
+    if (TEST_KILL_SERVER) {
       return null;
     }
+    if (serverType === 'gig' && TEST_GIG_SERVER) {
+      return null;
+    }
+    if (serverType === 'geo' && TEST_GEO_SERVER) {
+      return null;
+    }
+
     const url = Server.getURL(serverType, cmd, paramsList);
     const data = await WWW.getJSON(url);
     return data;
