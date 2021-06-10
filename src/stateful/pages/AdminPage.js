@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {MapContainer, TileLayer} from 'react-leaflet';
 
 import Entity from 'core/Entity.js';
 import {
@@ -16,14 +17,23 @@ import DetailedInfoPane from 'stateful/molecules/DetailedInfoPane.js';
 import EntityInfoPane from 'stateful/molecules/EntityInfoPane.js';
 import Infobox from 'nonstate/molecules/Infobox.js';
 import RegionMap from 'stateful/molecules/RegionMap.js';
-import Page from '../pages/Page.js';
 
-export default class AdminPage extends Page {
+import Loader from 'nonstate/atoms/Loader.js';
+import MapLocationMarker from 'stateful/atoms/MapLocationMarker.js';
+
+import './AdminPage.css';
+
+export const DEFAULT_ZOOM = 16;
+
+export default class AdminPage extends Component {
+  static getDefaultLatLngAndZoom() {
+    return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
+  }
 
   constructor(props) {
     super(props);
     this.state = Object.assign({},
-      Page.getDefaultLatLngAndZoom(),
+      AdminPage.getDefaultLatLngAndZoom(),
       {regionID: this.props.match?.params?.regionID || DEFAULT_ENTITY_ID},
     );
   }
@@ -44,22 +54,15 @@ export default class AdminPage extends Page {
 
   async getLatLngAndZoom() {
     const regionID = this.getRegionID()
-
-    let latLng, zoom;
     try {
       const [[minLat, minLng], [maxLat, maxLng]] =
         await getRegionBBox(regionID);
-      latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
-      zoom = getZoom(maxLat - minLat);
+      const latLng = [(minLat + maxLat) / 2, (minLng + maxLng) / 2];
+      const zoom = getZoom(maxLat - minLat);
+      return {latLng, zoom};
     } catch {
-      latLng = LAT_LNG.COLOMBO_LIPTON_CIRCUS;
-      zoom = 14;
+      return {latLng: LAT_LNG.COLOMBO, zoom: DEFAULT_ZOOM};
     }
-
-    return {
-      latLng,
-      zoom,
-    };
   }
 
   renderInner() {
@@ -87,5 +90,26 @@ export default class AdminPage extends Page {
         regionID={regionID}
       />
     );
+  }
+
+  render() {
+    if (!this?.state?.latLng) {
+      return <Loader />;
+    }
+    const {zoom, latLng} = this.state;
+    const [lat, lng] = latLng;
+
+    return (
+      <div key={`page-${lat}-${lng}-${zoom}`}>
+        <MapContainer center={[lat, lng]} zoom={zoom}>
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {this.renderInnerMapLayer()}
+          <MapLocationMarker
+            onChangeLocation={this.onChangeLocation}
+          />
+        </MapContainer>
+        {this.renderInner()}
+      </div>
+    )
   }
 }
