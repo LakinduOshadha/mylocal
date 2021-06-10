@@ -12,8 +12,10 @@ export default class EntityLink extends Component {
     this.state = {entity: undefined};
   }
   async componentDidMount() {
-    const entity = await GIGServer.getEntity(this.props.entityID);
-    this.setState({entity});
+    try {
+      const entity = await GIGServer.getEntity(this.props.entityID);
+      this.setState({entity});
+    } catch (err) {}
   }
 
   render() {

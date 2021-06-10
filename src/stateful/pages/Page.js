@@ -7,6 +7,7 @@ import {ENTITY} from 'constants/EntityConstants.js';
 import {LAT_LNG} from 'constants/LatLngConstants.js';
 import GeoServer from 'core/GeoServer.js';
 
+import Loader from 'nonstate/atoms/Loader.js';
 import MapLocationMarker from 'stateful/atoms/MapLocationMarker.js';
 
 import './Page.css';
@@ -34,11 +35,13 @@ export default class Page extends Component {
   }
 
   async onChangeLocation([lat, lng]) {
-    const region = await GeoServer.getRegionInfo([lat, lng]);
-    const gndID = region[ENTITY.GND];
-    if (gndID) {
-      window.location.href = `/mylocal/admin/${gndID}`;
-    }
+    try {
+      const region = await GeoServer.getRegionInfo([lat, lng]);
+      const gndID = region[ENTITY.GND];
+      if (gndID) {
+        window.location.href = `/mylocal/admin/${gndID}`;
+      }
+    } catch (err) {}
   }
 
   renderInner() {
@@ -51,7 +54,7 @@ export default class Page extends Component {
 
   render() {
     if (!this?.state?.latLng) {
-      return 'Loading...';
+      return <Loader />;
     }
     const {zoom, latLng} = this.state;
     const [lat, lng] = latLng;

@@ -15,9 +15,11 @@ export default class RegionMap extends Component {
 
   async componentDidMount() {
     const {regionID} = this.props;
-    this.setState({
-      geo: await GeoServer.getGeo(regionID),
-    })
+    try {
+      this.setState({
+        geo: await GeoServer.getGeo(regionID),
+      })
+    } catch (err) {}
   }
 
   render() {

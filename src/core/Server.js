@@ -1,6 +1,6 @@
 import WWW from 'base/WWW.js';
 
-const TEST_SIMULATE_NO_SERVER = false;
+const TEST_SIMULATE_NO_SERVER = true;
 
 function gerServerHost() {
   const { REACT_APP_SERVER_HOST } = process.env;

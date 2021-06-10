@@ -2,10 +2,12 @@ import {Component} from 'react';
 import GIGServer from 'core/GIGServer.js';
 import {CENSUS_TABLE_SPAN_INFO} from 'constants/CensusConstants.js';
 import {getCensusLabel} from 'core/Census.js';
+import CensusDescription from 'nonstate/atoms/CensusDescription.js';
+import Loader from 'nonstate/atoms/Loader.js';
+import Reference from 'nonstate/atoms/Reference.js';
 import PieChart from 'nonstate/molecules/PieChart.js';
 import Pyramid from 'nonstate/molecules/Pyramid.js';
-import Reference from 'nonstate/atoms/Reference.js';
-import CensusDescription from 'nonstate/atoms/CensusDescription.js';
+
 
 import './CensusInfo.css';
 
@@ -17,13 +19,15 @@ export default class CensusInfo extends Component {
 
   async componentDidMount() {
     const {tableName, entityID} = this.props;
-    const dataMap = await GIGServer.getCensus(tableName, entityID);
-    this.setState({dataMap});
+    try {
+      const dataMap = await GIGServer.getCensus(tableName, entityID);
+      this.setState({dataMap});
+    } catch (err) {}
   }
 
   render() {
     if (!this.state?.dataMap) {
-      return '...';
+      return <Loader />;
     }
     return this.renderWithData();
   }

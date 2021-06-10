@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import GIGServer from 'core/GIGServer.js';
 
+import Loader from 'nonstate/atoms/Loader.js';
+import InfoTable from 'nonstate/molecules/InfoTable.js';
 import {
   getBaseInfo,
   getParentEntityInfo,
   getCustomInfo,
   getRelatedEntityInfo,
 } from 'stateful/molecules/EntityInfo.js';
-import InfoTable from 'nonstate/molecules/InfoTable.js';
+
+
 
 import './EntityInfoPane.css';
 
@@ -20,14 +23,16 @@ export default class EntityInfoPane extends Component {
 
   async componentDidMount() {
     const {entityID} = this.props;
-    const entityData = await GIGServer.getEntity(entityID);
 
-    this.setState({
-      baseInfo: await getBaseInfo(entityData),
-      parentEntityInfo: getParentEntityInfo(entityData),
-      customInfo: await getCustomInfo(entityData),
-      relatedEntityInfo: getRelatedEntityInfo(entityData),
-    });
+    try {
+      const entityData = await GIGServer.getEntity(entityID);
+      this.setState({
+        baseInfo: await getBaseInfo(entityData),
+        parentEntityInfo: getParentEntityInfo(entityData),
+        customInfo: await getCustomInfo(entityData),
+        relatedEntityInfo: getRelatedEntityInfo(entityData),
+      });
+    } catch(err) {}
   }
 
   render() {
@@ -39,7 +44,7 @@ export default class EntityInfoPane extends Component {
     } = this.state;
 
     if (!baseInfo) {
-      return <div>Loading...</div>;
+      return <Loader />;
     }
 
     return (
