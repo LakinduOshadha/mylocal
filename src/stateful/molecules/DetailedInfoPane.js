@@ -9,7 +9,7 @@ export default class DetailedInfoPane extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showDetails: true,
+      showDetails: false,
     };
     this.onClickShow = this.onClickShow.bind(this);
     this.onClickHide = this.onClickHide.bind(this);
@@ -30,12 +30,12 @@ export default class DetailedInfoPane extends Component {
     if (!showDetails) {
       return (
         <div className="div-detailed-info">
-          <div
-            className="div-show-details"
+          <a
+            className="a-show-details"
             onClick={this.onClickShow.bind(this)}
           >
-            Details about {entityID})
-          </div>
+            Click to see Details about {entityID})
+          </a>
         </div>
       )
     }

@@ -26,8 +26,12 @@
   max-width: 500px;
 }
 
-.div-show-details {
+.a-show-details {
   font-size: 12px;
+}
+
+.a-show-details:hover {
+  cursor: pointer;
 }
 
 .div-data-source {
