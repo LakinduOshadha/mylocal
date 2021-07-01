@@ -1,6 +1,6 @@
 const md5 = require('md5');
 export const CACHE_VERSION = 'v2021-06-05.1543';
-export const TEST_CACHE_DISABLED = false;
+export const TEST_CACHE_DISABLED = true;
 
 export async function asyncCacheGet(cacheKey, asyncFallback) {
 

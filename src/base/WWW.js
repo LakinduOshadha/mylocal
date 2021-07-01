@@ -17,6 +17,5 @@ export default class WWW {
         return await d3.json(urlAbsolute);
       }
     )
-
   }
 }

@@ -48,6 +48,7 @@ export default class AdminPage extends Component {
     const regionType = Entity.getEntityType(regionID);
     try {
       const region = await GeoServer.getRegionInfo([lat, lng]);
+      console.debug('onChangeLocation', region);
       const gndID = region[regionType] ?? region[ENTITY.DISTRICT];
       this.setState({regionID: gndID});
     } catch(err) {}
