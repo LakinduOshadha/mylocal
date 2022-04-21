@@ -22,7 +22,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PASSWORD_995D5E89_D670_4652_97C2_8FD741ABB122 }}
       - name: Build the Docker image
-        run: docker build --tag ${SERVICE_NAME}:${{steps.event-version.outputs.SOURCE_TAG }} --file Dockerfile --build-arg GIG_SERVER=gig-server.datafoundation.lk --build-arg GIG_SERVER=geo-server.datafoundation.lk .
+        run: docker build --tag ${SERVICE_NAME}:${{steps.event-version.outputs.SOURCE_TAG }} --file Dockerfile --build-arg SERVER_HOST=mylocal.datafoundation.lk --build-arg GIG_SERVER=gig-server.datafoundation.lk --build-arg GIG_SERVER=geo-server.datafoundation.lk .
       - name: GitHub Image Push
         run: docker push $SERVICE_NAME:${{steps.event-version.outputs.SOURCE_TAG }}
       - name: Platformer Deploy
