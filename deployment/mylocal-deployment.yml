@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    reloader.stakater.com/auto: "true"
+  labels:
+    app_name: mylocal
+  name: mylocal
+  namespace: applications
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app_name: mylocal
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app_name: mylocal
+    spec:
+      containers:
+        - image: mylocal.azurecr.io/mylocal
+          imagePullPolicy: Always
+          name: mylocal
+          ports:
+            - containerPort: 80
+              name: port-80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 512Mi
+            requests:
+              cpu: 500m
+              memory: 512Mi
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 60
