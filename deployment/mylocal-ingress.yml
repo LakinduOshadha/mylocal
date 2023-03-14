@@ -31,6 +31,20 @@ spec:
                   number: 80
             path: /
             pathType: Prefix
+          - backend:
+              service:
+                name: gig-server
+                port:
+                  number: 4001
+            path: /gig_server
+            pathType: Prefix
+          - backend:
+              service:
+                name: geo-server
+                port:
+                  number: 4002
+            path: /geo_server
+            pathType: Prefix
   tls:
     - hosts:
         - mylocal.datafoundation.lk
