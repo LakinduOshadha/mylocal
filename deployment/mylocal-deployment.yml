@@ -19,7 +19,7 @@ spec:
         app_name: mylocal
     spec:
       containers:
-        - image: mylocal.azurecr.io/mylocal
+        - image: mylocalreg.azurecr.io/mylocal
           imagePullPolicy: Always
           name: mylocal
           ports:
