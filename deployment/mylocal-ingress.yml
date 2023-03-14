@@ -19,7 +19,6 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
     nginx.ingress.kubernetes.io/whitelist-source-range: 0.0.0.0/0
   name: mylocal-ingress
-  namespace: applications
 spec:
   rules:
     - host: mylocal.datafoundation.lk

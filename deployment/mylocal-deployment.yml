@@ -6,7 +6,6 @@ metadata:
   labels:
     app_name: mylocal
   name: mylocal
-  namespace: applications
 spec:
   replicas: 1
   selector:

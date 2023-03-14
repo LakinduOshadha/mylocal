@@ -5,7 +5,6 @@ metadata:
   labels:
     app_name: mylocal
   name: mylocal
-  namespace: prod
 spec:
   ports:
     - name: port-80
