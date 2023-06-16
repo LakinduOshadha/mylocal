@@ -23,7 +23,7 @@ import MapLocationMarker from 'stateful/atoms/MapLocationMarker.js';
 
 import './AdminPage.css';
 
-export const DEFAULT_ZOOM = 16;
+export const DEFAULT_ZOOM = 13;
 
 export default class AdminPage extends Component {
   static getDefaultLatLngAndZoom() {

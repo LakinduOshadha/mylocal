@@ -4,7 +4,7 @@
 }
 
 .polyline-region-map {
-  stroke: red;
+  stroke: rgb(238, 4, 4);
   stroke-width: 1px;
   fill: red;
   fill-opacity: 0.2;

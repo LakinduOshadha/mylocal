@@ -30,17 +30,19 @@ export function getRelatedEntityInfo(entityData) {
     ['subs', 'Contains'],
     ['supers', 'Contained in'],
     ['ints', 'Overlaps with'],
-  ].reduce(
+  ].reduce (
     function(info, [k, label]) {
-      const idListList = Object.values(
-        indexArrayByKey(entityData[k], Entity.getEntityType),
-      );
-      if (idListList.length === 0) {
-        return info;
-      }
-      return Object.assign(info, {
-        [label]: (<EntityLinkListList entityIDListList={idListList} />),
-      });
+        const idListList = Object.values(
+          indexArrayByKey(JSON.parse(entityData[k].replace(/'/g, '"')), Entity.getEntityType),
+        );
+        if (idListList.length === 0) {
+          return info;
+        }
+
+        return Object.assign(info, {
+          [label]: (<EntityLinkListList entityIDListList={idListList} />),
+        });
+
     },
     {},
   );
