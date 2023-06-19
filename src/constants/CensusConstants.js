@@ -9,7 +9,6 @@ export const CENSUS_TABLE_GROUPS = {
     'population-religion.regions.2012',
   ],
   'Household Information': [
-    'social-household-communication_items.regions.2012',
     'social-household-lighting.regions.2012',
     'social-household-cooking_fuel.regions.2012',
 
