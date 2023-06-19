@@ -1,12 +1,10 @@
 import {
   TEST_CACHE_DISABLED,
 } from 'base/Cache.js';
-import { 
-  TEST_GEO_SERVER_DISABLED,
-} from 'core/GeoServer.js';
 import {
   TEST_GIG_SERVER_DISABLED,
-} from 'core/GIGServer.js';
+  TEST_GEO_SERVER_DISABLED,
+} from 'core/Server.js';
 
 import './TestMode.css';
 

@@ -7,6 +7,7 @@ export function getCensusLabel(tableName) {
         .replace('.regions', '')
         .replace('.2012', '')
         .replace('social-household-', '')
-        .replace('-', ' ')
+        .split('-')
+        .join(' ')
   );
 }

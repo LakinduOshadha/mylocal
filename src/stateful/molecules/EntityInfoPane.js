@@ -23,10 +23,9 @@ export default class EntityInfoPane extends Component {
         customInfo: getCustomInfo(entityData),
         relatedEntityInfo: getRelatedEntityInfo(entityData),
       });
-    } catch(err) {
-    }
-
+    } catch(err) {}
   }
+
 
   render() {
     if (!this.state) {

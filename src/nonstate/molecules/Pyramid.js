@@ -11,6 +11,7 @@ export default class Pyramid extends Component {
     const {dataMap, tableName, ageKeys} = this.props;
     const innerDataMap = Object.values(dataMap)[0];
 
+
     const dataValues = ageKeys.map(k => innerDataMap[k[0]]);
     const totalKeySpan = MathX.sum(ageKeys.map(k => k[1]));
     const total = MathX.sum(dataValues);
@@ -39,7 +40,7 @@ export default class Pyramid extends Component {
           value: value,
           color: fill,
         })
-        
+
         return (
           <rect
             key={'pyramid-' + iData}

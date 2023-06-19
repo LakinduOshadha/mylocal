@@ -3,11 +3,7 @@ FROM node:14.19-slim as build
 WORKDIR /mylocal
 ENV PATH /mylocal/node_modules/.bin:$PATH
 
-ARG SERVER_HOST=http://localhost:9000/
-
-ARG CENSUS_URL_BASE=https://raw.githubusercontent.com/nuuuwan/gig-data/master/gig2
-ARG ENT_URL_BASE=https://raw.githubusercontent.com/LakinduOshadha/mylocal-data/main
-
+ARG SERVER_HOST=http://localhost:4000/mylocal_service
 
 RUN apt-get update && apt-get install python -y && \
     apt-get install git -y && \
@@ -19,9 +15,6 @@ RUN npm ci
 RUN npm install react-scripts@3.4.1 -g --silent
 COPY . .
 ENV REACT_APP_SERVER_HOST=$SERVER_HOST
-ENV REACT_APP_CENSUS_URL_BASE=$CENSUS_URL_BASE
-ENV REACT_APP_ENT_URL_BASE=$ENT_URL_BASE
-
 RUN npm run build
 
 # production environment

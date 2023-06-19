@@ -28,11 +28,6 @@ export function invertDict(dict) {
 }
 
 export function indexArrayByKey(arr, funcGetKey) {
-  if (!Array.isArray(arr)) {
-    // throw new Error('Input is not an array.');
-    return [];
-  }
-  
   return arr.reduce(
     function(keyToArr, elem) {
       const key = funcGetKey(elem);

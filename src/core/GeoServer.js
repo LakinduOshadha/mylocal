@@ -1,16 +1,27 @@
-import GeoData from '../server/GeoData.js';
+import Server from './Server.js';
 
-export const TEST_GEO_SERVER_DISABLED = false;
+class GeoServerError extends Error {}
 
-export default class GeoServer{
+export default class GeoServer extends Server {
   static async getGeo(regionID) {
-    let  geo = await GeoData.getGeoForRegionID(regionID);
-    geo = {"coordinates" : geo,"type":"MultiPolygon"}
+    const geo = await Server.run(
+      'geo',
+      [`${regionID}`],
+    );
+    if (!geo) {
+      throw GeoServerError();
+    }
     return geo;
   }
 
   static async getRegionInfo([lat, lng]) {
-    const regions = await GeoData.latlngToRegion([lat, lng]);
+    const regions = await Server.run(
+      'latlng_to_region',
+      [`${lat},${lng}`],
+    );
+    if (!regions) {
+      throw GeoServerError();
+    }
     return regions;
   }
 }
