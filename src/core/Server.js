@@ -30,7 +30,7 @@ export default class Server {
 
   static async getGeo(regionID) {
     const geo = await Server.run(
-      'geo',
+      'entity/coordinates',
       [`${regionID}`],
     );
     if (!geo) {
@@ -41,7 +41,7 @@ export default class Server {
 
   static async getRegionInfo([lat, lng]) {
     const regions = await Server.run(
-      'latlng_to_region',
+      'regions',
       [`${lat},${lng}`],
     );
     if (!regions) {
@@ -51,14 +51,14 @@ export default class Server {
   }
 
   static async getEntity(entityID) {
-    const entity = await Server.run(
-      'entity',
+    const entities = await Server.run(
+      'entities',
       [entityID],
     );
-    if (!entity) {
+    if (!entities) {
       throw new ServerError('Failed to get entity data');
     }
-    return entity;
+    return entities[entityID];
   }
 
   static async getCensus(tableName, entityID) {
