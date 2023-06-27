@@ -3,7 +3,7 @@ FROM node:14.19-slim as build
 WORKDIR /mylocal
 ENV PATH /mylocal/node_modules/.bin:$PATH
 
-ARG SERVER_HOST=http://localhost:4000
+ARG SERVER_HOST=https://service.mylocal.datafoundation.lk
 
 RUN apt-get update && apt-get install python -y && \
     apt-get install git -y && \
